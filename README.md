@@ -14,7 +14,7 @@ This repository contains the project to compile [Unity Renderer](https://github.
 
 Take this path if you **are not going** to change [Unity Renderer](https://github.com/decentraland/unity-renderer) continuously.
 
-When we clone this repo, we're going to use the code inside the [Unity Renderer](https://github.com/decentraland/unity-renderer), and the version it would depend on what version we locked.
+When we clone this repo, we're going to use the code inside the [Unity Renderer](https://github.com/decentraland/unity-renderer), and the version will depend on what version we locked.
 
 To update the Unity Renderer version, you can use:
 
@@ -43,11 +43,11 @@ Inside it, you need to change the remote path of the package for the absolute pa
 
 Please change "`file:/unity-renderer/unity-renderer/Assets`" to the corresponding location (absolute path).
 
-After this steps, you can open **Unity Renderer** and **Unity Renderer Desktop** project at the same time, and the changes in each project will be reflected in the another immediately.
+After these steps, you can open **Unity Renderer** and **Unity Renderer Desktop** project at the same time, and the changes in **Unity Renderer Desktop** project will be reflected in the **Unity Renderer** immediately.
 
 # Testing
 
-Temporary to test you must download the whole artifact from CircleCI generated in the CI.
+Temporarily, you must download the whole artifact from CircleCI generated in the CI to test.
 
 ## Copyright info
 
