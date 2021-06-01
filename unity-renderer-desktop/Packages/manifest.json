@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "com.coffee.git-dependency-resolver": "https://github.com/mob-sakai/GitDependencyResolverForUnity.git",
+    "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master"
+  }
+}

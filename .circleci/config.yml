@@ -1,0 +1,171 @@
+version: 2.1
+
+references:
+  .working_directory: &working_directory /tmp/workspace/explorer-desktop
+  #                                                     ~~~~~~~~~~~~~~~~ <- repo name
+
+  .working_directory_root: &working_directory_root
+    working_directory: *working_directory
+
+  .attach_root: &attach_root
+    attach_workspace:
+      at: *working_directory
+
+  .unity_linux_image: &unity_linux_image
+    - image: unityci/editor:ubuntu-2020.3.0f1-linux-il2cpp-0.12.0
+      environment:
+        DCL_OUTPUT_NAME: linux
+        PROJECT_PATH: /tmp/workspace/explorer-desktop/unity-renderer-desktop
+        BUILD_TARGET: StandaloneLinux64
+        BUILD_NAME: unity-renderer-linux
+        BUILD_PATH: /tmp/workspace/explorer-desktop/Builds/unity-renderer-linux/
+        #                          ~~~~~~~~~~~~~~~~ <- repo name
+        #                                                  ~~~~~~~~~~~~~~~~~~~~ <- folder name
+
+  .unity_mac_image: &unity_mac_image
+    - image: unityci/editor:ubuntu-2020.3.0f1-mac-mono-0.12.0
+      environment:
+        DCL_OUTPUT_NAME: mac
+        PROJECT_PATH: /tmp/workspace/explorer-desktop/unity-renderer-desktop
+        BUILD_TARGET: StandaloneOSX
+        BUILD_NAME: unity-renderer-mac
+        BUILD_PATH: /tmp/workspace/explorer-desktop/Builds/unity-renderer-mac/
+        #                          ~~~~~~~~~~~~~~~~ <- repo name
+        #                                                  ~~~~~~~~~~~~~~~~~~ <- folder name
+
+  .unity_windows_image: &unity_windows_image
+    - image: unityci/editor:ubuntu-2020.3.0f1-windows-mono-0.12.0
+      environment:
+        DCL_OUTPUT_NAME: windows
+        PROJECT_PATH: /tmp/workspace/explorer-desktop/unity-renderer-desktop
+        BUILD_TARGET: StandaloneWindows64
+        BUILD_NAME: unity-renderer-windows
+        BUILD_PATH: /tmp/workspace/explorer-desktop/Builds/unity-renderer-windows/
+        #                          ~~~~~~~~~~~~~~~~ <- repo name
+        #                                                  ~~~~~~~~~~~~~~~~~~~~~~ <- folder name
+
+  .all_branches_and_tags: &all_branches_and_tags
+    filters:
+      branches:
+        only: /(.*)/
+      tags:
+        only: /^\d+\.\d+\.\d+(.*)/ # npm tag + latest
+
+commands:
+  build-unity-generic:
+    steps:
+      - run:
+          name: Prepare image
+          command: |
+            apt-get update
+            apt-get install -y zip
+      - run:
+          name: Build Unity Project
+          no_output_timeout: 30m
+          command: |
+            if [[ ! -e ${BUILD_PATH} ]] || [[ ! -e "${BUILD_PATH}/build-logs.txt" ]] || [[ ! -n "$(ls -A ${BUILD_PATH})" ]]; then
+                mkdir -p ${BUILD_PATH}
+
+                ./ci-build.sh
+            else
+              echo "Skipping build, using cached artifacts."
+            fi;
+      - run:
+          name: Print build logs
+          command: cat ${BUILD_PATH}/build-logs.txt
+          when: always
+
+      # persist to workspace to use in downstream jobs
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - Builds
+      - run:
+          name: Check there are build artifacts
+          command: |
+            if [ -z "$(ls -A "${BUILD_PATH}")" ]; then
+              echo "directory ${BUILD_PATH}/Builds is empty"
+              exit 1
+            fi
+      - run:
+          environment:
+            ARTIFACT_PATH: /tmp/workspace/explorer-desktop/unity-desktop-artifacts/
+          name: Compress artifacts
+          command: |
+            mkdir -p unity-desktop-artifacts
+            cd ${BUILD_PATH}
+            zip -r unity-renderer-${DCL_OUTPUT_NAME}.zip ./
+            mv unity-renderer-${DCL_OUTPUT_NAME}.zip ${ARTIFACT_PATH}
+      - store_artifacts:
+          path: ./unity-desktop-artifacts/
+          destination: Builds
+      - run:
+          name: Print all files (in failure)
+          when: on_fail
+          command: |
+            find "${BUILD_PATH}"
+
+jobs:
+  checkout:
+    <<: *working_directory_root
+    docker:
+      - image: cimg/base:2021.04
+    steps:
+      - run:
+          name: Prepare image
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y jq
+      - checkout
+      - run:
+          name: Sync unity-renderer package
+          command: |
+            ./update-unity-renderer.sh ${CIRCLE_BRANCH}
+
+      # persist to workspace to use in downstream jobs
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - "*"
+  build-unity-for-linux:
+    <<: *working_directory_root
+    resource_class: xlarge
+    docker: *unity_linux_image
+    steps:
+      - <<: *attach_root
+      - build-unity-generic
+  build-unity-for-windows:
+    <<: *working_directory_root
+    resource_class: xlarge
+    docker: *unity_windows_image
+    steps:
+      - <<: *attach_root
+      - build-unity-generic
+  build-unity-for-mac:
+    <<: *working_directory_root
+    resource_class: xlarge
+    docker: *unity_mac_image
+    steps:
+      - <<: *attach_root
+      - build-unity-generic
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - checkout:
+          <<: *all_branches_and_tags
+
+      - build-unity-for-linux:
+          <<: *all_branches_and_tags
+          requires:
+            - checkout
+
+      - build-unity-for-windows:
+          <<: *all_branches_and_tags
+          requires:
+            - checkout
+
+      - build-unity-for-mac:
+          <<: *all_branches_and_tags
+          requires:
+            - checkout
