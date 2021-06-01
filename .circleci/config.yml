@@ -19,8 +19,8 @@ references:
         BUILD_TARGET: StandaloneLinux64
         BUILD_NAME: unity-renderer-linux
         BUILD_PATH: /tmp/workspace/explorer-desktop/Builds/unity-renderer-linux/
-        #                          ~~~~~~~~~~~~~~ <- repo name
-        #                                                 ~~~~~~~~~~~~~~~~~~~~~ <- folder name
+        #                          ~~~~~~~~~~~~~~~~ <- repo name
+        #                                                  ~~~~~~~~~~~~~~~~~~~~ <- folder name
 
   .unity_mac_image: &unity_mac_image
     - image: unityci/editor:ubuntu-2020.3.0f1-mac-mono-0.12.0
@@ -30,8 +30,8 @@ references:
         BUILD_TARGET: StandaloneOSX
         BUILD_NAME: unity-renderer-mac
         BUILD_PATH: /tmp/workspace/explorer-desktop/Builds/unity-renderer-mac/
-        #                          ~~~~~~~~~~~~~~ <- repo name
-        #                                                 ~~~~~~~~~~~~~~~~~~~ <- folder name
+        #                          ~~~~~~~~~~~~~~~~ <- repo name
+        #                                                  ~~~~~~~~~~~~~~~~~~ <- folder name
 
   .unity_windows_image: &unity_windows_image
     - image: unityci/editor:ubuntu-2020.3.0f1-windows-mono-0.12.0
@@ -41,8 +41,8 @@ references:
         BUILD_TARGET: StandaloneWindows64
         BUILD_NAME: unity-renderer-windows
         BUILD_PATH: /tmp/workspace/explorer-desktop/Builds/unity-renderer-windows/
-        #                          ~~~~~~~~~~~~~~ <- repo name
-        #                                                 ~~~~~~~~~~~~~~~~~~~~~~~ <- folder name
+        #                          ~~~~~~~~~~~~~~~~ <- repo name
+        #                                                  ~~~~~~~~~~~~~~~~~~~~~~ <- folder name
 
   .all_branches_and_tags: &all_branches_and_tags
     filters:
@@ -63,9 +63,6 @@ commands:
           name: Build Unity Project
           no_output_timeout: 30m
           command: |
-            pwd
-            ls -la
-            ls -la unity-renderer-desktop/
             if [[ ! -e ${BUILD_PATH} ]] || [[ ! -e "${BUILD_PATH}/build-logs.txt" ]] || [[ ! -n "$(ls -A ${BUILD_PATH})" ]]; then
                 mkdir -p ${BUILD_PATH}
 
@@ -95,11 +92,8 @@ commands:
             ARTIFACT_PATH: /tmp/workspace/explorer-desktop/unity-desktop-artifacts/
           name: Compress artifacts
           command: |
-            pwd
             mkdir -p unity-desktop-artifacts
             cd ${BUILD_PATH}
-            pwd
-            ls -la
             zip -r unity-renderer-${DCL_OUTPUT_NAME}.zip ./
             mv unity-renderer-${DCL_OUTPUT_NAME}.zip ${ARTIFACT_PATH}
       - store_artifacts:
