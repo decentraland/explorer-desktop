@@ -1,0 +1,14 @@
+{
+    "dependencies": [
+        {
+            "name": "com.coffee.ui-particle",
+            "hash": "24d32d8441eb27da88e462a44935ab78e9172dbb",
+            "url": "https://github.com/mob-sakai/ParticleEffectForUGUI.git"
+        },
+        {
+            "name": "net.tnrd.nsubstitute",
+            "hash": "cdd11bb74398afae73e71b6fe01114f597a6ce08",
+            "url": "https://github.com/decentraland/Unity3D-NSubstitute.git"
+        }
+    ]
+}
