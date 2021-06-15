@@ -1108,7 +1108,7 @@ MonoBehaviour:
   openBrowserWhenStart: 1
   useCustomContentServer: 0
   customContentServerUrl: http://localhost:1338/
-  baseUrlMode: 1
+  baseUrlMode: 0
   baseUrlCustom: https://explorer.decentraland.zone/?
   environment: 4
   startInCoords: {x: 0, y: 0}
@@ -1116,9 +1116,8 @@ MonoBehaviour:
   allWearables: 0
   testWearables: 0
   enableTutorial: 0
-  builderInWorld: 1
+  builderInWorld: 0
   soloScene: 0
-  questsEnabled: 0
   debugPanelMode: 0
 --- !u!4 &1444882337
 Transform:
