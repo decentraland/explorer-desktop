@@ -1108,8 +1108,8 @@ MonoBehaviour:
   openBrowserWhenStart: 1
   useCustomContentServer: 0
   customContentServerUrl: http://localhost:1338/
-  baseUrlMode: 0
-  baseUrlCustom: https://explorer.decentraland.zone/?
+  baseUrlMode: 1
+  baseUrlCustom: https://play.decentraland.zone/branch/feat/renderer-auth/index.html
   environment: 4
   startInCoords: {x: 0, y: 0}
   forceLocalComms: 0
