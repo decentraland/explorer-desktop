@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using Launcher;
+using Signin;
 using UnityEngine;
 
-public class LauncherSceneController : MonoBehaviour
+public class SigninSceneController : MonoBehaviour
 {
-    private LauncherHUDController launcherHUDController;
+    private SigninHUDController _signinHUDController;
     // Start is called before the first frame update
     void Start()
     {
-        launcherHUDController = new LauncherHUDController();
-        launcherHUDController.Initialize();
+        _signinHUDController = new SigninHUDController();
+        _signinHUDController.Initialize();
     }
 
     // Update is called once per frame

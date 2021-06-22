@@ -4,14 +4,12 @@ using DCL.Interface;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Launcher
+namespace Signin
 {
-    public class LauncherHUDController
+    public class SigninHUDController
     {
-        internal ILauncherHUDView view;
-        internal virtual ILauncherHUDView CreateView() => LauncherHUDView.CreateView();
-
-        private AsyncOperation progress;
+        internal ISigninHUDView view;
+        internal virtual ISigninHUDView CreateView() => SigninHUDView.CreateView();
         public void Initialize() // TODO: Start -> Initialize
         {
             view = CreateView();
@@ -36,7 +34,7 @@ namespace Launcher
         private void ChangeMainScene()
         {
             view.SetLoading(true);
-            progress = SceneManager.LoadSceneAsync("MainScene", LoadSceneMode.Single);
+            SceneManager.LoadSceneAsync("MainScene", LoadSceneMode.Single);
         }
 
         public void OnDestroy()

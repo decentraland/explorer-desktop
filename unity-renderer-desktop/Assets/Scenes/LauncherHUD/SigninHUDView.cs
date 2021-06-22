@@ -4,9 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Launcher
+namespace Signin
 {
-    public interface ILauncherHUDView : IDisposable
+    public interface ISigninHUDView : IDisposable
     {
         event Action OnPlay;
         event Action OnPlayAsGuest;
@@ -16,7 +16,7 @@ namespace Launcher
         void SetLoading(bool loading);
     }
 
-    public class LauncherHUDView : MonoBehaviour, ILauncherHUDView
+    public class SigninHUDView : MonoBehaviour, ISigninHUDView
     {
         public event Action OnPlay;
         public event Action OnPlayAsGuest;
@@ -31,10 +31,10 @@ namespace Launcher
             playAsGuestButton.onClick.AddListener(() => OnPlayAsGuest?.Invoke());
         }
         
-        public static LauncherHUDView CreateView()
+        public static SigninHUDView CreateView()
         {
-            LauncherHUDView view = Instantiate(Resources.Load<GameObject>("LauncherHUD")).GetComponent<LauncherHUDView>();
-            view.gameObject.name = "_Launcher";
+            SigninHUDView view = Instantiate(Resources.Load<GameObject>("SigninHUD")).GetComponent<SigninHUDView>();
+            view.gameObject.name = "_Signin";
             return view;
         }
 
