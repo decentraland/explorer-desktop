@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 5473325884796640050}
   - component: {fileID: 7961959116611659203}
   m_Layer: 5
-  m_Name: LauncherHUD
+  m_Name: SigninHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -633,7 +633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3120824188793499034
 RectTransform:
   m_ObjectHideFlags: 0
