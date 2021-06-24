@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Signin
+namespace Login
 {
     public interface ILoginHUDView : IDisposable
     {
@@ -33,8 +33,8 @@ namespace Signin
         
         public static LoginHUDView CreateView()
         {
-            LoginHUDView view = Instantiate(Resources.Load<GameObject>("SigninHUD")).GetComponent<LoginHUDView>();
-            view.gameObject.name = "_Signin";
+            LoginHUDView view = Instantiate(Resources.Load<GameObject>("LoginHUD")).GetComponent<LoginHUDView>();
+            view.gameObject.name = "_Login";
             return view;
         }
 

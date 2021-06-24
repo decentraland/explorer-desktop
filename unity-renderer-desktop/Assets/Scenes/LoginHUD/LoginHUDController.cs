@@ -4,7 +4,7 @@ using DCL.Interface;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Signin
+namespace Login
 {
     public class LoginHUDController
     {

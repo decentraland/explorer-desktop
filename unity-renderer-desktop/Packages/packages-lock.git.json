@@ -2,7 +2,7 @@
     "dependencies": [
         {
             "name": "com.coffee.ui-particle",
-            "hash": "24d32d8441eb27da88e462a44935ab78e9172dbb",
+            "hash": "f43d4c38eaa9c804a72f98833057dbc9dbd8b015",
             "url": "https://github.com/mob-sakai/ParticleEffectForUGUI.git"
         },
         {
