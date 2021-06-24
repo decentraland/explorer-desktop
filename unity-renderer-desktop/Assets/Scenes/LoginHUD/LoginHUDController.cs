@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using DCL;
 using DCL.Interface;
@@ -6,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace Login
 {
-    public class LoginHUDController
+    public class LoginHUDController : IDisposable
     {
         internal ILoginHUDView view;
         internal virtual ILoginHUDView CreateView() => LoginHUDView.CreateView();
@@ -37,7 +38,7 @@ namespace Login
             SceneManager.LoadSceneAsync("MainScene", LoadSceneMode.Single);
         }
 
-        public void OnDestroy()
+        public void Dispose()
         {
             if (view == null)
                 return;
