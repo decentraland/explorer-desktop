@@ -10,7 +10,7 @@ namespace Signin
     {
         internal ILoginHUDView view;
         internal virtual ILoginHUDView CreateView() => LoginHUDView.CreateView();
-        public void Initialize() // TODO: Start -> Initialize
+        public void Initialize()
         {
             view = CreateView();
             if (view == null)
