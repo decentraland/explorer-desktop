@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 
 namespace Signin
 {
-    public class SigninHUDController
+    public class LoginHUDController
     {
-        internal ISigninHUDView view;
-        internal virtual ISigninHUDView CreateView() => SigninHUDView.CreateView();
+        internal ILoginHUDView view;
+        internal virtual ILoginHUDView CreateView() => LoginHUDView.CreateView();
         public void Initialize() // TODO: Start -> Initialize
         {
             view = CreateView();

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace Signin
 {
-    public interface ISigninHUDView : IDisposable
+    public interface ILoginHUDView : IDisposable
     {
         event Action OnPlay;
         event Action OnPlayAsGuest;
@@ -16,7 +16,7 @@ namespace Signin
         void SetLoading(bool loading);
     }
 
-    public class SigninHUDView : MonoBehaviour, ISigninHUDView
+    public class LoginHUDView : MonoBehaviour, ILoginHUDView
     {
         public event Action OnPlay;
         public event Action OnPlayAsGuest;
@@ -31,9 +31,9 @@ namespace Signin
             playAsGuestButton.onClick.AddListener(() => OnPlayAsGuest?.Invoke());
         }
         
-        public static SigninHUDView CreateView()
+        public static LoginHUDView CreateView()
         {
-            SigninHUDView view = Instantiate(Resources.Load<GameObject>("SigninHUD")).GetComponent<SigninHUDView>();
+            LoginHUDView view = Instantiate(Resources.Load<GameObject>("SigninHUD")).GetComponent<LoginHUDView>();
             view.gameObject.name = "_Signin";
             return view;
         }

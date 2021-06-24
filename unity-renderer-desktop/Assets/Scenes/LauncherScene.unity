@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 1160680355}
   - component: {fileID: 1160680354}
   m_Layer: 0
-  m_Name: LauncherSceneController
+  m_Name: LoginSceneController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
