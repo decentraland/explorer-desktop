@@ -7,8 +7,14 @@
       "dependencies": {},
       "hash": "d4fc38c92fb139b4184912f20556ab27a3b519fa"
     },
+    "com.coffee.ui-particle": {
+      "version": "file:.com.coffee.ui-particle@3.3.8",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#feat/renderer-auth",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -58,7 +64,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "f3b8928fdb5b2b8b460e21ea382b1e4826faa429"
+      "hash": "18ca6ec7afb54e1ea57022e92ca33f2cfd6478e5"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -97,14 +103,18 @@
       "version": "2.0.7",
       "depth": 1,
       "source": "registry",
-      "dependencies": { "com.unity.test-framework": "1.1.1" },
+      "dependencies": {
+        "com.unity.test-framework": "1.1.1"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.visualstudio": {
       "version": "2.0.7",
       "depth": 1,
       "source": "registry",
-      "dependencies": { "com.unity.test-framework": "1.1.9" },
+      "dependencies": {
+        "com.unity.test-framework": "1.1.9"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.vscode": {
@@ -125,7 +135,9 @@
       "version": "0.2.4-preview.1",
       "depth": 1,
       "source": "registry",
-      "dependencies": { "com.unity.editorcoroutines": "1.0.0" },
+      "dependencies": {
+        "com.unity.editorcoroutines": "1.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.performance.profile-analyzer": {
@@ -139,14 +151,18 @@
       "version": "3.1.0",
       "depth": 1,
       "source": "registry",
-      "dependencies": { "com.unity.modules.physics": "1.0.0" },
+      "dependencies": {
+        "com.unity.modules.physics": "1.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.core": {
       "version": "10.4.0",
       "depth": 2,
       "source": "registry",
-      "dependencies": { "com.unity.ugui": "1.0.0" },
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.universal": {
@@ -184,6 +200,22 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.sysroot": {
+      "version": "0.1.19-preview",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.sysroot.linux-x86_64": {
+      "version": "0.1.14-preview",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.sysroot": "0.1.18-preview"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.test-framework": {
       "version": "1.1.22",
       "depth": 1,
@@ -209,7 +241,9 @@
       "version": "3.0.4",
       "depth": 1,
       "source": "registry",
-      "dependencies": { "com.unity.ugui": "1.0.0" },
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
@@ -221,6 +255,16 @@
         "com.unity.modules.animation": "1.0.0",
         "com.unity.modules.audio": "1.0.0",
         "com.unity.modules.particlesystem": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.toolchain.linux-x86_64": {
+      "version": "0.1.18-preview",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.sysroot": "0.1.19-preview",
+        "com.unity.sysroot.linux-x86_64": "0.1.14-preview"
       },
       "url": "https://packages.unity.com"
     },
@@ -242,6 +286,12 @@
         "com.unity.modules.xr": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "net.tnrd.nsubstitute": {
+      "version": "file:.net.tnrd.nsubstitute@4.2.2",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.modules.androidjni": {
       "version": "1.0.0",
@@ -316,13 +366,17 @@
       "version": "1.0.0",
       "depth": 1,
       "source": "builtin",
-      "dependencies": { "com.unity.modules.imageconversion": "1.0.0" }
+      "dependencies": {
+        "com.unity.modules.imageconversion": "1.0.0"
+      }
     },
     "com.unity.modules.subsystems": {
       "version": "1.0.0",
       "depth": 2,
       "source": "builtin",
-      "dependencies": { "com.unity.modules.jsonserialize": "1.0.0" }
+      "dependencies": {
+        "com.unity.modules.jsonserialize": "1.0.0"
+      }
     },
     "com.unity.modules.terrain": {
       "version": "1.0.0",
@@ -343,7 +397,9 @@
       "version": "1.0.0",
       "depth": 1,
       "source": "builtin",
-      "dependencies": { "com.unity.modules.physics2d": "1.0.0" }
+      "dependencies": {
+        "com.unity.modules.physics2d": "1.0.0"
+      }
     },
     "com.unity.modules.ui": {
       "version": "1.0.0",
