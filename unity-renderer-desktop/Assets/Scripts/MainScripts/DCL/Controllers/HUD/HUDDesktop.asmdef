@@ -1,0 +1,19 @@
+{
+    "name": "HUDDesktop",
+    "rootNamespace": "",
+    "references": [
+        "GUID:3bdb7fe910cce8d4888137cded3ba4a2",
+        "GUID:d7f1765642f0c22cda30addd0275b5e1",
+        "GUID:9d475ab28d70a5a399fc98ae8845969e",
+        "GUID:012093226beb0234c97a809109f7086d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
