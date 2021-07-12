@@ -99,6 +99,9 @@ commands:
       - store_artifacts:
           path: ./unity-desktop-artifacts/
           destination: Builds
+      - persist_to_workspace:
+          root: *working_directory
+          path: ./unity-desktop-artifacts/
       - run:
           name: Print all files (in failure)
           when: on_fail
@@ -148,6 +151,17 @@ jobs:
     steps:
       - <<: *attach_root
       - build-unity-generic
+  publish-artifacts:
+    <<: *working_directory_root
+    docker:
+      - image: cimg/base:2021.04
+    steps:
+      - <<: *attach_root
+      - run:
+          name: Upload artifacts
+          command: |
+            ls -la
+            ls -la ./unity-desktop-artifacts/
 workflows:
   version: 2
   build-deploy:
@@ -169,3 +183,10 @@ workflows:
           <<: *all_branches_and_tags
           requires:
             - checkout
+
+      - publish-artifacts:
+          <<: *all_branches_and_tags
+          requires:
+            - build-unity-for-linux
+            - build-unity-for-windows
+            - build-unity-for-mac
