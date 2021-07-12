@@ -7,6 +7,12 @@
       "dependencies": {},
       "hash": "d4fc38c92fb139b4184912f20556ab27a3b519fa"
     },
+    "com.coffee.ui-particle": {
+      "version": "file:.com.coffee.ui-particle@3.3.8",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.decentraland.unity-renderer": {
       "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
       "depth": 0,
@@ -58,7 +64,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "b20342394a48d59e10ab0adfd14600381f201565"
+      "hash": "745ee8e7c55a0116e57f0d10fd4a288040db6db6"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -73,8 +79,8 @@
       "dependencies": {}
     },
     "com.unity.cinemachine": {
-      "version": "2.5.0",
-      "depth": 1,
+      "version": "2.7.4",
+      "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -280,6 +286,12 @@
         "com.unity.modules.xr": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "net.tnrd.nsubstitute": {
+      "version": "file:.net.tnrd.nsubstitute@4.2.2",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.modules.androidjni": {
       "version": "1.0.0",
