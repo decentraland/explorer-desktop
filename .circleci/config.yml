@@ -101,7 +101,8 @@ commands:
           destination: Builds
       - persist_to_workspace:
           root: *working_directory
-          path: ./unity-desktop-artifacts/
+          paths:
+            - ./unity-desktop-artifacts/
       - run:
           name: Print all files (in failure)
           when: on_fail
