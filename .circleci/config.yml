@@ -158,7 +158,11 @@ jobs:
       - image: cimg/base:2021.04
     steps:
       - <<: *attach_root
-      - run: sudo apt-get -y -qq install awscli
+      - run: 
+          name: Prepare image
+          command: |
+            sudo apt-get update
+            sudo apt-get -y -qq install awscli
       - run:
           name: Upload artifacts
           command: |
