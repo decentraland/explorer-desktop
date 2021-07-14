@@ -18,7 +18,7 @@ jobs:
             This branch can be downloaded with the following instructions:
             ### For Windows:
             Execute the following commands in `Windows PowerShell`
-            ```
+            ```bash
             # Download
             curl -o unity-renderer-windows.zip https://renderer-artifacts.decentraland.org/desktop/${{ github.head_ref }}/unity-renderer-windows.zip
 
@@ -27,7 +27,7 @@ jobs:
             ```
             ### For Mac:
             Execute the following commands:
-            ```
+            ```bash
             # Download
             curl -o unity-renderer-mac.zip https://renderer-artifacts.decentraland.org/desktop/${{ github.head_ref }}/unity-renderer-mac.zip
 
@@ -36,7 +36,7 @@ jobs:
             ```
             ### For Linux: 
             Execute the following commands:
-            ```
+            ```bash
             # Download
             curl -o unity-renderer-linux.zip https://renderer-artifacts.decentraland.org/desktop/${{ github.head_ref }}/unity-renderer-linux.zip
 
