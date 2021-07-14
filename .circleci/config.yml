@@ -96,9 +96,6 @@ commands:
             cd ${BUILD_PATH}
             zip -r unity-renderer-${DCL_OUTPUT_NAME}.zip ./
             mv unity-renderer-${DCL_OUTPUT_NAME}.zip ${ARTIFACT_PATH}
-      - store_artifacts:
-          path: ./unity-desktop-artifacts/
-          destination: Builds
       - persist_to_workspace:
           root: *working_directory
           paths:
