@@ -96,9 +96,10 @@ commands:
             cd ${BUILD_PATH}
             zip -r unity-renderer-${DCL_OUTPUT_NAME}.zip ./
             mv unity-renderer-${DCL_OUTPUT_NAME}.zip ${ARTIFACT_PATH}
-      - store_artifacts:
-          path: ./unity-desktop-artifacts/
-          destination: Builds
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - ./unity-desktop-artifacts/
       - run:
           name: Print all files (in failure)
           when: on_fail
@@ -148,6 +149,21 @@ jobs:
     steps:
       - <<: *attach_root
       - build-unity-generic
+  publish-artifacts:
+    <<: *working_directory_root
+    docker:
+      - image: cimg/base:2021.04
+    steps:
+      - <<: *attach_root
+      - run: 
+          name: Prepare image
+          command: |
+            sudo apt-get update
+            sudo apt-get -y -qq install awscli
+      - run:
+          name: Upload artifacts
+          command: |
+            ./ci/publish-artifacts.sh
 workflows:
   version: 2
   build-deploy:
@@ -169,3 +185,10 @@ workflows:
           <<: *all_branches_and_tags
           requires:
             - checkout
+
+      - publish-artifacts:
+          <<: *all_branches_and_tags
+          requires:
+            - build-unity-for-linux
+            - build-unity-for-windows
+            - build-unity-for-mac
