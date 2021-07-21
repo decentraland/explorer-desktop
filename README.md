@@ -45,9 +45,35 @@ Please change "`file:/unity-renderer/unity-renderer/Assets`" to the correspondin
 
 After these steps, you can open **Unity Renderer** and **Unity Renderer Desktop** project at the same time, and the changes in **Unity Renderer Desktop** project will be reflected in the **Unity Renderer** immediately.
 
-# Testing
+## Downloading artifacts to test
 
-Temporarily, you must download the whole artifact from CircleCI generated in the CI to test.
+### Windows:
+Execute the following commands in `Windows PowerShell`
+```bash
+# Download
+curl -o unity-renderer-windows.zip https://renderer-artifacts.decentraland.org/desktop/main/unity-renderer-windows.zip
+
+# Unzip
+Expand-Archive -Path unity-renderer-windows.zip -DestinationPath unity-renderer-windows -Force
+```
+### Mac:
+Execute the following commands:
+```bash
+# Download
+curl -o unity-renderer-mac.zip https://renderer-artifacts.decentraland.org/desktop/main/unity-renderer-mac.zip
+
+# Unzip
+unzip unity-renderer-mac.zip -d unity-renderer-mac
+```
+### Linux: 
+Execute the following commands:
+```
+# Download
+curl -o unity-renderer-linux.zip https://renderer-artifacts.decentraland.org/desktop/main/unity-renderer-linux.zip
+
+# Unzip
+unzip unity-renderer-linux.zip -d unity-renderer-linux
+```
 
 ## Copyright info
 
