@@ -7,6 +7,9 @@
 
 set -u # no unbound variables
 
+# Dump version
+echo ${CIRCLE_SHA1} > /tmp/workspace/explorer-desktop/unity-desktop-artifacts/version
+
 # Upload artifacts
 aws s3 sync /tmp/workspace/explorer-desktop/unity-desktop-artifacts/ "s3://${S3_BUCKET}/desktop/${CIRCLE_BRANCH}" --acl public-read
 
