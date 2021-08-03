@@ -8,10 +8,11 @@
 set -u # no unbound variables
 
 # Dump version
-echo ${CIRCLE_SHA1} > /tmp/workspace/explorer-desktop/unity-desktop-artifacts/version
+ARTIFACTS_PATH=/tmp/workspace/explorer-desktop/unity-desktop-artifacts/
+echo "{\"version\":\"${CIRCLE_SHA1}\"}" > ${ARTIFACTS_PATH}/version.json
 
 # Upload artifacts
-aws s3 sync /tmp/workspace/explorer-desktop/unity-desktop-artifacts/ "s3://${S3_BUCKET}/desktop/${CIRCLE_BRANCH}" --acl public-read
+aws s3 sync ${ARTIFACTS_PATH} "s3://${S3_BUCKET}/desktop/${CIRCLE_BRANCH}" --acl public-read
 
 # Invalidate cache
 aws configure set preview.cloudfront true
