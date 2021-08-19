@@ -118,10 +118,6 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y jq
       - checkout
-      - run:
-          name: Sync unity-renderer package
-          command: |
-            ./update-unity-renderer.sh ${CIRCLE_BRANCH}
 
       # persist to workspace to use in downstream jobs
       - persist_to_workspace:
