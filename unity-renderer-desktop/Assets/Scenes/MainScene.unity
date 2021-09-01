@@ -274,12 +274,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9c131371473347fab2b6a6dbfe8c13b, type: 3}
---- !u!1 &287244851 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6401575379531892522, guid: a9c131371473347fab2b6a6dbfe8c13b,
-    type: 3}
-  m_PrefabInstance: {fileID: 287244850}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &312495477
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,18 +380,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 114754758112584508, guid: b387035aa46399445bdc7951a41d5213, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b387035aa46399445bdc7951a41d5213, type: 3}
---- !u!114 &322303339 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1629508456149027013, guid: b387035aa46399445bdc7951a41d5213,
-    type: 3}
-  m_PrefabInstance: {fileID: 322303337}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322303340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c1e443212437a148b1a6f54aea2ab71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &322303340 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1387384965948666, guid: b387035aa46399445bdc7951a41d5213,
@@ -417,11 +399,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentFactory: {fileID: 11400000, guid: 6710053fa2d5d5446b6a599e0e003053, type: 2}
-  debugConfig:
-    soloScene: 0
-    soloSceneCoords: {x: 0, y: 0}
-    ignoreGlobalScenes: 0
-    msgStepByStep: 0
 --- !u!1 &491237585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1048,7 @@ GameObject:
   - component: {fileID: 1444882337}
   - component: {fileID: 1444882336}
   m_Layer: 0
-  m_Name: WSSController
+  m_Name: DebugConfig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1086,20 +1063,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1444882335}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b5e6e1eec417844b92edd6ca2f8a2b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 73b83adac0a4ddd039a0a1c9c2a9a163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderingController: {fileID: 322303339}
-  characterController: {fileID: 1989862556}
-  cameraController: {fileID: 1608366483}
-  bridgesGameObject: {fileID: 287244851}
-  wssServerUrl: ws://localhost:4999/
-  openBrowserWhenStart: 1
+  debugConfig:
+    soloScene: 0
+    soloSceneCoords: {x: 0, y: 0}
+    ignoreGlobalScenes: 0
+    msgStepByStep: 0
+  openBrowserWhenStart: 0
   useCustomContentServer: 0
   customContentServerUrl: http://localhost:1338/
   baseUrlMode: 1
   baseUrlCustom: https://play.decentraland.zone/?
-  environment: 4
+  environment: 0
+  realm: fenrir
   startInCoords: {x: 0, y: 0}
   forceLocalComms: 0
   allWearables: 0
@@ -1128,18 +1106,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 326638024064006570}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1608366483 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4096479600627248540, guid: b0965b55b892d438da492708ea09799c,
-    type: 3}
-  m_PrefabInstance: {fileID: 326638024064006570}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c658e5e34c1f31448d8ba1ce4a0fd12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1886716056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,18 +1164,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 326638024064006570}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1989862556 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7249126750621343183, guid: b0965b55b892d438da492708ea09799c,
-    type: 3}
-  m_PrefabInstance: {fileID: 326638024064006570}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1d0821bf5c3e3f47ba67e483803236d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2038581388 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4563922593988327124, guid: b0965b55b892d438da492708ea09799c,
