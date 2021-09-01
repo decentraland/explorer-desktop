@@ -91,3 +91,7 @@ Assets/Plugins/Editor/JetBrains/
 *.tmproj
 *.dwlt
 Assembly-UnityScript.unityProj
+
+# Packages
+/Packages/*/
+!/Packages/*.json
