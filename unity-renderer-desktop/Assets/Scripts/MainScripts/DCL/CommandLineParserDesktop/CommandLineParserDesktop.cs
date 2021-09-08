@@ -16,17 +16,22 @@ namespace DCL
 
             for (var i = 0; i < arguments.Length; ++i)
             {
+                var argumentsLeft = arguments.Length - i - 1;
                 var argument = arguments[i];
-                switch (argument)
+
+                if (argumentsLeft >= 1) // Arguments with at least 1 parameter
                 {
-                    case "--url-params":
-                        i++; // shift
-                        debugConfig.baseUrlCustom += arguments[i] + "&";
-                        break;
-                    case "--browser":
-                        i++; // shift
-                        debugConfig.openBrowserWhenStart = arguments[i] == "true";
-                        break;
+                    switch (argument)
+                    {
+                        case "--url-params":
+                            i++; // shift
+                            debugConfig.baseUrlCustom += arguments[i] + "&";
+                            break;
+                        case "--browser":
+                            i++; // shift
+                            debugConfig.openBrowserWhenStart = arguments[i] == "true";
+                            break;
+                    }
                 }
             }
         }
