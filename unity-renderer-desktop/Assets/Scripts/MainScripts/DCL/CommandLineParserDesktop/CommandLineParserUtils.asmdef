@@ -1,5 +1,5 @@
 {
-    "name": "CommandLineParserDesktop",
+    "name": "CommandLineParserUtils",
     "rootNamespace": "",
     "references": [
         "GUID:1cd9f56ea305aae458297148eecef98c"

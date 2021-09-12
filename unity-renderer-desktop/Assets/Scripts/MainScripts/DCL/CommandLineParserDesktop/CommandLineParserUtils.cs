@@ -5,10 +5,9 @@ using UnityEngine;
 
 namespace DCL
 {
-    public class CommandLineParserDesktop : MonoBehaviour
+    public static class CommandLineParserUtils
     {
-        // Start is called before the first frame update
-        private void Awake()
+        public static void ParseArguments()
         {
             var debugConfig = GameObject.Find("DebugConfig").GetComponent<DebugConfigComponent>();
 
