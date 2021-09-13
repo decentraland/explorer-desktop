@@ -6,6 +6,11 @@ namespace DCL
     /// </summary>
     public class MainDesktop : Main
     {
+        protected override void Awake()
+        {
+            base.Awake();
+            CommandLineParserUtils.ParseArguments();
+        }
         protected override HUDContext HUDContextBuilder()
         {
             return HUDDesktopContextFactory.CreateDefault();

@@ -23,12 +23,12 @@ namespace Login
 
         private void OnPlay()
         {
-            DCLWebSocketService.enterAsAGuest = true;
+            WebInterface.SendAuthentication(WebInterface.RendererAuthenticationType.Guest);
             ChangeMainScene();
         }
         private void OnPlayAsGuest()
         {
-            DCLWebSocketService.enterAsAGuest = true;
+            WebInterface.SendAuthentication(WebInterface.RendererAuthenticationType.Guest);
             ChangeMainScene();
         }
 
