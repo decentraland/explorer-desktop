@@ -10,7 +10,7 @@ public class TaskbarMoreMenuDesktop : TaskbarMoreMenu
     {
         base.Initialize(view);
         
-        sortedButtonsAnimations.Add(exitButton);
+        sortedButtonsAnimations.Insert(0, exitButton);
         
         exitButton.gameObject.SetActive(true);
         
