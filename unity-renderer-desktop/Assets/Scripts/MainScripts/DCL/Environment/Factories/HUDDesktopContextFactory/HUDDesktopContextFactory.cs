@@ -1,4 +1,6 @@
-﻿namespace DCL
+﻿using MainScripts.DCL.Controllers.HUD;
+
+namespace DCL
 {
     public static class HUDDesktopContextFactory
     {
