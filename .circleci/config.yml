@@ -44,6 +44,17 @@ references:
         #                          ~~~~~~~~~~~~~~~~ <- repo name
         #                                                  ~~~~~~~~~~~~~~~~~~~~~~ <- folder name
 
+  .cached_paths: &CACHED_PATHS
+    - ./unity-renderer-desktop/test-results
+    - ./unity-renderer-desktop/editmode-logs.txt
+    - ./unity-renderer-desktop/playmode-logs.txt
+    - ./unity-renderer-desktop/build-logs.txt
+    - ./unity-renderer-desktop/ab-logs.txt
+    - ./unity-renderer-desktop/playmode-results.xml
+    - ./unity-renderer-desktop/CodeCoverage
+    - ./unity-renderer-desktop/TestResources/VisualTests
+    - ./unity-renderer-desktop/Builds/
+
   .all_branches_and_tags: &all_branches_and_tags
     filters:
       branches:
@@ -167,7 +178,10 @@ jobs:
           name: Restore hashed files if they exist
           keys:
             - unity-playmode-2020-3-{{ checksum "../.unitysources-checksum" }}
-      - restore_cache: *RESTORE_LIBRARY_CACHE
+      - restore_cache: &RESTORE_LIBRARY_CACHE
+          name: Restore library if exists
+          keys:
+            - library-2020-3-{{ .Branch }}
       - run:
           name: Run playmode tests
           command: |
@@ -203,7 +217,9 @@ jobs:
           name: Store test cache
           key: unity-playmode-2020-3-{{ checksum "../.unitysources-checksum" }}
           paths: *CACHED_PATHS
-      - store_artifacts: *STORE_VISUAL_TESTS
+      - store_artifacts: &STORE_VISUAL_TESTS
+          name: Store visual tests result as artifacts
+          path: ./unity-renderer/TestResources/VisualTests
   publish-artifacts:
     <<: *working_directory_root
     docker:
