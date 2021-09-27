@@ -153,7 +153,7 @@ jobs:
   playmode-tests:
     <<: *working_directory_root
     resource_class: xlarge
-    docker: *unity_image
+    docker: *unity_windows_image
     steps:
       - <<: *attach_root
       - run: *HASH_UNITY_FILES
