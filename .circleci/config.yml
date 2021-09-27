@@ -150,6 +150,54 @@ jobs:
     steps:
       - <<: *attach_root
       - build-unity-generic
+  playmode-tests:
+    <<: *working_directory_root
+    resource_class: xlarge
+    docker: *unity_image
+    steps:
+      - <<: *attach_root
+      - run: *HASH_UNITY_FILES
+      - restore_cache:
+          name: Restore hashed files if they exist
+          keys:
+            - unity-playmode-2020-3-{{ checksum "../.unitysources-checksum" }}
+      - restore_cache: *RESTORE_LIBRARY_CACHE
+      - run:
+          name: Run playmode tests
+          command: |
+            if [[ -e ./unity-renderer-desktop/playmode-logs.txt ]]; then
+                echo "Skipping playmode tests"
+                exit 0
+            else
+                bash ci-playmode-test.sh
+                exit $?
+            fi;
+          no_output_timeout: 30m
+      - run:
+          name: nunit-to-junit
+          when: always
+          command: |
+            apt-get update
+            apt-get install -y xsltproc
+            xsltproc --output unity-renderer-desktop/test-results/playmode-results-junit.xml nunit-to-junit.xsl unity-renderer-desktop/playmode-results.xml
+      - run: apt-get -y -qq install awscli
+      - run:
+          name: upload code coverage
+          command: |
+            aws s3 sync /tmp/workspace/explorer-desktop/unity-renderer-desktop/CodeCoverage/Report "s3://${S3_BUCKET}/desktop-coverage/${CIRCLE_BRANCH}" --acl public-read
+      - store_test_results:
+          path: ./unity-renderer-desktop/test-results
+      - store_artifacts:
+          name: Store logs
+          path: ./unity-renderer-desktop/playmode-logs.txt
+      - store_artifacts:
+          name: Store test results
+          path: ./unity-renderer-desktop/playmode-results.xml
+      - save_cache:
+          name: Store test cache
+          key: unity-playmode-2020-3-{{ checksum "../.unitysources-checksum" }}
+          paths: *CACHED_PATHS
+      - store_artifacts: *STORE_VISUAL_TESTS
   publish-artifacts:
     <<: *working_directory_root
     docker:
@@ -187,9 +235,15 @@ workflows:
           requires:
             - checkout
 
+      - playmode-tests:
+          <<: *all_branches_and_tags
+          requires:
+            - checkout
+
       - publish-artifacts:
           <<: *all_branches_and_tags
           requires:
             - build-unity-for-linux
             - build-unity-for-windows
             - build-unity-for-mac
+            - playmode-tests
