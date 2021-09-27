@@ -13,5 +13,6 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
     public struct DisplaySettings
     {
         public WindowMode windowMode;
+        public int resolutionSizeIndex;
     }
 }

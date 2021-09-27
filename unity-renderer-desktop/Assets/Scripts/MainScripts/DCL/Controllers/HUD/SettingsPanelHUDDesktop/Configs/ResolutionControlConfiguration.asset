@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785002488258546488b783004eed1484, type: 3}
+  m_Name: ResolutionControlConfiguration
+  m_EditorClassIdentifier: 
+  title: Window Mode
+  controlPrefab: {fileID: -5016190995342359885, guid: 51e02f10cf8a646c6bd9f583d3bb637c,
+    type: 3}
+  controlController: {fileID: 11400000, guid: 2c861d5cb262b43cf99c14967d2925d6, type: 2}
+  flagsThatDisableMe: []
+  flagsThatDeactivateMe: []
+  isBeta: 0
+  spinBoxLabels: []

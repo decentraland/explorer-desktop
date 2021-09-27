@@ -18,16 +18,17 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             switch (currentDisplaySettings.windowMode)
             {
                 case WindowMode.Windowed:
+                    Screen.fullScreen = false;
                     Screen.fullScreenMode = FullScreenMode.Windowed;
                     break;
                 case WindowMode.FullScreen:
+                    Screen.fullScreen = true;
                     Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
             
-            Screen.fullScreen = true;
         }
         
     }
