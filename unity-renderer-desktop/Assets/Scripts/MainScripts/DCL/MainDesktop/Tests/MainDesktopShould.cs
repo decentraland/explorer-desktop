@@ -1,6 +1,7 @@
-using System;
 using NUnit.Framework;
 using System.Collections;
+using DCL;
+using DCL.Controllers;
 using UnityEngine.TestTools;
 
 namespace Tests
@@ -30,6 +31,7 @@ namespace Tests
         public IEnumerator BeTrue()
         {
             Assert.IsTrue(true);
+            yield return null;
         }
     }
 }
