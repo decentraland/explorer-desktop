@@ -571,7 +571,7 @@ PlayerSettings:
   webGLNameFilesAsHashes: 0
   webGLDataCaching: 1
   webGLDebugSymbols: 1
-  webGLEmscriptenArgs: 
+  webGLEmscriptenArgs: ' --profiling-funcs '
   webGLModulesDirectory: 
   webGLTemplate: PROJECT:decentraland
   webGLAnalyzeBuildSize: 0
