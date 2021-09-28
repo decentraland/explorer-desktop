@@ -27,8 +27,16 @@ To update the Unity Renderer version, you can use:
 ## Debug using local Unity Renderer
 
 Take this path if you **are going** to change [Unity Renderer](https://github.com/decentraland/unity-renderer) continuously.
+### Using the script
 
-After you clone the repo, you need to change the manifest.json in `explorer-desktop/unity-renderer-desktop/Packages/manifest.json`.
+To update the Unity Renderer version locally, you can use:
+
+```
+./update-unity-renderer.sh <unity-renderer-path>
+```
+### Manually
+
+You need to change the manifest.json in `explorer-desktop/unity-renderer-desktop/Packages/manifest.json`.
 
 Inside it, you need to change the remote path of the package for the absolute path of the local one.
 
