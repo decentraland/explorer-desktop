@@ -49,7 +49,7 @@ references:
       environment:
         BUILD_TARGET: WebGL
         BUILD_NAME: unity
-        BUILD_PATH: /tmp/workspace/unity-renderer/unity-renderer/Builds/unity
+        BUILD_PATH: /tmp/workspace/explorer-desktop/Builds/unity-renderer-windows/
         #                          ~~~~~~~~~~~~~~ <- repo name
         #                                         ~~~~~~~~~~~~~~ <- folder name
 
