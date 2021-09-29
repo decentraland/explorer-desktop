@@ -44,6 +44,15 @@ references:
         #                          ~~~~~~~~~~~~~~~~ <- repo name
         #                                                  ~~~~~~~~~~~~~~~~~~~~~~ <- folder name
 
+  .unity_webgl_image: &unity_image
+    - image: decentraland/renderer-build:2020.3.0
+      environment:
+        BUILD_TARGET: WebGL
+        BUILD_NAME: unity
+        BUILD_PATH: /tmp/workspace/unity-renderer/unity-renderer/Builds/unity
+        #                          ~~~~~~~~~~~~~~ <- repo name
+        #                                         ~~~~~~~~~~~~~~ <- folder name
+
   .cached_paths: &CACHED_PATHS
     - ./unity-renderer-desktop/test-results
     - ./unity-renderer-desktop/editmode-logs.txt
@@ -164,7 +173,7 @@ jobs:
   playmode-tests:
     <<: *working_directory_root
     resource_class: xlarge
-    docker: *unity_windows_image
+    docker: *unity_webgl_image
     steps:
       - <<: *attach_root
       - run: &HASH_UNITY_FILES
