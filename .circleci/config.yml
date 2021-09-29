@@ -47,6 +47,7 @@ references:
   .unity_webgl_image: &unity_webgl_image
     - image: decentraland/renderer-build:2020.3.0
       environment:
+        PROJECT_PATH: /tmp/workspace/explorer-desktop/unity-renderer-desktop
         BUILD_TARGET: WebGL
         BUILD_NAME: unity
         BUILD_PATH: /tmp/workspace/explorer-desktop/Builds/unity-renderer-windows/
