@@ -9,14 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 785002488258546488b783004eed1484, type: 3}
-  m_Name: ResolutionControlConfiguration
+  m_Script: {fileID: 11500000, guid: a1beb2919801a5f49833bb7df5673e4e, type: 3}
+  m_Name: VSyncControlConfiguration
   m_EditorClassIdentifier: 
-  title: Resolution
-  controlPrefab: {fileID: 3856968550380144319, guid: 12ace77c1b449714b89d5793ef36f983,
+  title: V-Sync
+  controlPrefab: {fileID: 202718616210799590, guid: aa5ca631e7cc4b543bf10102794f0eea,
     type: 3}
-  controlController: {fileID: 11400000, guid: 2c861d5cb262b43cf99c14967d2925d6, type: 2}
+  controlController: {fileID: 11400000, guid: 99efc01f9e24541bab99a830121bc63d, type: 2}
   flagsThatDisableMe: []
   flagsThatDeactivateMe: []
   isBeta: 0
-  spinBoxLabels: []

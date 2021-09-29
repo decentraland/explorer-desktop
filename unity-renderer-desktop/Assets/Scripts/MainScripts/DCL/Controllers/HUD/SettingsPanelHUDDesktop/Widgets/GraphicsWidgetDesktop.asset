@@ -33,6 +33,7 @@ MonoBehaviour:
     - controls:
         array:
         - {fileID: 11400000, guid: 22cde8f1121694d49bc622025cd0f523, type: 2}
+        - {fileID: 11400000, guid: 42d4f251bb4ba45f0b102359e005d81c, type: 2}
         - {fileID: 11400000, guid: 9680f60857ae08843b00c143b1565270, type: 2}
         - {fileID: 11400000, guid: e8998ddd5319d17428ca5850e3869eb4, type: 2}
         - {fileID: 11400000, guid: 8ab8851cdbeca4d40b6714f79a476378, type: 2}

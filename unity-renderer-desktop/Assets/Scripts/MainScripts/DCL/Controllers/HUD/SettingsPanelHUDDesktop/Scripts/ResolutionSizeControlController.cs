@@ -7,6 +7,25 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         fileName = "ResolutionSizeControlController")]
     public class ResolutionSizeControlController : SpinBoxSettingsControlControllerDesktop
     {
+        public override void Initialize()
+        {
+            base.Initialize();
+            SetupLabels();
+        }
+
+        private void SetupLabels()
+        {
+            var resolutions = Screen.resolutions;
+            var resolutionLabels = new string[resolutions.Length];
+            for (var i = 0; i < resolutions.Length; i++)
+            {
+                Resolution resolution = resolutions[i];
+                resolutionLabels[i] = $"{resolution.width}x{resolution.height}";
+            }
+
+            RaiseOnOverrideIndicatorLabel(resolutionLabels);
+        }
+
         public override object GetStoredValue()
         {
             return currentDisplaySettings.resolutionSizeIndex;

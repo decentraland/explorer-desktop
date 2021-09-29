@@ -1,5 +1,6 @@
 using DCL;
 using DCL.SettingsCommon;
+using UnityEngine;
 
 namespace MainScripts.DCL.Controllers.SettingsDesktop
 {
@@ -16,9 +17,12 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
 
         private DisplaySettings GetDefaultDisplaySettings()
         {
+            var resolutionsLength = Screen.resolutions.Length;
             return new DisplaySettings
             {
-                windowMode = WindowMode.Windowed
+                windowMode = WindowMode.Windowed,
+                resolutionSizeIndex = Mathf.Clamp(resolutionsLength/2, 0, resolutionsLength-1),
+                vSync = false
             };
         }
     }
