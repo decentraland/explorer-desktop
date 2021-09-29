@@ -44,7 +44,7 @@ references:
         #                          ~~~~~~~~~~~~~~~~ <- repo name
         #                                                  ~~~~~~~~~~~~~~~~~~~~~~ <- folder name
 
-  .unity_webgl_image: &unity_image
+  .unity_webgl_image: &unity_webgl_image
     - image: decentraland/renderer-build:2020.3.0
       environment:
         BUILD_TARGET: WebGL
