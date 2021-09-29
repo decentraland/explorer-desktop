@@ -44,6 +44,6 @@ jobs:
             unzip unity-renderer-linux.zip -d unity-renderer-linux
             ```
 
-            Code coverage report: [https://renderer-artifacts.decentraland.org/desktop-coverage/${{ github.head_ref }}](https://renderer-artifacts.decentraland.org/branch-coverage/${{ github.head_ref }})
+            Code coverage report: [https://renderer-artifacts.decentraland.org/desktop-coverage/${{ github.head_ref }}](https://renderer-artifacts.decentraland.org/desktop-coverage/${{ github.head_ref }})
 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
