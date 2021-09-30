@@ -20,7 +20,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             for (var i = 0; i < resolutions.Length; i++)
             {
                 Resolution resolution = resolutions[i];
-                resolutionLabels[i] = $"{resolution.width}x{resolution.height}";
+                resolutionLabels[resolutions.Length - 1 - i] = $"{resolution.width}x{resolution.height}";
             }
 
             RaiseOnOverrideIndicatorLabel(resolutionLabels);
@@ -35,7 +35,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         {
             var value = (int)newValue;
             currentDisplaySettings.resolutionSizeIndex = value;
-            var currentResolution = Screen.resolutions[value];
+            var currentResolution = Screen.resolutions[Screen.resolutions.Length - 1 - value];
             Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreenMode);
         }
     }

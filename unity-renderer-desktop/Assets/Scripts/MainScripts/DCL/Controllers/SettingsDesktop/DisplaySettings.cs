@@ -6,6 +6,7 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
     public enum WindowMode
     {
         Windowed,
+        WindowedFullScreen,
         FullScreen,
     }
 

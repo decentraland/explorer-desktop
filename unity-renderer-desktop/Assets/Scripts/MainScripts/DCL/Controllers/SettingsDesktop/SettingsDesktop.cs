@@ -20,7 +20,7 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
             var resolutionsLength = Screen.resolutions.Length;
             return new DisplaySettings
             {
-                windowMode = WindowMode.FullScreen,
+                windowMode = WindowMode.WindowedFullScreen,
                 resolutionSizeIndex = Mathf.Clamp(resolutionsLength/2, 0, resolutionsLength-1),
                 vSync = false
             };

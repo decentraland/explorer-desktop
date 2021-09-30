@@ -21,4 +21,5 @@ MonoBehaviour:
   isBeta: 0
   spinBoxLabels:
   - Windowed
-  - Fullscreen
+  - WindowedFullScreen
+  - FullScreen

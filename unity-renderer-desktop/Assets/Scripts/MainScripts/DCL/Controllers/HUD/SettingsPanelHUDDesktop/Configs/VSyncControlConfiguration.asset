@@ -16,6 +16,7 @@ MonoBehaviour:
   controlPrefab: {fileID: 202718616210799590, guid: aa5ca631e7cc4b543bf10102794f0eea,
     type: 3}
   controlController: {fileID: 11400000, guid: 99efc01f9e24541bab99a830121bc63d, type: 2}
-  flagsThatDisableMe: []
+  flagsThatDisableMe:
+  - {fileID: 11400000, guid: ced23dfbd368b44fcbb44bec1cd77857, type: 2}
   flagsThatDeactivateMe: []
   isBeta: 0

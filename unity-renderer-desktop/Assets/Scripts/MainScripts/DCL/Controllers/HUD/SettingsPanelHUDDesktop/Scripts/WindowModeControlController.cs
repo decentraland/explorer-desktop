@@ -1,6 +1,7 @@
 using System;
 using MainScripts.DCL.Controllers.SettingsDesktop;
 using MainScripts.DCL.Controllers.SettingsDesktop.SettingsControllers;
+using MainScripts.DCL.ScriptableObjectsDesktop;
 using UnityEngine;
 
 namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
@@ -21,14 +22,20 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
                     Screen.fullScreen = false;
                     Screen.fullScreenMode = FullScreenMode.Windowed;
                     break;
+                case WindowMode.WindowedFullScreen:
+                    Screen.fullScreen = true;
+                    Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.FullScreenWindow);
+                    break;
                 case WindowMode.FullScreen:
                     Screen.fullScreen = true;
-                    Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+                    Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
             
+            CommonScriptableObjectsDesktop.disableVSync.Set(currentDisplaySettings.windowMode != WindowMode.FullScreen);
+            CommonScriptableObjectsDesktop.disableScreenResolution.Set(currentDisplaySettings.windowMode == WindowMode.WindowedFullScreen);
         }
         
     }
