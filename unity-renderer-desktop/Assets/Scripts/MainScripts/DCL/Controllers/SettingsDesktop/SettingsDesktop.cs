@@ -1,12 +1,11 @@
 using DCL;
 using DCL.SettingsCommon;
-using UnityEngine;
 
 namespace MainScripts.DCL.Controllers.SettingsDesktop
 {
     public class SettingsDesktop : Singleton<SettingsDesktop>
     {
-        const string DESKTOP_SETTINGS_KEY = "Settings.Quality";
+        const string DESKTOP_SETTINGS_KEY = "Settings.Quality.Desktop";
 
         public readonly SettingsModule<DisplaySettings> displaySettings;
 
@@ -17,7 +16,6 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
 
         private DisplaySettings GetDefaultDisplaySettings()
         {
-            var resolutionsLength = Screen.resolutions.Length;
             return new DisplaySettings
             {
                 windowMode = WindowMode.FullScreen,

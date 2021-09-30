@@ -12,30 +12,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         {
             base.Initialize();
             SetupLabels();
-            CommonScriptableObjectsDesktop.disableScreenResolution.OnChange += OnDisableOption;
         }
-
-        public override void OnDestroy()
-        {
-            base.OnDestroy();
-            CommonScriptableObjectsDesktop.disableScreenResolution.OnChange -= OnDisableOption;
-        }
-
-        private void OnDisableOption(bool current, bool previous)
-        {
-            if (current)
-            {
-                RaiseOnCurrentLabelChange($"{Display.main.systemWidth}x{Display.main.systemHeight} (Forced)");
-            }
-            else
-            {
-                var resolutionSizeIndex = currentDisplaySettings.resolutionSizeIndex;
-                UpdateSetting(resolutionSizeIndex);
-                var currentResolution = Screen.resolutions[Screen.resolutions.Length - 1 - resolutionSizeIndex];
-                RaiseOnCurrentLabelChange($"{currentResolution.width}x{currentResolution.height}");
-            }
-        }
-
         private void SetupLabels()
         {
             var resolutions = Screen.resolutions;
