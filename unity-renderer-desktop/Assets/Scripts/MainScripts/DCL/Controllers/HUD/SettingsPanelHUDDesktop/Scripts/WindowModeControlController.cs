@@ -24,7 +24,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
                     break;
                 case WindowMode.WindowedFullScreen:
                     Screen.fullScreen = true;
-                    Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, FullScreenMode.FullScreenWindow);
+                    Screen.SetResolution(Display.main.systemWidth, Display.main.systemWidth, FullScreenMode.FullScreenWindow);
                     break;
                 case WindowMode.FullScreen:
                     Screen.fullScreen = true;
