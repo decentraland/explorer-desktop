@@ -10,7 +10,10 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         fileName = "WindowModeControlController")]
     public class WindowModeControlController : SpinBoxSettingsControlControllerDesktop
     {
-        public override object GetStoredValue() { return (int)currentDisplaySettings.windowMode; }
+        public override object GetStoredValue()
+        {
+            return (int)currentDisplaySettings.windowMode;
+        }
 
         public override void UpdateSetting(object newValue)
         {
@@ -22,9 +25,14 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
                     Screen.fullScreen = false;
                     Screen.fullScreenMode = FullScreenMode.Windowed;
                     break;
-                case WindowMode.WindowedFullScreen:
+                case WindowMode.Borderless:
                     Screen.fullScreen = true;
-                    Screen.SetResolution(Display.main.systemWidth, Display.main.systemWidth, FullScreenMode.FullScreenWindow);
+                    //Screen.SetResolution(Display.main.systemWidth, Display.main.systemHeight, FullScreenMode.FullScreenWindow);
+#if UNITY_STANDALONE_OSX
+                    Screen.fullScreenMode = FullScreenMode.MaximizedWindow;
+#else
+                    Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+#endif
                     break;
                 case WindowMode.FullScreen:
                     Screen.fullScreen = true;
@@ -33,10 +41,10 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
+
             CommonScriptableObjectsDesktop.disableVSync.Set(currentDisplaySettings.windowMode != WindowMode.FullScreen);
-            CommonScriptableObjectsDesktop.disableScreenResolution.Set(currentDisplaySettings.windowMode == WindowMode.WindowedFullScreen);
+            CommonScriptableObjectsDesktop.disableScreenResolution.Set(currentDisplaySettings.windowMode ==
+                                                                       WindowMode.Borderless);
         }
-        
     }
 }

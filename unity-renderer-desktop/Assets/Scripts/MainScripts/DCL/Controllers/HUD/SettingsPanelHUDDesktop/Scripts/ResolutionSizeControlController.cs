@@ -1,5 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
 using MainScripts.DCL.Controllers.SettingsDesktop.SettingsControllers;
-using MainScripts.DCL.ScriptableObjectsDesktop;
 using UnityEngine;
 
 namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
@@ -8,19 +9,27 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         fileName = "ResolutionSizeControlController")]
     public class ResolutionSizeControlController : SpinBoxSettingsControlControllerDesktop
     {
+        private Resolution[] availableFilteredResolutions;
         public override void Initialize()
         {
+            SetupAvailableResolutions();
             base.Initialize();
             SetupLabels();
         }
+
+        private void SetupAvailableResolutions()
+        {
+            availableFilteredResolutions = Screen.resolutions.Where(r => r.width >= 1024 && r.refreshRate > 0).ToArray();
+        }
+
         private void SetupLabels()
         {
-            var resolutions = Screen.resolutions;
-            var resolutionLabels = new string[resolutions.Length];
-            for (var i = 0; i < resolutions.Length; i++)
+            var length = availableFilteredResolutions.Length;
+            var resolutionLabels = new string[length];
+            for (var i = 0; i < length; i++)
             {
-                Resolution resolution = resolutions[i];
-                resolutionLabels[resolutions.Length - 1 - i] = $"{resolution.width}x{resolution.height}";
+                Resolution resolution = availableFilteredResolutions[i];
+                resolutionLabels[length - 1 - i] = $"{resolution.width}x{resolution.height} {resolution.refreshRate}Hz";
             }
 
             RaiseOnOverrideIndicatorLabel(resolutionLabels);
@@ -35,7 +44,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         {
             var value = (int)newValue;
             currentDisplaySettings.resolutionSizeIndex = value;
-            var currentResolution = Screen.resolutions[Screen.resolutions.Length - 1 - value];
+            var currentResolution = availableFilteredResolutions[availableFilteredResolutions.Length - 1 - value];
             Screen.SetResolution(currentResolution.width, currentResolution.height, Screen.fullScreenMode);
         }
     }
