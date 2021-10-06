@@ -10,34 +10,12 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
     public class ResolutionSizeControlController : SpinBoxSettingsControlControllerDesktop
     {
         private Resolution[] availableFilteredResolutions;
-        private BooleanVariable disableScreenResolution => CommonScriptableObjectsDesktop.disableScreenResolution;
 
         public override void Initialize()
         {
             SetupAvailableResolutions();
             base.Initialize();
             SetupLabels();
-            disableScreenResolution.OnChange += ToggleDisabled;
-            ToggleDisabled(disableScreenResolution.Get(), false);
-        }
-
-        public override void OnDestroy()
-        {
-            base.OnDestroy();
-            disableScreenResolution.OnChange -= ToggleDisabled;
-        }
-
-        private void ToggleDisabled(bool current, bool previous)
-        {
-            if (current)
-            {
-                RaiseOnCurrentLabelChange("*" + GetLabel(availableFilteredResolutions[availableFilteredResolutions.Length - 1]));
-            }
-            else
-            {
-                var currentResolution = availableFilteredResolutions[availableFilteredResolutions.Length - 1 - currentDisplaySettings.resolutionSizeIndex];
-                RaiseOnCurrentLabelChange(GetLabel(currentResolution));
-            }
         }
 
         private void SetupAvailableResolutions()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: VSyncControlConfiguration
   m_EditorClassIdentifier: 
   title: V-Sync
-  controlPrefab: {fileID: 202718616210799590, guid: aa5ca631e7cc4b543bf10102794f0eea,
+  controlPrefab: {fileID: 4055150670729145914, guid: 372fbece3a6ac46198f84ff09724b4d3,
     type: 3}
   controlController: {fileID: 11400000, guid: 99efc01f9e24541bab99a830121bc63d, type: 2}
   flagsThatDisableMe:

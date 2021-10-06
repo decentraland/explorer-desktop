@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WindowModeControlConfiguration
   m_EditorClassIdentifier: 
   title: Window Mode
-  controlPrefab: {fileID: 2909500743065466280, guid: 1c806fc61334f44de8ff0ae2a87beea3,
+  controlPrefab: {fileID: 9105552624476050456, guid: 0233968db98fb4cae83c48d54e190052,
     type: 3}
   controlController: {fileID: 11400000, guid: c4faa4bbd314b4a19985265c5bb3bd0f, type: 2}
   flagsThatDisableMe: []
