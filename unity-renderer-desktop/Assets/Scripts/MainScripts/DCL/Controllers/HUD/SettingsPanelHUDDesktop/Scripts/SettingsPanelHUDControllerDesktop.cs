@@ -8,5 +8,11 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         {
             return SettingsPanelHUDViewDesktop.Create();
         }
+
+        public override void SaveSettings()
+        {
+            SettingsDesktop.SettingsDesktop.i.Save();
+            base.SaveSettings();
+        }
     }
 }

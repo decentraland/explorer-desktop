@@ -16,7 +16,8 @@ MonoBehaviour:
   controlPrefab: {fileID: 2909500743065466280, guid: 1c806fc61334f44de8ff0ae2a87beea3,
     type: 3}
   controlController: {fileID: 11400000, guid: 2c861d5cb262b43cf99c14967d2925d6, type: 2}
-  flagsThatDisableMe: []
+  flagsThatDisableMe:
+  - {fileID: 11400000, guid: e05eb73f83ed3453c80513ade0180f5a, type: 2}
   flagsThatDeactivateMe: []
   isBeta: 0
   spinBoxLabels: []

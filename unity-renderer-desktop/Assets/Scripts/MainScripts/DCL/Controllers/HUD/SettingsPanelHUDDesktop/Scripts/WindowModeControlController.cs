@@ -26,12 +26,9 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
                     Screen.fullScreenMode = FullScreenMode.Windowed;
                     break;
                 case WindowMode.Borderless:
-                    Screen.fullScreen = true;
-#if UNITY_STANDALONE_OSX
-                    Screen.fullScreenMode = FullScreenMode.MaximizedWindow;
-#else
-                    Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-#endif
+                    var maxRes = Screen.resolutions[Screen.resolutions.Length - 1];
+                    Screen.SetResolution(maxRes.width, maxRes.height, FullScreenMode.MaximizedWindow, maxRes.refreshRate);
+                    currentDisplaySettings.resolutionSizeIndex = 0;
                     break;
                 case WindowMode.FullScreen:
                     Screen.fullScreen = true;
@@ -42,6 +39,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             }
 
             CommonScriptableObjectsDesktop.disableVSync.Set(currentDisplaySettings.windowMode == WindowMode.Windowed);
+            CommonScriptableObjectsDesktop.disableScreenResolution.Set(currentDisplaySettings.windowMode == WindowMode.Borderless);
         }
     }
 }

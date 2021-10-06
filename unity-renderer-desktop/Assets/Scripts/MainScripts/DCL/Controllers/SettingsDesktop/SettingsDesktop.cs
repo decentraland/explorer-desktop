@@ -1,4 +1,5 @@
 using DCL;
+using DCL.Helpers;
 using DCL.SettingsCommon;
 
 namespace MainScripts.DCL.Controllers.SettingsDesktop
@@ -22,6 +23,12 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
                 resolutionSizeIndex = 0,
                 vSync = false
             };
+        }
+
+        public void Save()
+        {
+            displaySettings.Save();
+            PlayerPrefsUtils.Save();
         }
     }
 }
