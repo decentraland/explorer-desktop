@@ -1,21 +1,29 @@
-public class HUDDesktopFactory : HUDFactory
+using MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts;
+
+namespace MainScripts.DCL.Controllers.HUD
 {
-    public override IHUD CreateHUD(HUDElementID hudElementId)
+    public class HUDDesktopFactory : HUDFactory
     {
-        IHUD hudElement = null;
-
-        switch (hudElementId)
+        public override IHUD CreateHUD(HUDElementID hudElementId)
         {
-            case HUDElementID.NONE:
-                break;
-            case HUDElementID.TASKBAR:
-                hudElement = new TaskbarHUDControllerDesktop();
-                break;
-            default:
-                hudElement = base.CreateHUD(hudElementId);
-                break;
-        }
+            IHUD hudElement = null;
 
-        return hudElement;
+            switch (hudElementId)
+            {
+                case HUDElementID.NONE:
+                    break;
+                case HUDElementID.TASKBAR:
+                    hudElement = new TaskbarHUDControllerDesktop();
+                    break;
+                case HUDElementID.SETTINGS_PANEL:
+                    hudElement = new SettingsPanelHUDControllerDesktop();
+                    break;
+                default:
+                    hudElement = base.CreateHUD(hudElementId);
+                    break;
+            }
+
+            return hudElement;
+        }
     }
 }

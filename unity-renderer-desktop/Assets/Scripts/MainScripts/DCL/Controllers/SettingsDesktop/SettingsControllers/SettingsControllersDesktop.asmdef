@@ -1,13 +1,11 @@
 {
-    "name": "HUDDesktop",
+    "name": "SettingsControllersDesktop",
     "rootNamespace": "",
     "references": [
-        "GUID:3bdb7fe910cce8d4888137cded3ba4a2",
-        "GUID:d7f1765642f0c22cda30addd0275b5e1",
-        "GUID:9d475ab28d70a5a399fc98ae8845969e",
-        "GUID:012093226beb0234c97a809109f7086d",
-        "GUID:69d6f2dcc90814e5a89a06138c216dd8",
-        "GUID:eee78afb8bb175c46bd6c5112e6c105c"
+        "GUID:3a20bd2e61151461ab17e9cf5dc7a24b",
+        "GUID:301149363e31a4bdaa1943465a825c8e",
+        "GUID:0808274fbf804428b871b403dc5b457d",
+        "GUID:b1087c5731ff68448a0a9c625bb7e52d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
