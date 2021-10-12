@@ -95,3 +95,5 @@ Assembly-UnityScript.unityProj
 # Packages
 /Packages/*/
 !/Packages/*.json
+
+.DS_Store
