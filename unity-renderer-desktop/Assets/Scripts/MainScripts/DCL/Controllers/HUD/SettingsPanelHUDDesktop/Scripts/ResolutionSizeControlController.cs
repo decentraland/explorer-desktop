@@ -1,6 +1,4 @@
-using System.Linq;
 using MainScripts.DCL.Controllers.SettingsDesktop.SettingsControllers;
-using MainScripts.DCL.ScriptableObjectsDesktop;
 using UnityEngine;
 
 namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
@@ -16,11 +14,25 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             SetupAvailableResolutions();
             base.Initialize();
             SetupLabels();
+            
+            Display.onDisplaysUpdated += OnUpdate;
+        }
+
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+            Display.onDisplaysUpdated -= OnUpdate;
+        }
+
+        private void OnUpdate()
+        {
+            SetupLabels();
+            UpdateSetting(currentDisplaySettings.resolutionSizeIndex);
         }
 
         private void SetupAvailableResolutions()
         {
-            availableFilteredResolutions = Screen.resolutions.Where(r => r.width >= 1024 && r.refreshRate > 0).ToArray();
+            availableFilteredResolutions = CurrentDisplayControlController.GetAvailableFilteredResolutions();
         }
 
         private void SetupLabels()

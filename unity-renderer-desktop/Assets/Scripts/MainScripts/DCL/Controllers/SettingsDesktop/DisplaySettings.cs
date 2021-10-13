@@ -16,6 +16,7 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
     {
         public WindowMode windowMode;
         public int resolutionSizeIndex;
+        public int displayIndex;
         public bool vSync;
 
         public bool Equals(DisplaySettings other)
