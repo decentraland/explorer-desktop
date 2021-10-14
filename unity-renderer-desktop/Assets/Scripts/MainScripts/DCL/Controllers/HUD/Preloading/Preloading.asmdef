@@ -1,0 +1,17 @@
+{
+    "name": "Preloading",
+    "rootNamespace": "",
+    "references": [
+        "GUID:28f74c468a54948bfa9f625c5d428f56",
+        "GUID:b1087c5731ff68448a0a9c625bb7e52d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
