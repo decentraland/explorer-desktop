@@ -183,6 +183,11 @@ jobs:
           keys:
             - library-2020-3-{{ .Branch }}
       - run:
+          name: Clone test resources
+          command: |
+            git clone https://github.com/decentraland/unity-renderer
+            cp -r unity-renderer/unity-renderer/TestResource unity-renderer-desktop/
+      - run:
           name: Run playmode tests
           command: |
             if [[ -e ./unity-renderer-desktop/playmode-logs.txt ]]; then
