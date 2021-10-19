@@ -8,7 +8,7 @@
       "hash": "d4fc38c92fb139b4184912f20556ab27a3b519fa"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#feat/desktop-video-streaming",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -58,7 +58,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "f6e2e28dfb911d6ab0e41932cb0a2270701248be"
+      "hash": "a65252500413545963bdecf17b648a56ef4e30ff"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
