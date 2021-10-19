@@ -1,3 +1,5 @@
+using MainScripts.DCL.Controllers.HUD.Preloading;
+
 namespace DCL
 {
     /// <summary>
@@ -8,6 +10,9 @@ namespace DCL
     {
         protected override void Awake()
         {
+            var preloading = new PreloadingController();
+            preloading.Initialize();
+            
             base.Awake();
             CommandLineParserUtils.ParseArguments();
         }
