@@ -1,4 +1,5 @@
 using UnityEngine;
+using MainScripts.DCL.Controllers.HUD.Preloading;
 
 namespace DCL
 {
@@ -11,6 +12,9 @@ namespace DCL
         private bool closeApp = false;
         protected override void Awake()
         {
+            var preloading = new PreloadingController();
+            preloading.Initialize();
+            
             base.Awake();
             CommandLineParserUtils.ParseArguments();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
