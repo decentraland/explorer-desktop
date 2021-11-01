@@ -51,6 +51,8 @@ namespace DCL
                 Application.Quit();
 #endif
             }
+            
+            base.Update();
         }
     }
 }
