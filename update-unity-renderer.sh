@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Hack UPM to sync with explorer-desktop with the latest commit on unity-renderer branch, only if exists...
 
