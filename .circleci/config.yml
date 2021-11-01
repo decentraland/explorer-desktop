@@ -118,6 +118,11 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y jq
       - checkout
+      - run:
+          name: Local unity-renderer
+          command: |
+            ./download-unity-renderer-repo.sh
+
 
       # persist to workspace to use in downstream jobs
       - persist_to_workspace:
