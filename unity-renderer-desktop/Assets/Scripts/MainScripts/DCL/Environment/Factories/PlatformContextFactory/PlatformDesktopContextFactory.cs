@@ -1,3 +1,4 @@
+using System;
 using DCL.Rendering;
 using UnityEngine;
 
@@ -16,7 +17,7 @@ namespace DCL
         public static PlatformContext CreateDefault(GameObject bridgesGameObject)
         {
             return new PlatformContext(
-                memoryManager: new MemoryManager(8192L * 1024L * 1024L, 30.0f), // 8gb and clean each 30 seconds
+                memoryManager: new MemoryManagerDesktop(),
                 cullingController: CullingController.Create(),
                 clipboard: Clipboard.Create(),
                 physicsSyncController: new PhysicsSyncController(),
