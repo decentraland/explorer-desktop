@@ -24,6 +24,11 @@ namespace DCL
             return HUDDesktopContextFactory.CreateDefault();
         }
 
+        protected override PlatformContext PlatformContextBuilder()
+        {
+            return PlatformDesktopContextFactory.CreateDefault();
+        }
+
         protected override void OnDestroy()
         {
             base.OnDestroy();
