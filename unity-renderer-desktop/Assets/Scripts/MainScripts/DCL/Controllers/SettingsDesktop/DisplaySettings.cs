@@ -12,10 +12,14 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
     }
 
     [Serializable]
-    public struct DisplaySettings
+    public class DisplaySettings : ICloneable
     {
         public WindowMode windowMode;
         public int resolutionSizeIndex;
         public bool vSync;
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 }
