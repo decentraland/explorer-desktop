@@ -1,9 +1,3 @@
 {
-    "dependencies": [
-        {
-            "name": "net.tnrd.nsubstitute",
-            "hash": "cdd11bb74398afae73e71b6fe01114f597a6ce08",
-            "url": "https://github.com/decentraland/Unity3D-NSubstitute.git"
-        }
-    ]
+    "dependencies": []
 }
