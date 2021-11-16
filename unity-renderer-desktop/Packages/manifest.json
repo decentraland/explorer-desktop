@@ -1,1 +1,13 @@
-{ "dependencies": { "com.coffee.git-dependency-resolver": "https://github.com/mob-sakai/GitDependencyResolverForUnity.git", "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#fix/playmode-tests-desktop", "com.unity.cinemachine": "2.7.4", "com.unity.toolchain.linux-x86_64": "0.1.18-preview", "net.tnrd.nsubstitute": "https://github.com/decentraland/Unity3D-NSubstitute.git" }, "testables": [ "com.decentraland.unity-renderer" ] }
+{
+  "dependencies": {
+    "com.coffee.git-dependency-resolver": "https://github.com/mob-sakai/GitDependencyResolverForUnity.git",
+    "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#fix/playmode-tests-desktop",
+    "com.unity.cinemachine": "2.7.4",
+    "com.unity.testtools.codecoverage": "1.1.0",
+    "com.unity.toolchain.linux-x86_64": "0.1.18-preview",
+    "net.tnrd.nsubstitute": "https://github.com/decentraland/Unity3D-NSubstitute.git"
+  },
+  "testables": [
+    "com.decentraland.unity-renderer"
+  ]
+}
