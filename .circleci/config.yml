@@ -200,7 +200,7 @@ jobs:
             apt-get update
             apt-get install -y xsltproc
             xsltproc --output unity-renderer-desktop/test-results/playmode-results-junit.xml nunit-to-junit.xsl unity-renderer-desktop/playmode-results.xml
-      - run: apt-get -y -qq install awscli
+      - run: DEBIAN_FRONTEND=noninteractive apt-get -y -qq install awscli
       - run:
           name: upload code coverage
           command: |
