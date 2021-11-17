@@ -204,6 +204,14 @@ jobs:
       - run:
           name: upload code coverage
           command: |
+            pwd
+            echo "1"
+            ls -la
+            echo "2"
+            ls -la /tmp/workspace/explorer-desktop/unity-renderer-desktop/
+            echo "3"
+            ls -la /tmp/workspace/explorer-desktop/unity-renderer-desktop/CodeCoverage/
+            echo "4"
             aws s3 sync /tmp/workspace/explorer-desktop/unity-renderer-desktop/CodeCoverage/Report "s3://${S3_BUCKET}/desktop-coverage/${CIRCLE_BRANCH}" --acl public-read
       - store_test_results:
           path: ./unity-renderer-desktop/test-results
@@ -226,7 +234,7 @@ jobs:
       - image: cimg/base:2021.04
     steps:
       - <<: *attach_root
-      - run: 
+      - run:
           name: Prepare image
           command: |
             sudo apt-get update
