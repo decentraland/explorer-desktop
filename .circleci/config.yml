@@ -71,10 +71,6 @@ commands:
             apt-get update
             apt-get install -y zip jq
       - run:
-          name: Local unity-renderer
-          command: |
-            ./download-unity-renderer-repo.sh
-      - run:
           name: Build Unity Project
           no_output_timeout: 30m
           command: |
