@@ -12,8 +12,7 @@ namespace DCL
         private bool closeApp = false;
         protected override void Awake()
         {
-            var preloading = new PreloadingController();
-            preloading.Initialize();
+            PreloadingController.Initialize();
             
             base.Awake();
             CommandLineParserUtils.ParseArguments();

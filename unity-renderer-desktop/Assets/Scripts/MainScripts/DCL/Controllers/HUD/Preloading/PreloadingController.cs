@@ -9,7 +9,16 @@ namespace MainScripts.DCL.Controllers.HUD.Preloading
         private BaseVariable<string> loadingMessage => DataStore.i.HUDs.loadingHUD.message;
         private BaseVariable<bool> isSignUpFlow => DataStore.i.isSignUpFlow;
 
-        public void Initialize()
+        public static PreloadingController Initialize()
+        {
+            return new PreloadingController();
+        }
+
+        private PreloadingController()
+        {
+            Internal_Initialize();
+        }
+        private void Internal_Initialize()
         {
             view = Object.Instantiate(GetView());
             loadingMessage.OnChange += OnMessageChange;
