@@ -6,7 +6,7 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop.SettingsControllers
     public class SpinBoxSettingsControlControllerDesktop : SpinBoxSettingsControlController
     {
         protected DisplaySettings currentDisplaySettings;
-        private SettingsModule<DisplaySettings> DisplaySettings => SettingsDesktop.i.displaySettings;
+        private ISettingsRepository<DisplaySettings> DisplaySettings => SettingsDesktop.i.displaySettings;
 
         public override void Initialize()
         {

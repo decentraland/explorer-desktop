@@ -7,7 +7,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
 {
     public class ToggleControlViewDesktop : ToggleSettingsControlView
     {
-        private SettingsModule<DisplaySettings> displaySettings => SettingsDesktop.SettingsDesktop.i.displaySettings;
+        private ISettingsRepository<DisplaySettings> displaySettings => SettingsDesktop.SettingsDesktop.i.displaySettings;
 
         public override void Initialize(SettingsControlModel controlConfig, SettingsControlController settingsControlController)
         {
