@@ -12,7 +12,7 @@
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
+    "overrideReferences": true,
     "precompiledReferences": [
         "NSubstitute.dll",
         "System.Threading.Tasks.Extensions.dll"
