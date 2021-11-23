@@ -1,5 +1,7 @@
 using UnityEngine;
 using MainScripts.DCL.Controllers.HUD.Preloading;
+using MainScripts.DCL.Controllers.LoadingFlow;
+using MainScripts.DCL.Utils;
 
 namespace DCL
 {
@@ -12,8 +14,6 @@ namespace DCL
         private bool closeApp = false;
         protected override void Awake()
         {
-            PreloadingController.Initialize();
-            
             base.Awake();
             CommandLineParserUtils.ParseArguments();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
@@ -47,16 +47,23 @@ namespace DCL
             if (closeApp)
             {
                 closeApp = false;
-#if UNITY_EDITOR
-                // Application.Quit() does not work in the editor so
-                // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
-                UnityEditor.EditorApplication.isPlaying = false;
-#else
-                Application.Quit();
-#endif
+                DesktopUtils.Quit();
             }
             
             base.Update();
+        }
+
+        protected override void Start()
+        {
+            LoadingFlowController.Initialize();
+            base.Start();
+        }
+
+        protected override void InitializeSceneDependencies()
+        {
+            base.InitializeSceneDependencies();
+
+            PreloadingController.Initialize();
         }
     }
 }
