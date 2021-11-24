@@ -8,11 +8,13 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
     {
         const string DESKTOP_SETTINGS_KEY = "Settings.Quality.Desktop";
 
-        public readonly SettingsModule<DisplaySettings> displaySettings;
+        public readonly ISettingsRepository<DisplaySettings> displaySettings;
 
         public SettingsDesktop()
         {
-            displaySettings = new SettingsModule<DisplaySettings>(DESKTOP_SETTINGS_KEY, GetDefaultDisplaySettings());
+            displaySettings = new ProxySettingsRepository<DisplaySettings>(
+                new PlayerPrefsDesktopDisplaySettingsRepository(new PlayerPrefsSettingsByKey(DESKTOP_SETTINGS_KEY), GetDefaultDisplaySettings()),
+                new SettingsModule<DisplaySettings>(DESKTOP_SETTINGS_KEY, GetDefaultDisplaySettings()));
         }
 
         private DisplaySettings GetDefaultDisplaySettings()
