@@ -12,12 +12,15 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
     {
         [SerializeField] private Button exitButton;
         [SerializeField] private Button retryButton;
-        [SerializeField] private TextMeshProUGUI errorText;
+        [SerializeField] private GameObject timeoutContainer;
+        [SerializeField] private GameObject errorContainer;
         private Action reloadAction;
 
         public void Setup(Action reloadAction)
         {
             this.reloadAction = reloadAction;
+            timeoutContainer.gameObject.SetActive(false);
+            errorContainer.gameObject.SetActive(false);
         }
 
         private void Awake()
@@ -47,17 +50,21 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             gameObject.SetActive(false);
         }
 
-        public void ShowWithMessage(string message)
+        public void ShowForError()
         {
-            gameObject.SetActive(true);
-            errorText.text = message;
+            errorContainer.SetActive(true);
+        }
+        public void ShowForTimeout()
+        {
+            timeoutContainer.SetActive(true);
         }
     }
 
     public interface ILoadingFlowView
     {
         void Hide();
-        void ShowWithMessage(string message);
+        void ShowForError();
+        void ShowForTimeout();
         void Setup(Action reloadAction);
     }
 }
