@@ -1,4 +1,5 @@
 using System;
+using DCL;
 using MainScripts.DCL.Utils;
 using TMPro;
 using UnityEngine;
@@ -12,6 +13,12 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         [SerializeField] private Button exitButton;
         [SerializeField] private Button retryButton;
         [SerializeField] private TextMeshProUGUI errorText;
+        private Action reloadAction;
+
+        public void Setup(Action reloadAction)
+        {
+            this.reloadAction = reloadAction;
+        }
 
         private void Awake()
         {
@@ -32,7 +39,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
 
         private void OnRetry()
         {
-            SceneManager.LoadScene(0);
+            reloadAction?.Invoke();
         }
 
         public void Hide()
@@ -51,5 +58,6 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
     {
         void Hide();
         void ShowWithMessage(string message);
+        void Setup(Action reloadAction);
     }
 }

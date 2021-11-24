@@ -12,7 +12,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
     public class LoadingFlowController : IDisposable
     {
         private const float GENERAL_TIMEOUT_IN_SECONDS = 100;
-        private const float FAIL_TIMEOUT_IN_SECONDS = 20;
+        private const float FAIL_TIMEOUT_IN_SECONDS = 1;
         
         private Dictionary<string, IParcelScene> loadingScenes = new Dictionary<string, IParcelScene>();
         private List<string> failedUrls = new List<string>();
@@ -21,7 +21,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         private float longTimerStart;
         private bool isDisposed = false;
 
-        public LoadingFlowController()
+        public LoadingFlowController(Action reloadAction)
         {
             Environment.i.world.sceneController.OnNewSceneAdded += OnNewSceneAdded;
             Environment.i.world.sceneController.OnReadyScene += OnReadyScene;
@@ -29,6 +29,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             CommonScriptableObjects.rendererState.OnChange += OnRendererStateChange;
             
             view = CreateView();
+            view.Setup(reloadAction);
             view.Hide();
             longTimerStart = Time.unscaledTime;
         }
