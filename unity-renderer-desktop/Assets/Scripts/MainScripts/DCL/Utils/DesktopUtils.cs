@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace MainScripts.DCL.Utils
 {
     public static class DesktopUtils
