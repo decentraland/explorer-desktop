@@ -1,0 +1,16 @@
+{
+  "name": "Test",
+  "bodyShape": "urn:decentraland:off-chain:base-avatars:BaseFemale",
+  "skinColor": "#522c1c",
+  "hairColor": "#7b4818",
+  "eyeColor": "#20b4f7",
+  "wearables": [
+    "urn:decentraland:off-chain:base-avatars:BaseFemale",
+    "urn:decentraland:off-chain:base-avatars:f_blue_jacket",
+    "urn:decentraland:off-chain:base-avatars:f_capris",
+    "urn:decentraland:off-chain:base-avatars:ruby_blue_loafer",
+    "urn:decentraland:off-chain:base-avatars:pony_tail",
+    "urn:decentraland:off-chain:base-avatars:pearls_earring",
+    "urn:decentraland:off-chain:base-avatars:f_mouth_05"
+  ]
+}
