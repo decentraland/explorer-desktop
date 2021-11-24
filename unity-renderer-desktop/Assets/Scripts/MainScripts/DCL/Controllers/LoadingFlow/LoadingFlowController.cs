@@ -12,7 +12,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
     public class LoadingFlowController : IDisposable
     {
         private const float GENERAL_TIMEOUT_IN_SECONDS = 100;
-        private const float FAIL_TIMEOUT_IN_SECONDS = 1;
+        private const float FAIL_TIMEOUT_IN_SECONDS = 10;
         
         private Dictionary<string, IParcelScene> loadingScenes = new Dictionary<string, IParcelScene>();
         private List<string> failedUrls = new List<string>();
