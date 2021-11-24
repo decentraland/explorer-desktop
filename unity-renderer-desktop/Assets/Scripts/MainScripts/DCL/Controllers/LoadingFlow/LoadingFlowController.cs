@@ -12,26 +12,19 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
     public class LoadingFlowController : IDisposable
     {
         private const float GENERAL_TIMEOUT_IN_SECONDS = 100;
-        private const float FAIL_TIMEOUT_IN_SECONDS = 20;
         
-        private Dictionary<string, IParcelScene> loadingScenes = new Dictionary<string, IParcelScene>();
-        private List<string> failedUrls = new List<string>();
         private static ILoadingFlowView view;
-        private float? shortTimerStart;
-        private float longTimerStart;
+        private float timerStart;
         private bool isDisposed = false;
 
         public LoadingFlowController(Action reloadAction)
         {
-            Environment.i.world.sceneController.OnNewSceneAdded += OnNewSceneAdded;
-            Environment.i.world.sceneController.OnReadyScene += OnReadyScene;
-            WebRequestController.OnWebRequestFailed += OnWebRequestFail;
             CommonScriptableObjects.rendererState.OnChange += OnRendererStateChange;
             
             view = CreateView();
             view.Setup(reloadAction);
             view.Hide();
-            longTimerStart = Time.unscaledTime;
+            timerStart = Time.unscaledTime;
         }
 
         private ILoadingFlowView CreateView()
@@ -43,9 +36,6 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         {
             if (isDisposed) return;
             isDisposed = true;
-            Environment.i.world.sceneController.OnNewSceneAdded -= OnNewSceneAdded;
-            Environment.i.world.sceneController.OnReadyScene -= OnReadyScene;
-            WebRequestController.OnWebRequestFailed -= OnWebRequestFail;
             CommonScriptableObjects.rendererState.OnChange -= OnRendererStateChange;
         }
 
@@ -53,19 +43,10 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         {
             if (isDisposed) return;
 
-            if (Time.unscaledTime - longTimerStart > GENERAL_TIMEOUT_IN_SECONDS)
+            if (Time.unscaledTime - timerStart > GENERAL_TIMEOUT_IN_SECONDS)
             {
                 view.ShowForTimeout();
                 Dispose();
-                return;
-            }
-            if (shortTimerStart.HasValue)
-            {
-                if (Time.unscaledTime - shortTimerStart.Value > FAIL_TIMEOUT_IN_SECONDS)
-                {
-                    view.ShowForError();
-                    Dispose();
-                }
             }
         }
 
@@ -76,23 +57,6 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
                 view.Hide();
                 Dispose();
             }
-        }
-
-        private void OnWebRequestFail(string url)
-        {
-            shortTimerStart = Time.unscaledTime;
-            failedUrls.Add(url);
-        }
-
-        private void OnReadyScene(string sceneId)
-        {
-            if (loadingScenes.ContainsKey(sceneId))
-                loadingScenes.Remove(sceneId);
-        }
-
-        private void OnNewSceneAdded(IParcelScene parcelScene)
-        {
-            loadingScenes[parcelScene.sceneData.id] = parcelScene;
         }
     }
 }
