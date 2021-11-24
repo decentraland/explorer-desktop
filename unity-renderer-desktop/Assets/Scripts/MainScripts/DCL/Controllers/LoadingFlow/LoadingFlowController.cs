@@ -1,10 +1,5 @@
 using System;
-using System.Collections.Generic;
-using DCL;
-using DCL.Controllers;
-using MainScripts.DCL.Controllers.WebRequest;
 using UnityEngine;
-using Environment = DCL.Environment;
 using Object = UnityEngine.Object;
 
 namespace MainScripts.DCL.Controllers.LoadingFlow
@@ -12,10 +7,10 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
     public class LoadingFlowController : IDisposable
     {
         private const float GENERAL_TIMEOUT_IN_SECONDS = 100;
-        
-        private static ILoadingFlowView view;
-        private float timerStart;
-        private bool isDisposed = false;
+
+        private readonly float timerStart;
+        private readonly ILoadingFlowView view;
+        private bool isDisposed;
 
         public LoadingFlowController(Action reloadAction)
         {

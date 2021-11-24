@@ -1,9 +1,6 @@
 using System;
-using DCL;
 using MainScripts.DCL.Utils;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace MainScripts.DCL.Controllers.LoadingFlow
