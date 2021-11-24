@@ -11,41 +11,72 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
 {
     public class LoadingFlowController : IDisposable
     {
+        private const float GENERAL_TIMEOUT_IN_SECONDS = 100;
+        private const float FAIL_TIMEOUT_IN_SECONDS = 20;
+        
         private Dictionary<string, IParcelScene> loadingScenes = new Dictionary<string, IParcelScene>();
         private List<string> failedUrls = new List<string>();
         private static ILoadingFlowView view;
+        private float? shortTimerStart;
+        private float longTimerStart;
+        private bool isDisposed = false;
 
-        public static LoadingFlowController Initialize()
+        public LoadingFlowController()
         {
-            return new LoadingFlowController();
+            Environment.i.world.sceneController.OnNewSceneAdded += OnNewSceneAdded;
+            Environment.i.world.sceneController.OnReadyScene += OnReadyScene;
+            WebRequestController.OnWebRequestFailed += OnWebRequestFail;
+            CommonScriptableObjects.rendererState.OnChange += OnRendererStateChange;
+            
+            view = CreateView();
+            view.Hide();
+            longTimerStart = Time.unscaledTime;
         }
 
-        private static ILoadingFlowView CreateView()
+        private ILoadingFlowView CreateView()
         {
             return Object.Instantiate(Resources.Load<LoadingFlowView>("LoadingFlow"));
         }
 
-        private LoadingFlowController()
-        {
-            DataStore.i.isPlayerRendererLoaded.OnChange += OnRendererLoaded;
-            Environment.i.world.sceneController.OnNewSceneAdded += OnNewSceneAdded;
-            Environment.i.world.sceneController.OnReadyScene += OnReadyScene;
-            WebRequestController.OnWebRequestFailed += OnWebRequestFail;
-            
-            view = CreateView();
-            view.SetVisible(false);
-        }
-
         public void Dispose()
         {
-            DataStore.i.isPlayerRendererLoaded.OnChange -= OnRendererLoaded;
+            if (isDisposed) return;
+            isDisposed = true;
             Environment.i.world.sceneController.OnNewSceneAdded -= OnNewSceneAdded;
             Environment.i.world.sceneController.OnReadyScene -= OnReadyScene;
             WebRequestController.OnWebRequestFailed -= OnWebRequestFail;
+            CommonScriptableObjects.rendererState.OnChange -= OnRendererStateChange;
+        }
+
+        public void Update()
+        {
+            if (isDisposed) return;
+
+            if (Time.unscaledTime - longTimerStart > GENERAL_TIMEOUT_IN_SECONDS)
+            {
+                ShowFailPopup("Timeout");
+            }
+            if (shortTimerStart.HasValue)
+            {
+                if (Time.unscaledTime - shortTimerStart.Value > FAIL_TIMEOUT_IN_SECONDS)
+                {
+                    ShowFailPopup("Connection Error");
+                }
+            }
+        }
+
+        private void OnRendererStateChange(bool current, bool previous)
+        {
+            if (current)
+            {
+                view.Hide();
+                Dispose();
+            }
         }
 
         private void OnWebRequestFail(string url)
         {
+            shortTimerStart = Time.unscaledTime;
             failedUrls.Add(url);
         }
 
@@ -57,50 +88,13 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
 
         private void OnNewSceneAdded(IParcelScene parcelScene)
         {
-            PrettyLog("Loading parcel scene: " + parcelScene.sceneData.id);
             loadingScenes[parcelScene.sceneData.id] = parcelScene;
         }
 
-        private void OnRendererLoaded(bool current, bool previous)
+        private void ShowFailPopup(string message)
         {
-            PrettyLog("PLAYER RENDERER LOADED: " + current);
-            if (loadingScenes.Count > 0)
-            {
-                PrettyLog($"{loadingScenes.Count} scenes are still loading");
-
-                foreach (var parcelSceneKvp in loadingScenes)
-                {
-                    var parcelScene = parcelSceneKvp.Value;
-                    PrettyLog($"id:{parcelScene.sceneData.id} progress: {parcelScene.loadingProgress}");
-                }
-                PrettyLog(WebRequestControllerDesktop.GetOngoingWebRequestCount() + " webrequests remain");
-                if (WebRequestControllerDesktop.GetOngoingWebRequestCount() == 0)
-                {
-                    view.SetVisible(true);
-                    Debug.LogError("There is no ongoing web request, show popup");
-                } else 
-                if (failedUrls.Count > 0)
-                {
-                    view.SetVisible(true);
-                    PrettyLogRed("URLS FAILED WHILE LOADING: ");
-                    foreach (string failedUrl in failedUrls)
-                    {
-                        PrettyLogRed(failedUrl);
-                    }
-                }
-            }
-            
+            view.ShowWithMessage(message);
             Dispose();
-        }
-
-        private void PrettyLog(string message)
-        {
-            Debug.Log($"<b><color=Green>{message}</color></b>");
-        }
-        
-        private void PrettyLogRed(string message)
-        {
-            Debug.LogError($"<b><color=Red>{message}</color></b>");
         }
     }
 }

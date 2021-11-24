@@ -1,5 +1,6 @@
 using System;
 using MainScripts.DCL.Utils;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
     {
         [SerializeField] private Button exitButton;
         [SerializeField] private Button retryButton;
+        [SerializeField] private TextMeshProUGUI errorText;
 
         private void Awake()
         {
@@ -33,14 +35,21 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             SceneManager.LoadScene(0);
         }
 
-        public void SetVisible(bool visible)
+        public void Hide()
         {
-            gameObject.SetActive(visible);
+            gameObject.SetActive(false);
+        }
+
+        public void ShowWithMessage(string message)
+        {
+            gameObject.SetActive(true);
+            errorText.text = message;
         }
     }
 
     public interface ILoadingFlowView
     {
-        void SetVisible(bool visible);
+        void Hide();
+        void ShowWithMessage(string message);
     }
 }

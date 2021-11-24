@@ -12,6 +12,8 @@ namespace DCL
     public class MainDesktop : Main
     {
         private bool closeApp = false;
+        private LoadingFlowController loadingFlowController;
+
         protected override void Awake()
         {
             base.Awake();
@@ -51,11 +53,12 @@ namespace DCL
             }
             
             base.Update();
+            loadingFlowController.Update();
         }
 
         protected override void Start()
         {
-            LoadingFlowController.Initialize();
+            loadingFlowController = new LoadingFlowController();
             base.Start();
         }
 
