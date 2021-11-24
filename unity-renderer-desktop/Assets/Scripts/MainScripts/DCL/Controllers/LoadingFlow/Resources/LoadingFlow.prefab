@@ -440,8 +440,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exitButton: {fileID: 55070809236574993}
   retryButton: {fileID: 1957358554885762587}
-  timeoutContainer: {fileID: 0}
-  errorContainer: {fileID: 0}
+  timeoutContainer: {fileID: 7074520146845481525}
+  errorContainer: {fileID: 6592596420635194828}
 --- !u!1 &6186875054162327267
 GameObject:
   m_ObjectHideFlags: 0
