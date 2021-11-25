@@ -49,10 +49,12 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
 
         public void ShowForError()
         {
+            gameObject.SetActive(true);
             errorContainer.SetActive(true);
         }
         public void ShowForTimeout()
         {
+            gameObject.SetActive(true);
             timeoutContainer.SetActive(true);
         }
     }
