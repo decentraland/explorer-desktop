@@ -26,7 +26,8 @@ namespace DCL
                 serviceProviders: new ServiceProviders(),
                 idleChecker: new IdleChecker(),
                 avatarsLODController: new AvatarsLODController(),
-                featureFlagController: new FeatureFlagController(bridgesGameObject));
+                featureFlagController: new FeatureFlagController(bridgesGameObject),
+                updateEventHandler: new UpdateEventHandler());
         }
     }
 }
