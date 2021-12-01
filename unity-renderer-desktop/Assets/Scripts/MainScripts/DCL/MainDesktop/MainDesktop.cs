@@ -1,3 +1,4 @@
+using DCL.Components;
 using UnityEngine;
 using MainScripts.DCL.Controllers.HUD.Preloading;
 
@@ -15,6 +16,8 @@ namespace DCL
             var preloading = new PreloadingController();
             preloading.Initialize();
             
+            DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_VLC();
+
             base.Awake();
             CommandLineParserUtils.ParseArguments();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
@@ -29,10 +32,16 @@ namespace DCL
             return PlatformDesktopContextFactory.CreateDefault();
         }
 
+        protected override WorldRuntimeContext WorldRuntimeContextBuilder()
+        {
+            return WorldRuntimeContextFactoryDesktop.CreateDefault(componentFactory);
+        }
+
         protected override void OnDestroy()
         {
             base.OnDestroy();
             DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
+            VLCEnvironment.i.Dispose();
         }
 
         void OnCommunicationEstablished(bool current, bool previous)

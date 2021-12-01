@@ -1,8 +1,7 @@
 using DCL;
 using DCL.Controllers;
-using MainScripts.DCL.WorldRuntime.RuntimeComponentFactoryDesktop;
 
-namespace MainScripts.DCL.Environment.Factories.WorldRuntimeContextFactoryDesktop
+namespace DCL
 {
     public static class WorldRuntimeContextFactoryDesktop
     {
