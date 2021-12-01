@@ -4,11 +4,6 @@
             "name": "com.coffee.ui-particle",
             "hash": "2e4d80bc1cbbfe5400fb052778c65bcccc505abd",
             "url": "https://github.com/mob-sakai/ParticleEffectForUGUI.git"
-        },
-        {
-            "name": "net.tnrd.nsubstitute",
-            "hash": "cdd11bb74398afae73e71b6fe01114f597a6ce08",
-            "url": "https://github.com/decentraland/Unity3D-NSubstitute.git"
         }
     ]
 }
