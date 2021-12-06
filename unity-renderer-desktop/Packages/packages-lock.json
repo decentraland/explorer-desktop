@@ -14,7 +14,7 @@
       "dependencies": {}
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#feat/loading-error",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -64,7 +64,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "9757de60bd5429016df974bc947e583de1989efe"
+      "hash": "b94e72d436b6d2fa92f269d1e740b813bc91482e"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
