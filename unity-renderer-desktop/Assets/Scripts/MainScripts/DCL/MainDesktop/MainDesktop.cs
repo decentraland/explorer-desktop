@@ -1,5 +1,8 @@
 using UnityEngine;
 using MainScripts.DCL.Controllers.HUD.Preloading;
+using MainScripts.DCL.Controllers.LoadingFlow;
+using MainScripts.DCL.Utils;
+using UnityEngine.SceneManagement;
 
 namespace DCL
 {
@@ -9,15 +12,13 @@ namespace DCL
     /// </summary>
     public class MainDesktop : Main
     {
-        private bool closeApp = false;
+        private LoadingFlowController loadingFlowController;
+        private PreloadingController preloadingController;
+
         protected override void Awake()
         {
-            var preloading = new PreloadingController();
-            preloading.Initialize();
-            
             base.Awake();
             CommandLineParserUtils.ParseArguments();
-            DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
         }
         protected override HUDContext HUDContextBuilder()
         {
@@ -32,32 +33,32 @@ namespace DCL
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
-        }
-
-        void OnCommunicationEstablished(bool current, bool previous)
-        {
-            if (current == false && previous)
-            {
-                closeApp = true;
-            }
+            loadingFlowController.Dispose();
+            preloadingController.Dispose();
         }
 
         protected override void Update()
         {
-            if (closeApp)
-            {
-                closeApp = false;
-#if UNITY_EDITOR
-                // Application.Quit() does not work in the editor so
-                // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
-                UnityEditor.EditorApplication.isPlaying = false;
-#else
-                Application.Quit();
-#endif
-            }
-            
             base.Update();
+            loadingFlowController.Update();
+        }
+
+        protected override void Start()
+        {
+            loadingFlowController = new LoadingFlowController(Reload);
+            base.Start();
+        }
+
+        private void Reload()
+        {
+            kernelCommunication.Dispose();
+            SceneManager.LoadScene(0);
+        }
+
+        protected override void InitializeSceneDependencies()
+        {
+            base.InitializeSceneDependencies();
+            preloadingController = new PreloadingController();
         }
     }
 }
