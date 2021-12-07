@@ -14,11 +14,17 @@ namespace DCL
     {
         private LoadingFlowController loadingFlowController;
         private PreloadingController preloadingController;
+        private bool isConnectionLost;
+        private bool isRestarting;
 
         protected override void Awake()
         {
+            isRestarting = false;
+            isConnectionLost = false;
+            
             base.Awake();
             CommandLineParserUtils.ParseArguments();
+            DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
         }
         protected override HUDContext HUDContextBuilder()
         {
@@ -35,12 +41,26 @@ namespace DCL
             base.OnDestroy();
             loadingFlowController.Dispose();
             preloadingController.Dispose();
+            DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
+        }
+
+        void OnCommunicationEstablished(bool current, bool previous)
+        {
+            if (current == false && previous)
+            {
+                isConnectionLost = true;
+            }
         }
 
         protected override void Update()
         {
             base.Update();
             loadingFlowController.Update();
+
+            if (isConnectionLost && !isRestarting)
+            {
+                DesktopUtils.Quit();
+            }
         }
 
         protected override void Start()
@@ -51,6 +71,7 @@ namespace DCL
 
         private void Reload()
         {
+            isRestarting = true;
             kernelCommunication.Dispose();
             SceneManager.LoadScene(0);
         }
