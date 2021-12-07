@@ -182,6 +182,11 @@ jobs:
           keys:
             - library-2020-3-{{ .Branch }}
       - run:
+          name: Prepare image
+          command: |
+            apt-get update
+            apt-get install -y zip jq
+      - run:
           name: Local unity-renderer
           command: |
             ./download-unity-renderer-repo.sh
