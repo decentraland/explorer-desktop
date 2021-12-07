@@ -182,6 +182,10 @@ jobs:
           keys:
             - library-2020-3-{{ .Branch }}
       - run:
+          name: Local unity-renderer
+          command: |
+            ./download-unity-renderer-repo.sh
+      - run:
           name: Run playmode tests
           command: |
             if [[ -e ./unity-renderer-desktop/playmode-logs.txt ]]; then
