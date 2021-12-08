@@ -1,3 +1,5 @@
+using DCL.Components;
+using HTC.UnityPlugin.Multimedia;
 using UnityEngine;
 using MainScripts.DCL.Controllers.HUD.Preloading;
 
@@ -12,6 +14,8 @@ namespace DCL
         private bool closeApp = false;
         protected override void Awake()
         {
+            FFMPEGDecoderWrapper.nativeCleanAll();
+            DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_FFMPEG();
             var preloading = new PreloadingController();
             preloading.Initialize();
             
@@ -33,6 +37,7 @@ namespace DCL
         {
             base.OnDestroy();
             DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
+            FFMPEGDecoderWrapper.nativeCleanAll();
         }
 
         void OnCommunicationEstablished(bool current, bool previous)
