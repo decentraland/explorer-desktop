@@ -28,9 +28,7 @@ namespace DCL
             FFMPEGDecoderWrapper.nativeCleanAll();
             DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_FFMPEG();
 #endif
-            var preloading = new PreloadingController();
-            preloading.Initialize();
-            
+
             base.Awake();
             CommandLineParserUtils.ParseArguments();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
