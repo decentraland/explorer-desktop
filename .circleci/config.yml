@@ -71,6 +71,10 @@ commands:
             apt-get update
             apt-get install -y zip jq
       - run:
+          name: Local unity-renderer
+          command: |
+            ./download-unity-renderer-repo.sh
+      - run:
           name: Build Unity Project
           no_output_timeout: 30m
           command: |
@@ -130,7 +134,6 @@ jobs:
             sudo apt-get install -y jq
       - checkout
 
-
       # persist to workspace to use in downstream jobs
       - persist_to_workspace:
           root: *working_directory
@@ -179,6 +182,15 @@ jobs:
           keys:
             - library-2020-3-{{ .Branch }}
       - run:
+          name: Prepare image
+          command: |
+            apt-get update
+            apt-get install -y zip jq
+      - run:
+          name: Local unity-renderer
+          command: |
+            ./download-unity-renderer-repo.sh
+      - run:
           name: Run playmode tests
           command: |
             if [[ -e ./unity-renderer-desktop/playmode-logs.txt ]]; then
@@ -200,14 +212,6 @@ jobs:
       - run:
           name: upload code coverage
           command: |
-            pwd
-            echo "1"
-            ls -la
-            echo "2"
-            ls -la /tmp/workspace/explorer-desktop/unity-renderer-desktop/
-            echo "3"
-            ls -la /tmp/workspace/explorer-desktop/unity-renderer-desktop/CodeCoverage/
-            echo "4"
             aws s3 sync /tmp/workspace/explorer-desktop/unity-renderer-desktop/CodeCoverage/Report "s3://${S3_BUCKET}/desktop-coverage/${CIRCLE_BRANCH}" --acl public-read
       - store_test_results:
           path: ./unity-renderer-desktop/test-results

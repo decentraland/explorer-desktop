@@ -1,15 +1,18 @@
+using System;
 using DCL;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace MainScripts.DCL.Controllers.HUD.Preloading
 {
-    public class PreloadingController
+    public class PreloadingController : IDisposable
     {
         private GameObject view;
         private BaseVariable<string> loadingMessage => DataStore.i.HUDs.loadingHUD.message;
         private BaseVariable<bool> isSignUpFlow => DataStore.i.isSignUpFlow;
-
-        public void Initialize()
+        private bool isDisposed = false;
+        
+        public PreloadingController()
         {
             view = Object.Instantiate(GetView());
             loadingMessage.OnChange += OnMessageChange;
@@ -21,8 +24,10 @@ namespace MainScripts.DCL.Controllers.HUD.Preloading
             return Resources.Load<GameObject>("Preloading");
         }
 
-        private void Dispose()
+        public void Dispose()
         {
+            if (isDisposed) return;
+            isDisposed = true;
             loadingMessage.OnChange -= OnMessageChange;
             isSignUpFlow.OnChange -= SignUpFlowChanged;
             Object.Destroy(view.gameObject);

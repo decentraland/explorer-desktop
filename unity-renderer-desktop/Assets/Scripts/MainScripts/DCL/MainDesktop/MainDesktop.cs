@@ -2,6 +2,9 @@ using DCL.Components;
 using HTC.UnityPlugin.Multimedia;
 using UnityEngine;
 using MainScripts.DCL.Controllers.HUD.Preloading;
+using MainScripts.DCL.Controllers.LoadingFlow;
+using MainScripts.DCL.Utils;
+using UnityEngine.SceneManagement;
 
 namespace DCL
 {
@@ -11,9 +14,16 @@ namespace DCL
     /// </summary>
     public class MainDesktop : Main
     {
-        private bool closeApp = false;
+        private LoadingFlowController loadingFlowController;
+        private PreloadingController preloadingController;
+        private bool isConnectionLost;
+        private bool isRestarting;
+
         protected override void Awake()
         {
+            isRestarting = false;
+            isConnectionLost = false;
+
             FFMPEGDecoderWrapper.nativeCleanAll();
             DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_FFMPEG();
             var preloading = new PreloadingController();
@@ -36,6 +46,8 @@ namespace DCL
         protected override void OnDestroy()
         {
             base.OnDestroy();
+            loadingFlowController.Dispose();
+            preloadingController.Dispose();
             DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
             FFMPEGDecoderWrapper.nativeCleanAll();
         }
@@ -44,25 +56,38 @@ namespace DCL
         {
             if (current == false && previous)
             {
-                closeApp = true;
+                isConnectionLost = true;
             }
         }
 
         protected override void Update()
         {
-            if (closeApp)
-            {
-                closeApp = false;
-#if UNITY_EDITOR
-                // Application.Quit() does not work in the editor so
-                // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
-                UnityEditor.EditorApplication.isPlaying = false;
-#else
-                Application.Quit();
-#endif
-            }
-            
             base.Update();
+            loadingFlowController.Update();
+
+            if (isConnectionLost && !isRestarting)
+            {
+                DesktopUtils.Quit();
+            }
+        }
+
+        protected override void Start()
+        {
+            loadingFlowController = new LoadingFlowController(Reload);
+            base.Start();
+        }
+
+        private void Reload()
+        {
+            isRestarting = true;
+            kernelCommunication.Dispose();
+            SceneManager.LoadScene(0);
+        }
+
+        protected override void InitializeSceneDependencies()
+        {
+            base.InitializeSceneDependencies();
+            preloadingController = new PreloadingController();
         }
     }
 }
