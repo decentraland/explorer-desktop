@@ -9,7 +9,7 @@ namespace MainScripts.DCL.Controllers.HUD.Preloading
     {
         private GameObject view;
         private BaseVariable<string> loadingMessage => DataStore.i.HUDs.loadingHUD.message;
-        private BaseVariable<bool> isSignUpFlow => DataStore.i.isSignUpFlow;
+        private BaseVariable<bool> isSignUpFlow => DataStore.i.common.isSignUpFlow;
         private bool isDisposed = false;
         
         public PreloadingController()
