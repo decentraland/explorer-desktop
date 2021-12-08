@@ -24,8 +24,10 @@ namespace DCL
             isRestarting = false;
             isConnectionLost = false;
 
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
             FFMPEGDecoderWrapper.nativeCleanAll();
             DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_FFMPEG();
+#endif
             var preloading = new PreloadingController();
             preloading.Initialize();
             
@@ -49,7 +51,9 @@ namespace DCL
             loadingFlowController.Dispose();
             preloadingController.Dispose();
             DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
             FFMPEGDecoderWrapper.nativeCleanAll();
+#endif
         }
 
         void OnCommunicationEstablished(bool current, bool previous)
