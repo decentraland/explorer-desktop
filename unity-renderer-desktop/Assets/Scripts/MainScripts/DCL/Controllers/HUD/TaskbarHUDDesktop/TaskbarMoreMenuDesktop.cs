@@ -15,9 +15,6 @@ public class TaskbarMoreMenuDesktop : TaskbarMoreMenu
         
         exitButton.gameObject.SetActive(true);
         
-        exitButton.mainButton.onClick.AddListener(() =>
-        {
-            DesktopUtils.Quit();
-        });
+        exitButton.mainButton.onClick.AddListener(DesktopUtils.Quit);
     }
 }

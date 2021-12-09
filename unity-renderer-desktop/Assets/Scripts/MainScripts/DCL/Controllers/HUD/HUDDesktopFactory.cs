@@ -1,3 +1,4 @@
+using MainScripts.DCL.Controllers.HUD.Profile;
 using MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts;
 
 namespace MainScripts.DCL.Controllers.HUD
@@ -17,6 +18,9 @@ namespace MainScripts.DCL.Controllers.HUD
                     break;
                 case HUDElementID.SETTINGS_PANEL:
                     hudElement = new SettingsPanelHUDControllerDesktop();
+                    break;
+                case HUDElementID.PROFILE_HUD:
+                    hudElement = new ProfileHUDControllerDesktop(new UserProfileWebInterfaceBridge());
                     break;
                 default:
                     hudElement = base.CreateHUD(hudElementId);
