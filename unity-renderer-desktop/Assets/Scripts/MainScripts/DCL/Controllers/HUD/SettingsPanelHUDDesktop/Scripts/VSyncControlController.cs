@@ -16,6 +16,11 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             var value = (bool)newValue;
             currentDisplaySettings.vSync = value;
             QualitySettings.vSyncCount = value ? 1 : 0;
+            
+            if (!currentDisplaySettings.vSync)
+            {
+                Application.targetFrameRate = 240;
+            }
         }
     }
 }
