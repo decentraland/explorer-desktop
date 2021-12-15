@@ -9,27 +9,22 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         private const float GENERAL_TIMEOUT_IN_SECONDS = 100;
 
         private readonly BaseVariable<Exception> fatalErrorMessage;
-        private readonly float timerStart;
         private readonly ILoadingFlowView view;
+        private float timerStart;
         private bool isDisposed;
 
         public LoadingFlowController(Action reloadAction,
-            BaseVariable<Exception> fatalErrorMessage)
+            BaseVariable<Exception> fatalErrorMessage,
+            BaseVariable<bool> loadingHudVisible)
         {
             this.fatalErrorMessage = fatalErrorMessage;
-            fatalErrorMessage.OnChange += HandleFatalError;
-            CommonScriptableObjects.rendererState.OnChange += OnRendererStateChange;
-            
+
             view = CreateView();
             view.Setup(reloadAction);
             view.Hide();
-            timerStart = Time.unscaledTime;
-        }
 
-        private void HandleFatalError(Exception current, Exception previous)
-        {
-            if (current == null) return;
-            view.ShowForError();
+            loadingHudVisible.OnChange += OnLoadingHudVisibleChanged;
+            CommonScriptableObjects.rendererState.OnChange += OnRendererStateChange;
         }
 
         private ILoadingFlowView CreateView()
@@ -37,11 +32,37 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             return Object.Instantiate(Resources.Load<LoadingFlowView>("LoadingFlow"));
         }
 
+        private void OnLoadingHudVisibleChanged(bool current, bool previous)
+        {
+            if (current)
+            {
+                StartWatching();
+            }
+            else
+            {
+                view.Hide();
+                Dispose();
+            }
+        }
+
+        private void StartWatching()
+        {
+            isDisposed = false;
+            timerStart = Time.unscaledTime;
+            fatalErrorMessage.OnChange += HandleFatalError;
+        }
+
+        private void HandleFatalError(Exception current, Exception previous)
+        {
+            if (current == null) return;
+            view.ShowForError();
+            Dispose();
+        }
+
         public void Dispose()
         {
             if (isDisposed) return;
             isDisposed = true;
-            CommonScriptableObjects.rendererState.OnChange -= OnRendererStateChange;
             fatalErrorMessage.OnChange -= HandleFatalError;
         }
 
@@ -49,11 +70,16 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         {
             if (isDisposed) return;
 
-            if (Time.unscaledTime - timerStart > GENERAL_TIMEOUT_IN_SECONDS)
+            if (IsTimeToShowTimeout())
             {
                 view.ShowForTimeout();
                 Dispose();
             }
+        }
+
+        private bool IsTimeToShowTimeout()
+        {
+            return Time.unscaledTime - timerStart > GENERAL_TIMEOUT_IN_SECONDS;
         }
 
         private void OnRendererStateChange(bool current, bool previous)
