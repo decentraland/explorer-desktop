@@ -74,7 +74,7 @@ namespace DCL
 
         protected override void Start()
         {
-            loadingFlowController = new LoadingFlowController(Reload);
+            loadingFlowController = new LoadingFlowController(Reload, DataStore.i.HUDs.loadingHUD.fatalError);
             base.Start();
         }
 

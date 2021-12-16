@@ -249,6 +249,7 @@ MonoBehaviour:
     ignoreGlobalScenes: 0
     msgStepByStep: 0
   openBrowserWhenStart: 1
+  kernelVersion: 
   useCustomContentServer: 0
   customContentServerUrl: http://localhost:1338/
   baseUrlMode: 1

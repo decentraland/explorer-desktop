@@ -8,18 +8,28 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
     {
         private const float GENERAL_TIMEOUT_IN_SECONDS = 100;
 
+        private readonly BaseVariable<Exception> fatalErrorMessage;
         private readonly float timerStart;
         private readonly ILoadingFlowView view;
         private bool isDisposed;
 
-        public LoadingFlowController(Action reloadAction)
+        public LoadingFlowController(Action reloadAction,
+            BaseVariable<Exception> fatalErrorMessage)
         {
+            this.fatalErrorMessage = fatalErrorMessage;
+            fatalErrorMessage.OnChange += HandleFatalError;
             CommonScriptableObjects.rendererState.OnChange += OnRendererStateChange;
             
             view = CreateView();
             view.Setup(reloadAction);
             view.Hide();
             timerStart = Time.unscaledTime;
+        }
+
+        private void HandleFatalError(Exception current, Exception previous)
+        {
+            if (current == null) return;
+            view.ShowForError();
         }
 
         private ILoadingFlowView CreateView()
@@ -32,6 +42,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             if (isDisposed) return;
             isDisposed = true;
             CommonScriptableObjects.rendererState.OnChange -= OnRendererStateChange;
+            fatalErrorMessage.OnChange -= HandleFatalError;
         }
 
         public void Update()
