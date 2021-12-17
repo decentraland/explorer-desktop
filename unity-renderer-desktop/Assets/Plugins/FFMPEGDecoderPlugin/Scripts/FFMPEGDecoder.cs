@@ -10,9 +10,7 @@ using System.ComponentModel;
 
 namespace HTC.UnityPlugin.Multimedia
 {
-	public class CoroutineStarter : MonoBehaviour
-	{
-	}
+	public class CoroutineStarter : MonoBehaviour { }
 	public class FFMPEGDecoder : IDisposable
 	{
 		private const string LOG_TAG = "[FFMPEGDecoder]";

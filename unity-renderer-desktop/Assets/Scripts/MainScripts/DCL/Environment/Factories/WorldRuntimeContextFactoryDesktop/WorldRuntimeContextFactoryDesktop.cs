@@ -1,6 +1,5 @@
 using DCL;
 using DCL.Controllers;
-using MainScripts.DCL.WorldRuntime.RuntimeComponentFactoryDesktop;
 
 namespace MainScripts.DCL.Environment.Factories.WorldRuntimeContextFactoryDesktop
 {
@@ -18,7 +17,7 @@ namespace MainScripts.DCL.Environment.Factories.WorldRuntimeContextFactoryDeskto
                 pointerEventsController: new PointerEventsController(),
                 sceneBoundsChecker: new SceneBoundsChecker(),
                 blockersController: new WorldBlockersController(),
-                componentFactory: new RuntimeComponentFactoryDesktop(poolableComponentFactory));
+                componentFactory: new RuntimeComponentFactory(poolableComponentFactory));
         }
     }
 }
