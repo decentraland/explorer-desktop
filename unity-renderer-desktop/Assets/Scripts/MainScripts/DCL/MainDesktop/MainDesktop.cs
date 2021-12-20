@@ -1,6 +1,8 @@
+using DCL.SettingsCommon;
 using MainScripts.DCL.Controllers.HUD.Preloading;
 using MainScripts.DCL.Controllers.LoadingFlow;
 using MainScripts.DCL.Utils;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace DCL
@@ -21,10 +23,19 @@ namespace DCL
             isRestarting = false;
             isConnectionLost = false;
             
+            InitializeSettings();
+            
             base.Awake();
             CommandLineParserUtils.ParseArguments();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
         }
+
+        private void InitializeSettings()
+        {
+            Settings.CreateSharedInstance(new DefaultSettingsFactory()
+                .WithGraphicsQualitySettingsPresetPath("DesktopGraphicsQualityPresets"));
+        }
+
         protected override HUDContext HUDContextBuilder()
         {
             return HUDDesktopContextFactory.CreateDefault();
