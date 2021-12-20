@@ -67,7 +67,8 @@ namespace DCL
             loadingFlowController = new LoadingFlowController(
                 Reload, 
                 DataStore.i.HUDs.loadingHUD.fatalError,
-                DataStore.i.HUDs.loadingHUD.visible);
+                DataStore.i.HUDs.loadingHUD.visible, 
+                CommonScriptableObjects.rendererState);
             base.Start();
         }
 

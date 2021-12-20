@@ -11,20 +11,25 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         private readonly BaseVariable<Exception> fatalErrorMessage;
         private readonly ILoadingFlowView view;
         private float timerStart;
-        private bool isDisposed;
+        private bool isWatching;
+        private BaseVariable<bool> loadingHudVisible;
+        private RendererState rendererState;
 
         public LoadingFlowController(Action reloadAction,
             BaseVariable<Exception> fatalErrorMessage,
-            BaseVariable<bool> loadingHudVisible)
+            BaseVariable<bool> loadingHudVisible, 
+            RendererState rendererState)
         {
             this.fatalErrorMessage = fatalErrorMessage;
+            this.loadingHudVisible = loadingHudVisible;
+            this.rendererState = rendererState;
 
             view = CreateView();
             view.Setup(reloadAction);
             view.Hide();
 
-            loadingHudVisible.OnChange += OnLoadingHudVisibleChanged;
-            CommonScriptableObjects.rendererState.OnChange += OnRendererStateChange;
+            this.loadingHudVisible.OnChange += OnLoadingHudVisibleChanged;
+            this.rendererState.OnChange += OnRendererStateChange;
         }
 
         private ILoadingFlowView CreateView()
@@ -41,13 +46,13 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             else
             {
                 view.Hide();
-                Dispose();
+                StopWatching();
             }
         }
 
         private void StartWatching()
         {
-            isDisposed = false;
+            isWatching = false;
             timerStart = Time.unscaledTime;
             fatalErrorMessage.OnChange += HandleFatalError;
         }
@@ -56,24 +61,24 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         {
             if (current == null) return;
             view.ShowForError();
-            Dispose();
+            StopWatching();
         }
 
-        public void Dispose()
+        public void StopWatching()
         {
-            if (isDisposed) return;
-            isDisposed = true;
+            if (isWatching) return;
+            isWatching = true;
             fatalErrorMessage.OnChange -= HandleFatalError;
         }
 
         public void Update()
         {
-            if (isDisposed) return;
+            if (isWatching) return;
 
             if (IsTimeToShowTimeout())
             {
                 view.ShowForTimeout();
-                Dispose();
+                StopWatching();
             }
         }
 
@@ -87,8 +92,15 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             if (current)
             {
                 view.Hide();
-                Dispose();
+                StopWatching();
             }
+        }
+
+        public void Dispose()
+        {
+            fatalErrorMessage.OnChange -= HandleFatalError;
+            loadingHudVisible.OnChange -= OnLoadingHudVisibleChanged;
+            rendererState.OnChange -= OnRendererStateChange;
         }
     }
 }
