@@ -64,7 +64,11 @@ namespace DCL
 
         protected override void Start()
         {
-            loadingFlowController = new LoadingFlowController(Reload, DataStore.i.HUDs.loadingHUD.fatalError);
+            loadingFlowController = new LoadingFlowController(
+                Reload, 
+                DataStore.i.HUDs.loadingHUD.fatalError,
+                DataStore.i.HUDs.loadingHUD.visible, 
+                CommonScriptableObjects.rendererState);
             base.Start();
         }
 
