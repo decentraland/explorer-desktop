@@ -7,7 +7,5 @@ namespace MainScripts.DCL.Controllers.HUD.Profile
     {
         [SerializeField]
         internal Button buttonExit;
-        
-        
     }
 }
