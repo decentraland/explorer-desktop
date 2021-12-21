@@ -21,7 +21,7 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
         {
             return new DisplaySettings
             {
-                windowMode = WindowMode.FullScreen,
+                windowMode = WindowMode.Borderless,
                 resolutionSizeIndex = 0,
                 vSync = false
             };
