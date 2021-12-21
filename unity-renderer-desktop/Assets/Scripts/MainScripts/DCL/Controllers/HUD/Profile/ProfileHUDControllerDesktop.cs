@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace MainScripts.DCL.Controllers.HUD.Profile
 {
-    public class ProfileHUDControllerDesktop : ProfileHUDController, IHUD
+    public class ProfileHUDControllerDesktop : ProfileHUDController
     {
         private ProfileHUDViewDesktop viewDesktop;
         public ProfileHUDControllerDesktop(IUserProfileBridge userProfileBridge) : base(userProfileBridge)
         {
-            viewDesktop = view as ProfileHUDViewDesktop;
+            viewDesktop = (ProfileHUDViewDesktop)view;
             viewDesktop.buttonExit.onClick.AddListener(DesktopUtils.Quit);
         }
 
