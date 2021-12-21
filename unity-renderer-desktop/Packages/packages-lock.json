@@ -14,15 +14,7 @@
       "dependencies": {}
     },
     "com.decentraland.unity-renderer": {
-<<<<<<< HEAD
-<<<<<<< HEAD
       "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
-=======
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#feat/desktop-default-settings",
->>>>>>> 88bb9d7... feat: added new graphics preset & windowMode set to Borderless
-=======
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
->>>>>>> 4b2a140... updated to latest renderer version
       "depth": 0,
       "source": "git",
       "dependencies": {
