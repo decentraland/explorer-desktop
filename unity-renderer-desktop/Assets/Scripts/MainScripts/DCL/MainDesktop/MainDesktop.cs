@@ -1,6 +1,6 @@
+using DCL.SettingsCommon;
 using DCL.Components;
 using HTC.UnityPlugin.Multimedia;
-using UnityEngine;
 using MainScripts.DCL.Controllers.HUD.Preloading;
 using MainScripts.DCL.Controllers.LoadingFlow;
 using MainScripts.DCL.Utils;
