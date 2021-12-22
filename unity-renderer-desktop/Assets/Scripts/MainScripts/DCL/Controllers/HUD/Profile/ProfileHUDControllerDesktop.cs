@@ -14,7 +14,6 @@ namespace MainScripts.DCL.Controllers.HUD.Profile
 
         private void OnExitButtonClick()
         {
-            Debug.Log("Exiting");
             DesktopUtils.Quit();
         }
 
