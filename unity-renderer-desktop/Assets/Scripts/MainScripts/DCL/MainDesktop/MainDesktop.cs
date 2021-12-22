@@ -1,8 +1,9 @@
 using DCL.SettingsCommon;
+using DCL.Components;
+using HTC.UnityPlugin.Multimedia;
 using MainScripts.DCL.Controllers.HUD.Preloading;
 using MainScripts.DCL.Controllers.LoadingFlow;
 using MainScripts.DCL.Utils;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace DCL
@@ -22,6 +23,11 @@ namespace DCL
         {
             isRestarting = false;
             isConnectionLost = false;
+
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+            FFMPEGDecoderWrapper.nativeCleanAll();
+            DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_FFMPEG();
+#endif
             
             InitializeSettings();
             
@@ -52,6 +58,9 @@ namespace DCL
             loadingFlowController.Dispose();
             preloadingController.Dispose();
             DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+            FFMPEGDecoderWrapper.nativeCleanAll();
+#endif
         }
 
         void OnCommunicationEstablished(bool current, bool previous)
