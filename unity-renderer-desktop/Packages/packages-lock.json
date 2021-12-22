@@ -14,7 +14,7 @@
       "dependencies": {}
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#test/fps-display-desktop",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -64,7 +64,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "3a1b2614335451d8748e34958353ca42721be87c"
+      "hash": "602994169602cc8209be58728887e6fd6ce0c274"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
