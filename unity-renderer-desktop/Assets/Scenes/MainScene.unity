@@ -248,7 +248,7 @@ MonoBehaviour:
     soloSceneCoords: {x: 0, y: 0}
     ignoreGlobalScenes: 0
     msgStepByStep: 0
-  openBrowserWhenStart: 0
+  openBrowserWhenStart: 1
   kernelVersion: 
   useCustomContentServer: 0
   customContentServerUrl: http://localhost:1338/
@@ -262,6 +262,7 @@ MonoBehaviour:
   testWearables: 0
   enableTutorial: 0
   builderInWorld: 0
+  enableProceduralSkybox: 0
   soloScene: 0
   debugPanelMode: 0
 --- !u!4 &1444882337
