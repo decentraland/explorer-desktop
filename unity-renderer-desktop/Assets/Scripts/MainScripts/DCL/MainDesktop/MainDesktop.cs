@@ -28,10 +28,20 @@ namespace DCL
             FFMPEGDecoderWrapper.nativeCleanAll();
             DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_FFMPEG();
 #endif
+            
+            InitializeSettings();
+            
             base.Awake();
             CommandLineParserUtils.ParseArguments();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
         }
+
+        private void InitializeSettings()
+        {
+            Settings.CreateSharedInstance(new DefaultSettingsFactory()
+                .WithGraphicsQualitySettingsPresetPath("DesktopGraphicsQualityPresets"));
+        }
+
         protected override HUDContext HUDContextBuilder()
         {
             return HUDDesktopContextFactory.CreateDefault();
@@ -74,7 +84,11 @@ namespace DCL
 
         protected override void Start()
         {
-            loadingFlowController = new LoadingFlowController(Reload, DataStore.i.HUDs.loadingHUD.fatalError);
+            loadingFlowController = new LoadingFlowController(
+                Reload, 
+                DataStore.i.HUDs.loadingHUD.fatalError,
+                DataStore.i.HUDs.loadingHUD.visible, 
+                CommonScriptableObjects.rendererState);
             base.Start();
         }
 

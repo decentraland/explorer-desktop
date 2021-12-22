@@ -9,27 +9,27 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         private const float GENERAL_TIMEOUT_IN_SECONDS = 100;
 
         private readonly BaseVariable<Exception> fatalErrorMessage;
-        private readonly float timerStart;
         private readonly ILoadingFlowView view;
-        private bool isDisposed;
+        private float timerStart;
+        private bool isWatching;
+        private BaseVariable<bool> loadingHudVisible;
+        private RendererState rendererState;
 
         public LoadingFlowController(Action reloadAction,
-            BaseVariable<Exception> fatalErrorMessage)
+            BaseVariable<Exception> fatalErrorMessage,
+            BaseVariable<bool> loadingHudVisible, 
+            RendererState rendererState)
         {
             this.fatalErrorMessage = fatalErrorMessage;
-            fatalErrorMessage.OnChange += HandleFatalError;
-            CommonScriptableObjects.rendererState.OnChange += OnRendererStateChange;
-            
+            this.loadingHudVisible = loadingHudVisible;
+            this.rendererState = rendererState;
+
             view = CreateView();
             view.Setup(reloadAction);
             view.Hide();
-            timerStart = Time.unscaledTime;
-        }
 
-        private void HandleFatalError(Exception current, Exception previous)
-        {
-            if (current == null) return;
-            view.ShowForError();
+            this.loadingHudVisible.OnChange += OnLoadingHudVisibleChanged;
+            this.rendererState.OnChange += OnRendererStateChange;
         }
 
         private ILoadingFlowView CreateView()
@@ -37,23 +37,54 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             return Object.Instantiate(Resources.Load<LoadingFlowView>("LoadingFlow"));
         }
 
-        public void Dispose()
+        private void OnLoadingHudVisibleChanged(bool current, bool previous)
         {
-            if (isDisposed) return;
-            isDisposed = true;
-            CommonScriptableObjects.rendererState.OnChange -= OnRendererStateChange;
+            if (current)
+            {
+                StartWatching();
+            }
+            else
+            {
+                view.Hide();
+                StopWatching();
+            }
+        }
+
+        private void StartWatching()
+        {
+            isWatching = false;
+            timerStart = Time.unscaledTime;
+            fatalErrorMessage.OnChange += HandleFatalError;
+        }
+
+        private void HandleFatalError(Exception current, Exception previous)
+        {
+            if (current == null) return;
+            view.ShowForError();
+            StopWatching();
+        }
+
+        public void StopWatching()
+        {
+            if (isWatching) return;
+            isWatching = true;
             fatalErrorMessage.OnChange -= HandleFatalError;
         }
 
         public void Update()
         {
-            if (isDisposed) return;
+            if (isWatching) return;
 
-            if (Time.unscaledTime - timerStart > GENERAL_TIMEOUT_IN_SECONDS)
+            if (IsTimeToShowTimeout())
             {
                 view.ShowForTimeout();
-                Dispose();
+                StopWatching();
             }
+        }
+
+        private bool IsTimeToShowTimeout()
+        {
+            return Time.unscaledTime - timerStart > GENERAL_TIMEOUT_IN_SECONDS;
         }
 
         private void OnRendererStateChange(bool current, bool previous)
@@ -61,8 +92,15 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             if (current)
             {
                 view.Hide();
-                Dispose();
+                StopWatching();
             }
+        }
+
+        public void Dispose()
+        {
+            fatalErrorMessage.OnChange -= HandleFatalError;
+            loadingHudVisible.OnChange -= OnLoadingHudVisibleChanged;
+            rendererState.OnChange -= OnRendererStateChange;
         }
     }
 }
