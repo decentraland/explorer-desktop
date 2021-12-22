@@ -9,7 +9,12 @@ namespace MainScripts.DCL.Controllers.HUD.Profile
         public ProfileHUDControllerDesktop(IUserProfileBridge userProfileBridge) : base(userProfileBridge)
         {
             viewDesktop = (ProfileHUDViewDesktop)view;
-            viewDesktop.buttonExit.onClick.AddListener(DesktopUtils.Quit);
+            viewDesktop.buttonExit.onClick.AddListener(OnExitButtonClick);
+        }
+
+        private void OnExitButtonClick()
+        {
+            DesktopUtils.Quit();
         }
 
         protected override GameObject GetViewPrefab()
