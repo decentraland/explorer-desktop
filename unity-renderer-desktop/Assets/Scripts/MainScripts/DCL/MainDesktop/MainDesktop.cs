@@ -73,7 +73,7 @@ namespace DCL
             preloadingController.Dispose();
             DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-                FFMPEGDecoderWrapper.nativeCleanAll();
+            FFMPEGDecoderWrapper.nativeCleanAll();
 #endif
         }
 
