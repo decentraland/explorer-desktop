@@ -1,9 +1,11 @@
+using System;
 using DCL.SettingsCommon;
 using DCL.Components;
 using HTC.UnityPlugin.Multimedia;
 using MainScripts.DCL.Controllers.HUD.Preloading;
 using MainScripts.DCL.Controllers.LoadingFlow;
 using MainScripts.DCL.Utils;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace DCL
@@ -28,9 +30,9 @@ namespace DCL
             FFMPEGDecoderWrapper.nativeCleanAll();
             DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_FFMPEG();
 #endif
-            
+
             InitializeSettings();
-            
+
             base.Awake();
             CommandLineParserUtils.ParseArguments();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
@@ -54,12 +56,24 @@ namespace DCL
 
         protected override void OnDestroy()
         {
-            base.OnDestroy();
+            try
+            {
+                base.OnDestroy();
+                DesktopDestroy();
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+            }
+        }
+
+        private void DesktopDestroy()
+        {
             loadingFlowController.Dispose();
             preloadingController.Dispose();
             DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-            FFMPEGDecoderWrapper.nativeCleanAll();
+                FFMPEGDecoderWrapper.nativeCleanAll();
 #endif
         }
 
@@ -85,9 +99,9 @@ namespace DCL
         protected override void Start()
         {
             loadingFlowController = new LoadingFlowController(
-                Reload, 
+                Reload,
                 DataStore.i.HUDs.loadingHUD.fatalError,
-                DataStore.i.HUDs.loadingHUD.visible, 
+                DataStore.i.HUDs.loadingHUD.visible,
                 CommonScriptableObjects.rendererState);
             base.Start();
         }
