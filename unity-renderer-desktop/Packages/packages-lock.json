@@ -7,12 +7,6 @@
       "dependencies": {},
       "hash": "d4fc38c92fb139b4184912f20556ab27a3b519fa"
     },
-    "com.coffee.ui-particle": {
-      "version": "file:.com.coffee.ui-particle@3.3.9",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.decentraland.unity-renderer": {
       "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
       "depth": 0,
@@ -64,7 +58,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "3a1b2614335451d8748e34958353ca42721be87c"
+      "hash": "8ab50f3fe7b4db5ea659bc30a0438095051678f9"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
