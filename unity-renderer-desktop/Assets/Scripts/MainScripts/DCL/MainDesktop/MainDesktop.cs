@@ -36,7 +36,7 @@ namespace DCL
             base.Awake();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
             
-            DataStore.i.gltf.useMultithreading.Set(true);
+            DataStore.i.multithreading.enabled.Set(true);
 
             CheckForIncorrectScreenSize();
         }
