@@ -18,10 +18,10 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "27604496ca1b27b93d78dd2257a50158fab2bc33"
+      "hash": "50a67d8f419b6cea0398eff6c19cf0bbe11ed609"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#test/gltf-async",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -71,7 +71,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "77aef6c18493c7e387b84ccbf4e3039bee73a25d"
+      "hash": "fe1a34492b01c2cb16de1355b870752d96fe9a58"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
