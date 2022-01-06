@@ -102,7 +102,8 @@ namespace DCL
                 Reload,
                 DataStore.i.HUDs.loadingHUD.fatalError,
                 DataStore.i.HUDs.loadingHUD.visible,
-                CommonScriptableObjects.rendererState);
+                CommonScriptableObjects.rendererState,
+                DataStore.i.wsCommunication.communicationEstablished);
             base.Start();
         }
 
