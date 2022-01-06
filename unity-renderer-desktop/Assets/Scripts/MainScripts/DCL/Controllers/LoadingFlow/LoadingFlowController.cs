@@ -7,22 +7,26 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
     public class LoadingFlowController : IDisposable
     {
         private const float GENERAL_TIMEOUT_IN_SECONDS = 100;
+        private const int WEB_SOCKET_TIMEOUT = 15;
 
         private readonly BaseVariable<Exception> fatalErrorMessage;
         private readonly ILoadingFlowView view;
+        private readonly BaseVariable<bool> loadingHudVisible;
+        private readonly RendererState rendererState;
+        private readonly BaseVariable<bool> websocketCommunicationEstablished;
         private float timerStart;
         private bool isWatching;
-        private BaseVariable<bool> loadingHudVisible;
-        private RendererState rendererState;
 
         public LoadingFlowController(Action reloadAction,
             BaseVariable<Exception> fatalErrorMessage,
             BaseVariable<bool> loadingHudVisible, 
-            RendererState rendererState)
+            RendererState rendererState,
+            BaseVariable<bool> websocketCommunicationEstablished)
         {
             this.fatalErrorMessage = fatalErrorMessage;
             this.loadingHudVisible = loadingHudVisible;
             this.rendererState = rendererState;
+            this.websocketCommunicationEstablished = websocketCommunicationEstablished;
 
             view = CreateView();
             view.Setup(reloadAction);
@@ -64,7 +68,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             StopWatching();
         }
 
-        public void StopWatching()
+        private void StopWatching()
         {
             if (isWatching) return;
             isWatching = true;
@@ -84,7 +88,9 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
 
         private bool IsTimeToShowTimeout()
         {
-            return Time.unscaledTime - timerStart > GENERAL_TIMEOUT_IN_SECONDS;
+            var elapsedLoadingTime = Time.unscaledTime - timerStart;
+            return elapsedLoadingTime > GENERAL_TIMEOUT_IN_SECONDS
+                   || !websocketCommunicationEstablished.Get() && elapsedLoadingTime > WEB_SOCKET_TIMEOUT;
         }
 
         private void OnRendererStateChange(bool current, bool previous)
