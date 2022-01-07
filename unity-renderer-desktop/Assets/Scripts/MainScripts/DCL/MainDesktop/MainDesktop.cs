@@ -36,7 +36,7 @@ namespace DCL
             base.Awake();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
             
-            DataStore.i.multithreading.enabled.Set(true);
+            //DataStore.i.multithreading.enabled.Set(true);
 
             CheckForIncorrectScreenSize();
         }
@@ -73,6 +73,7 @@ namespace DCL
             {
                 Screen.SetResolution(minRes.width, minRes.height, Screen.fullScreenMode);
             }
+            //DataStore.i.multithreading.enabled.Set(true);
         }
 
         private void InitializeSettings()
