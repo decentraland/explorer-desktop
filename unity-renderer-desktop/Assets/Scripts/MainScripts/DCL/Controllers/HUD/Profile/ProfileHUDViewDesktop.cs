@@ -6,6 +6,8 @@ namespace MainScripts.DCL.Controllers.HUD.Profile
     public class ProfileHUDViewDesktop : ProfileHUDView
     {
         [SerializeField]
-        internal Button buttonExit;
+        protected internal Button buttonExit;
+        
+        protected internal Button getButtonSignUp => buttonSignUp;
     }
 }
