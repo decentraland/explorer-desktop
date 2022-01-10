@@ -248,12 +248,12 @@ MonoBehaviour:
     soloSceneCoords: {x: 0, y: 0}
     ignoreGlobalScenes: 0
     msgStepByStep: 0
-  openBrowserWhenStart: 1
+  openBrowserWhenStart: 0
   kernelVersion: 
   useCustomContentServer: 0
   customContentServerUrl: http://localhost:1338/
   baseUrlMode: 1
-  baseUrlCustom: https://play.decentraland.zone/?
+  baseUrlCustom: https://play.decentraland.zone/?DISABLE_ASSET_BUNDLES&DISABLE_WEARABLE_ASSET_BUNDLES&
   environment: 4
   realm: loki
   startInCoords: {x: 0, y: 0}
@@ -264,6 +264,7 @@ MonoBehaviour:
   builderInWorld: 0
   enableProceduralSkybox: 0
   soloScene: 0
+  multithreaded: 1
   debugPanelMode: 0
 --- !u!4 &1444882337
 Transform:
