@@ -19,11 +19,9 @@ namespace DCL
         private LoadingFlowController loadingFlowController;
         private PreloadingController preloadingController;
         private bool isConnectionLost;
-        private bool isRestarting;
 
         protected override void Awake()
         {
-            isRestarting = false;
             isConnectionLost = false;
 
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
@@ -90,7 +88,7 @@ namespace DCL
             base.Update();
             loadingFlowController.Update();
 
-            if (isConnectionLost && !isRestarting)
+            if (isConnectionLost)
             {
                 DesktopUtils.Quit();
             }
@@ -99,19 +97,11 @@ namespace DCL
         protected override void Start()
         {
             loadingFlowController = new LoadingFlowController(
-                Reload,
                 DataStore.i.HUDs.loadingHUD.fatalError,
                 DataStore.i.HUDs.loadingHUD.visible,
                 CommonScriptableObjects.rendererState,
                 DataStore.i.wsCommunication.communicationEstablished);
             base.Start();
-        }
-
-        private void Reload()
-        {
-            isRestarting = true;
-            kernelCommunication.Dispose();
-            SceneManager.LoadScene(0);
         }
 
         protected override void InitializeSceneDependencies()

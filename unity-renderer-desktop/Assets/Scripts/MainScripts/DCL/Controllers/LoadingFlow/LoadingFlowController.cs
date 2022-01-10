@@ -17,8 +17,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         private float timerStart;
         private bool isWatching;
 
-        public LoadingFlowController(Action reloadAction,
-            BaseVariable<Exception> fatalErrorMessage,
+        public LoadingFlowController(BaseVariable<Exception> fatalErrorMessage,
             BaseVariable<bool> loadingHudVisible, 
             RendererState rendererState,
             BaseVariable<bool> websocketCommunicationEstablished)
@@ -29,7 +28,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             this.websocketCommunicationEstablished = websocketCommunicationEstablished;
 
             view = CreateView();
-            view.Setup(reloadAction);
+            view.Setup();
             view.Hide();
 
             this.loadingHudVisible.OnChange += OnLoadingHudVisibleChanged;
