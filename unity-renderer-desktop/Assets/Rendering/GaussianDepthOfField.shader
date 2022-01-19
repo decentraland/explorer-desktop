@@ -1,4 +1,4 @@
-Shader "Hidden/Universal Render Pipeline/GaussianDepthOfField"
+Shader "DCL/Universal Render Pipeline/GaussianDepthOfField"
 {
     HLSLINCLUDE
 
