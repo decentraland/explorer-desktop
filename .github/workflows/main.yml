@@ -16,6 +16,12 @@ jobs:
             After the CI passes:
 
             This branch can be downloaded with the following instructions:
+
+            ### Custom protocol:
+            If you have the launcher installed ([download launcher](https://github.com/decentraland/explorer-desktop-launcher/releases)) you can press open on the following link:
+            - [Open custom protocol](https://renderer-artifacts.decentraland.org/desktop/index.html?dcl://DESKTOP-BRANCH=${{ github.head_ref }})
+            - [Open custom protocol with Developer Mode](https://renderer-artifacts.decentraland.org/desktop/index.html?dcl://DESKTOP-BRANCH=${{ github.head_ref }}&DESKTOP-DEVELOPER-MODE)
+
             ### For Windows:
             Execute the following commands in `Windows PowerShell`
             ```bash
