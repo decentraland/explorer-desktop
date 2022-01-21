@@ -22,6 +22,7 @@ namespace DCL
 
         protected override void Awake()
         {
+            CommandLineParserUtils.ParseArguments();
             isConnectionLost = false;
 
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
@@ -32,8 +33,20 @@ namespace DCL
             InitializeSettings();
 
             base.Awake();
-            CommandLineParserUtils.ParseArguments();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
+        }
+        
+
+        protected override void InitializeCommunication()
+        {
+            // TODO(Brian): Remove this branching once we finish migrating all tests out of the
+            //              IntegrationTestSuite_Legacy base class.
+            if (!Configuration.EnvironmentSettings.RUNNING_TESTS)
+            {
+                int startPort = CommandLineParserUtils.startPort;
+                int endPort = startPort + 100;
+                kernelCommunication = new WebSocketCommunication(true, startPort, endPort);
+            }
         }
 
         private void InitializeSettings()

@@ -7,6 +7,7 @@ namespace DCL
 {
     public static class CommandLineParserUtils
     {
+        public static int startPort = 7666;
         public static void ParseArguments()
         {
             var debugConfig = GameObject.Find("DebugConfig").GetComponent<DebugConfigComponent>();
@@ -29,6 +30,10 @@ namespace DCL
                         case "--browser":
                             i++; // shift
                             debugConfig.openBrowserWhenStart = arguments[i] == "true";
+                            break;
+                        case "--port":
+                            i++; // shift
+                            startPort = int.Parse(arguments[i]);
                             break;
                     }
                 }
