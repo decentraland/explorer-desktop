@@ -7,7 +7,7 @@ namespace DCL
 {
     public static class CommandLineParserUtils
     {
-        public static int startPort = 5000;
+        public static int startPort = 7666;
         public static void ParseArguments()
         {
             var debugConfig = GameObject.Find("DebugConfig").GetComponent<DebugConfigComponent>();
