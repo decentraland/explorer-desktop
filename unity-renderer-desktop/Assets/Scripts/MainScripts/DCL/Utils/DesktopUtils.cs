@@ -11,7 +11,7 @@ namespace MainScripts.DCL.Utils
             // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
             UnityEditor.EditorApplication.isPlaying = false;
 #else
-            Application.Quit();
+            System.Diagnostics.Process.GetCurrentProcess().Kill();
 #endif
         }
     }
