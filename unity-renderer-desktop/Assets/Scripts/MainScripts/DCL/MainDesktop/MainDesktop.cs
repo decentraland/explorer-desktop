@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using DCL.SettingsCommon;
 using DCL.Components;
 using HTC.UnityPlugin.Multimedia;
@@ -34,6 +35,8 @@ namespace DCL
 
             base.Awake();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
+
+            CheckForIncorrectScreenSize();
         }
         
 
@@ -46,6 +49,20 @@ namespace DCL
                 int startPort = CommandLineParserUtils.startPort;
                 int endPort = startPort + 100;
                 kernelCommunication = new WebSocketCommunication(true, startPort, endPort);
+            }
+            
+        }
+
+        private void CheckForIncorrectScreenSize()
+        {
+            var width = Screen.currentResolution.width;
+            var height = Screen.currentResolution.height;
+            var availableFilteredResolutions = Screen.resolutions.Where(r => r.width >= 1024 && r.refreshRate > 0).ToArray();
+            var minRes = availableFilteredResolutions[0];
+
+            if (width < 800 || height < 600)
+            {
+                Screen.SetResolution(minRes.width, minRes.height, Screen.fullScreenMode);
             }
         }
 
