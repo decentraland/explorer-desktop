@@ -8,7 +8,7 @@ namespace DCL
     public class MemoryManagerDesktop : IMemoryManager
     {
         public event System.Action OnCriticalMemory;
-
         public void Dispose() { }
+        public void Initialize() { }
     }
 }
