@@ -72,16 +72,6 @@ namespace DCL
                 .WithGraphicsQualitySettingsPresetPath("DesktopGraphicsQualityPresets"));
         }
 
-        protected override HUDContext HUDContextBuilder()
-        {
-            return HUDDesktopContextFactory.CreateDefault();
-        }
-
-        protected override PlatformContext PlatformContextBuilder()
-        {
-            return PlatformDesktopContextFactory.CreateDefault();
-        }
-
         protected override void OnDestroy()
         {
             try
@@ -138,6 +128,11 @@ namespace DCL
         {
             base.InitializeSceneDependencies();
             preloadingController = new PreloadingController();
+        }
+
+        protected override void SetupServices()
+        {
+            Environment.Setup(ServiceLocatorDesktopFactory.CreateDefault());
         }
     }
 }
