@@ -85,7 +85,12 @@ MonoBehaviour:
       RenderQueueType: 2
       LayerMask:
         serializedVersion: 2
-        m_Bits: 4294967295
+        m_Bits: 33
+      Passes:
+      - SRPDefaultUnlit
+      - UniversalForward
+      - UniversalForwardOnly
+      - LightweightForward
     depthCompareFunction: 2
     overrideMaterial: {fileID: 2100000, guid: 364b395f4734e474482f34752fb24446, type: 2}
     overrideMaterialPassIndex: 0

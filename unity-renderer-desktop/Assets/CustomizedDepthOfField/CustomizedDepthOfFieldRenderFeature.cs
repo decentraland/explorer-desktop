@@ -29,22 +29,15 @@ namespace CustomizedDepthOfField
                 settings.filterSettings.RenderQueueRange, filter.LayerMask,
                 destinationTexture,
                 settings.overrideMaterial, settings.overrideMaterialPassIndex,
-                settings.depthCompareFunction,
                 settings.blurSkybox,
-                new[]
-                {
-                    "SRPDefaultUnlit",
-                    "UniversalForward",
-                    "UniversalForwardOnly",
-                    "LightweightForward"
-                });
+                settings.filterSettings.Passes);
         }
 
         public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
         {
             renderer.EnqueuePass(renderPass);
         }
-        
+
         [Serializable]
         public class Settings
         {
@@ -55,7 +48,7 @@ namespace CustomizedDepthOfField
             public int overrideMaterialPassIndex;
             public bool blurSkybox;
         }
-        
+
         public enum RenderQueueType
         {
             Opaque,
@@ -66,9 +59,16 @@ namespace CustomizedDepthOfField
         [Serializable]
         public class FilterSettings
         {
-            // TODO: expose opaque, transparent, all ranges as drop down
             public RenderQueueType RenderQueueType;
             public LayerMask LayerMask;
+
+            public string[] Passes =
+            {
+                "SRPDefaultUnlit",
+                "UniversalForward",
+                "UniversalForwardOnly",
+                "LightweightForward"
+            };
 
             public FilterSettings()
             {

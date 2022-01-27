@@ -9,46 +9,40 @@ namespace CustomizedDepthOfField
     public class CustomizedDepthOfFieldRenderPass : ScriptableRenderPass
     {
         private readonly List<ShaderTagId> shaderTags;
-        private RenderTargetHandle depthAttachmentHandle;
+        private RenderTargetHandle destinationTextureHandle;
         private readonly Material overrideMaterial;
         private readonly int overrideMaterialPassIndex;
         private readonly bool blurSkybox;
         private FilteringSettings filteringSettings;
         private ProfilingSampler profilingSampler;
         private RenderStateBlock stateBlock;
-        private RenderTargetIdentifier renderTargetIdentifier;
+        private RenderTargetIdentifier destinationTextureIdentifier;
 
         public CustomizedDepthOfFieldRenderPass(RenderPassEvent renderPassEvent,
             RenderQueueRange renderQueueRange,
             LayerMask layerMask,
-            RenderTargetHandle depthAttachmentHandle,
+            RenderTargetHandle destinationTextureHandle,
             Material overrideMaterial,
             int overrideMaterialPassIndex,
-            CompareFunction settingsDepthCompareFunction,
             bool blurSkybox,
             IEnumerable<string> shaderTags)
         {
             profilingSampler = new ProfilingSampler(nameof(CustomizedDepthOfFieldRenderPass));
             filteringSettings = new FilteringSettings(renderQueueRange, layerMask);
             base.renderPassEvent = renderPassEvent;
-            this.depthAttachmentHandle = depthAttachmentHandle;
+            this.destinationTextureHandle = destinationTextureHandle;
             this.overrideMaterial = overrideMaterial;
             this.overrideMaterialPassIndex = overrideMaterialPassIndex;
             this.blurSkybox = blurSkybox;
-            stateBlock = new RenderStateBlock(RenderStateMask.Depth)
-            {
-                depthState = new DepthState(true, settingsDepthCompareFunction)
-            };
+            stateBlock = new RenderStateBlock(RenderStateMask.Nothing);
             this.shaderTags = shaderTags.Select(tag => new ShaderTagId(tag)).ToList();
-            renderTargetIdentifier = new RenderTargetIdentifier(depthAttachmentHandle.Identifier(), 0);
+            destinationTextureIdentifier = new RenderTargetIdentifier(destinationTextureHandle.Identifier(), 0);
         }
 
         public override void OnCameraSetup(CommandBuffer cmd, ref RenderingData renderingData)
         {
             var descriptor = renderingData.cameraData.cameraTargetDescriptor;
-            cmd.GetTemporaryRT(depthAttachmentHandle.id, descriptor, FilterMode.Bilinear);
-            ConfigureTarget(renderTargetIdentifier);
-            ConfigureClear(ClearFlag.Color, blurSkybox ? Color.black : Color.white);
+            cmd.GetTemporaryRT(destinationTextureHandle.id, descriptor, FilterMode.Bilinear);
         }
 
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
@@ -56,6 +50,8 @@ namespace CustomizedDepthOfField
             var cmd = CommandBufferPool.Get();
             using (new ProfilingScope(cmd, profilingSampler))
             {
+                cmd.SetRenderTarget(destinationTextureIdentifier);
+                cmd.ClearRenderTarget(true, true, blurSkybox ? Color.black : Color.white);
                 context.ExecuteCommandBuffer(cmd);
                 cmd.Clear();
 
@@ -67,8 +63,8 @@ namespace CustomizedDepthOfField
                 drawSettings.overrideMaterial = overrideMaterial;
                 drawSettings.overrideMaterialPassIndex = overrideMaterialPassIndex;
 
-                context.DrawRenderers(renderingData.cullResults, ref drawSettings, ref filteringSettings,
-                    ref stateBlock);
+                context.DrawRenderers(renderingData.cullResults, ref drawSettings, ref filteringSettings, ref stateBlock);
+                cmd.SetGlobalTexture(destinationTextureHandle.id, destinationTextureIdentifier);
             }
 
             context.ExecuteCommandBuffer(cmd);
@@ -77,7 +73,7 @@ namespace CustomizedDepthOfField
 
         public override void OnCameraCleanup(CommandBuffer cmd)
         {
-            cmd.ReleaseTemporaryRT(depthAttachmentHandle.id);
+            cmd.ReleaseTemporaryRT(destinationTextureHandle.id);
         }
     }
 }

@@ -76,7 +76,6 @@ Shader "DCL/Universal Render Pipeline/GaussianDepthOfField"
             depth = LinearEyeDepth(depth, _ZBufferParams);
             half coc = (depth - FarStart) / (FarEnd - FarStart);
             return saturate(coc);
-            //return coc < 0.99 ? saturate(coc) : 0;
         }
 
         struct PrefilterOutput
@@ -204,7 +203,6 @@ Shader "DCL/Universal Render Pipeline/GaussianDepthOfField"
                 dstAlpha = saturate(1.0 - blend);
             }
 
-            // return coc;
             return half4(baseColor * dstAlpha + dstColor, 1.0);
         }
 
