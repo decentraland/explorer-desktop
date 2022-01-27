@@ -94,4 +94,4 @@ MonoBehaviour:
     depthCompareFunction: 2
     overrideMaterial: {fileID: 2100000, guid: 364b395f4734e474482f34752fb24446, type: 2}
     overrideMaterialPassIndex: 0
-    blurSkybox: 1
+    blurSkybox: 0
