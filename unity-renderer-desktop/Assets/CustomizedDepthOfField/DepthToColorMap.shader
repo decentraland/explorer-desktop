@@ -7,8 +7,6 @@ Shader "DCL/DepthToColorMap"
     
     SubShader
     {
-//        Offset -1000,-1000
-
         Pass
         {
             CGPROGRAM
@@ -24,7 +22,6 @@ Shader "DCL/DepthToColorMap"
 
             struct v2f
             {
-                // float depth : TEXCOORD1;
                 float4 vertex : SV_POSITION;
             };
 
@@ -34,14 +31,12 @@ Shader "DCL/DepthToColorMap"
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                // o.depth = o.vertex.z / o.vertex.w;
                 return o;
             }
 
             fixed4 frag (const v2f i) : SV_Target
             {
                 return pow(i.vertex.z / i.vertex.w, _Strength);
-                // return i.depth;
             }
             ENDCG
         }
