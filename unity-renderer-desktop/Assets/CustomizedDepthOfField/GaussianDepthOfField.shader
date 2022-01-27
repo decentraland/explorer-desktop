@@ -17,6 +17,8 @@ Shader "DCL/Universal Render Pipeline/GaussianDepthOfField"
         TEXTURE2D_X(_ColorTexture);
         TEXTURE2D_X(_FullCoCTexture);
         TEXTURE2D_X(_HalfCoCTexture);
+        TEXTURE2D_X_FLOAT(_CustomizedDepthOfField);
+        SAMPLER(sampler_CustomizedDepthOfField);
 
         float4 _SourceSize;
         float4 _DownSampleScaleFactor;
@@ -70,10 +72,11 @@ Shader "DCL/Universal Render Pipeline/GaussianDepthOfField"
             UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
             float2 uv = UnityStereoTransformScreenSpaceTex(input.uv);
 
-            float depth = LOAD_TEXTURE2D_X(_CameraDepthTexture, _SourceSize.xy * uv).x;
+            float depth = LOAD_TEXTURE2D_X(_CustomizedDepthOfField, _SourceSize.xy * uv).x;
             depth = LinearEyeDepth(depth, _ZBufferParams);
             half coc = (depth - FarStart) / (FarEnd - FarStart);
-            return coc < 0.99 ? saturate(coc) : 0;
+            return saturate(coc);
+            //return coc < 0.99 ? saturate(coc) : 0;
         }
 
         struct PrefilterOutput
@@ -201,7 +204,7 @@ Shader "DCL/Universal Render Pipeline/GaussianDepthOfField"
                 dstAlpha = saturate(1.0 - blend);
             }
 
-            //return coc;
+            // return coc;
             return half4(baseColor * dstAlpha + dstColor, 1.0);
         }
 
@@ -215,6 +218,11 @@ Shader "DCL/Universal Render Pipeline/GaussianDepthOfField"
         }
         LOD 100
         ZTest Always ZWrite Off Cull Off
+        Stencil
+        {
+            Ref 0
+            Comp Equal
+        }
 
         Pass
         {

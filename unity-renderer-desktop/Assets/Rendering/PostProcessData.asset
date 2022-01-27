@@ -16,7 +16,7 @@ MonoBehaviour:
     stopNanPS: {fileID: 4800000, guid: 1121bb4e615ca3c48b214e79e841e823, type: 3}
     subpixelMorphologicalAntialiasingPS: {fileID: 4800000, guid: 63eaba0ebfb82cc43bde059b4a8c65f6,
       type: 3}
-    gaussianDepthOfFieldPS: {fileID: 4800000, guid: 27db8ffc7aeb20d4981a958f360049fa,
+    gaussianDepthOfFieldPS: {fileID: 4800000, guid: ad73c06aba4f5d54d916907693789e45,
       type: 3}
     bokehDepthOfFieldPS: {fileID: 4800000, guid: 2aed67ad60045d54ba3a00c91e2d2631,
       type: 3}
