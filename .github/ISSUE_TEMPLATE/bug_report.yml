@@ -1,0 +1,121 @@
+name: Bug report
+description: Report a bug in Decentraland Desktop
+labels: [new]
+body:
+
+- type: markdown
+  attributes:
+    value: |
+      Thank you for taking the time to report this issue! Before reporting, please be sure to check the open [issues](https://github.com/decentraland/explorer-desktop) to ensure it's already reported by someone else.
+  
+- type: textarea
+  attributes:
+    label: What happened?
+    description: |
+      Please try to describe in detail what your issue has been. 
+      You can include screenshots or videos by simply dragging and dropping them into this field, or include portions of code using the <code>```</code> tags.
+      Please include coordinates.
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Steps to reproduce
+    description: |
+      Describe the necessary steps we can take in order to reproduce this error.
+  validations:
+    required: true
+
+- type: input
+  id: os
+  attributes:
+    label: Operating System
+    description: |
+        What is your browser and operating system?
+    placeholder: Chrome, Windows 10
+  validations:
+    required: true
+
+- type: dropdown
+  id: wallet
+  attributes:
+    label: Wallet
+    description: |
+        Which wallet are you using?
+    options:
+      - Metamask
+      - Fortmatic
+      - Wallet Connect
+      - None, played as guest
+  validations: 
+    required: true
+
+- type: input
+  id: cpu
+  attributes:
+    label: CPU
+    description: |
+        What is your CPU name and model?
+    placeholder: Intel i9 10th generation.
+  validations:
+    required: true
+
+- type: input
+  id: gpu
+  attributes:
+    label: GPU
+    description: |
+        What is your Graphics Card name and model?
+    placeholder: NVIDIA 980TI
+  validations:
+    required: true
+
+- type: input
+  id: ram
+  attributes:
+    label: RAM
+    description: |
+        What is your Memory Size?
+    placeholder: 32GB
+  validations:
+    required: true
+
+- type: input
+  id: kernel
+  attributes:
+    label: Kernel Version
+    description: >
+        If this field is not filled automatically, please run the /version command in the chat window to see the kernel and unity renderer versions.
+    placeholder: latest
+  validations:
+    required: true
+
+- type: input
+  id: unity
+  attributes:
+    label: Unity Version
+    description: >
+        If this field is not filled automatically, please run the /version command in the chat window to see the kernel and unity renderer versions.
+    placeholder: latest
+  validations:
+    required: true
+
+- type: input
+  id: realm
+  attributes:
+    label: Realm
+    description: |
+        In which realm are you?
+    placeholder: fenrir
+  validations:
+    required: false
+
+- type: input
+  id: nametag
+  attributes:
+    label: NameTag
+    description: |
+        What's your in-game nametag?
+    placeholder: johndoe#1111
+  validations:
+    required: false
