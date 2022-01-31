@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1beb2919801a5f49833bb7df5673e4e, type: 3}
+  m_Name: DepthOfFieldControlConfiguration
+  m_EditorClassIdentifier: 
+  title: Depth Of Field
+  controlPrefab: {fileID: 4055150670729145914, guid: 372fbece3a6ac46198f84ff09724b4d3,
+    type: 3}
+  controlController: {fileID: 11400000, guid: 40b428975d5c1634fb998b20a22d18b1, type: 2}
+  flagsThatDisableMe: []
+  flagsThatDeactivateMe: []
+  isBeta: 0

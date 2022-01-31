@@ -134,5 +134,7 @@ namespace DCL
         {
             Environment.Setup(ServiceLocatorDesktopFactory.CreateDefault());
         }
+        
+        protected override void CreateEnvironment() => MainSceneFactory.CreateEnvironment("EnvironmentDesktop");
     }
 }
