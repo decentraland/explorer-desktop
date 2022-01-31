@@ -1,10 +1,5 @@
 Shader "DCL/DepthToColorMap"
-{
-    Properties
-    {
-        _Strength ("Strength", Range(0, 1)) = 0.5
-    }
-    
+{    
     SubShader
     {
         Pass
@@ -25,8 +20,6 @@ Shader "DCL/DepthToColorMap"
                 float4 vertex : SV_POSITION;
             };
 
-            float _Strength;
-
             v2f vert (const appdata v)
             {
                 v2f o;
@@ -36,7 +29,7 @@ Shader "DCL/DepthToColorMap"
 
             fixed4 frag (const v2f i) : SV_Target
             {
-                return pow(i.vertex.z / i.vertex.w, _Strength);
+                return i.vertex.z;
             }
             ENDCG
         }

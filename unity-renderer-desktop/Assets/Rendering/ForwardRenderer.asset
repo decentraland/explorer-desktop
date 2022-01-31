@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dad698e8e57c1cf43a67d9f32c176c61, type: 3}
-  m_Name: CustomizedDepthOfFieldRenderFeature
+  m_Name: GaussianDepthOfFieldFixedRenderFeature
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:

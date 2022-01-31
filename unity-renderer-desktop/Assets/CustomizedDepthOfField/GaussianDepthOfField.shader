@@ -17,8 +17,8 @@ Shader "DCL/Universal Render Pipeline/GaussianDepthOfField"
         TEXTURE2D_X(_ColorTexture);
         TEXTURE2D_X(_FullCoCTexture);
         TEXTURE2D_X(_HalfCoCTexture);
-        TEXTURE2D_X_FLOAT(_CustomizedDepthOfField);
-        SAMPLER(sampler_CustomizedDepthOfField);
+        TEXTURE2D_X_FLOAT(_GaussianDepthMap);
+        SAMPLER(sampler_GaussianDepthMap);
 
         float4 _SourceSize;
         float4 _DownSampleScaleFactor;
@@ -72,7 +72,7 @@ Shader "DCL/Universal Render Pipeline/GaussianDepthOfField"
             UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
             float2 uv = UnityStereoTransformScreenSpaceTex(input.uv);
 
-            float depth = LOAD_TEXTURE2D_X(_CustomizedDepthOfField, _SourceSize.xy * uv).x;
+            float depth = LOAD_TEXTURE2D_X(_GaussianDepthMap, _SourceSize.xy * uv).x;
             depth = LinearEyeDepth(depth, _ZBufferParams);
             half coc = (depth - FarStart) / (FarEnd - FarStart);
             return saturate(coc);
