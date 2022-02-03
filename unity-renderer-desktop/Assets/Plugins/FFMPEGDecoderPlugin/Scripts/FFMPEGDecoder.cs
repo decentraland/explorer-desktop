@@ -14,7 +14,7 @@ namespace HTC.UnityPlugin.Multimedia
 	public class FFMPEGDecoder : IDisposable
 	{
 		private const string LOG_TAG = "[FFMPEGDecoder]";
-		private const bool VERBOSE = true;
+		private const bool VERBOSE = false;
 
 		bool newFrame = false;
 		
@@ -495,7 +495,8 @@ namespace HTC.UnityPlugin.Multimedia
 				if (isAudioEnabled && !isAllAudioChEnabled) {
 					if (audioPlayCoroutine != null)
 						coroutineStarter.StopCoroutine(audioPlayCoroutine);
-                    backgroundWorker.CancelAsync();
+
+					backgroundWorker?.CancelAsync();
 
                     if (audioSource != null) {
 						for (int i = 0; i < SWAP_BUFFER_NUM; i++) {
