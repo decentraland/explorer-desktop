@@ -25,12 +25,12 @@ namespace DCL
         {
             CommandLineParserUtils.ParseArguments();
             isConnectionLost = false;
-
+/*
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
             FFMPEGDecoderWrapper.nativeCleanAll();
             DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_FFMPEG();
 #endif
-
+*/
             InitializeSettings();
 
             base.Awake();
@@ -46,9 +46,16 @@ namespace DCL
             //              IntegrationTestSuite_Legacy base class.
             if (!Configuration.EnvironmentSettings.RUNNING_TESTS)
             {
+                var withSSL = true;
                 int startPort = CommandLineParserUtils.startPort;
+                
+                #if UNITY_EDITOR
+                withSSL = false;
+                startPort = 5000;
+                #endif
+                
                 int endPort = startPort + 100;
-                kernelCommunication = new WebSocketCommunication(true, startPort, endPort);
+                kernelCommunication = new WebSocketCommunication(withSSL, startPort, endPort);
             }
             
         }
@@ -90,9 +97,10 @@ namespace DCL
             loadingFlowController.Dispose();
             preloadingController.Dispose();
             DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
+            /*
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
             FFMPEGDecoderWrapper.nativeCleanAll();
-#endif
+#endif*/
         }
 
         void OnCommunicationEstablished(bool current, bool previous)
