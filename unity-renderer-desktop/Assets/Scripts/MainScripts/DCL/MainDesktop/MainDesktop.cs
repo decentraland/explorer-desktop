@@ -33,6 +33,9 @@ namespace DCL
 
             InitializeSettings();
 
+            // Since ABs built for WebGL target platform can't be loaded in desktop platform, we don't use them
+            RendereableAssetLoadHelper.defaultLoadingType = RendereableAssetLoadHelper.LoadingType.GLTF_ONLY;
+
             base.Awake();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
 
