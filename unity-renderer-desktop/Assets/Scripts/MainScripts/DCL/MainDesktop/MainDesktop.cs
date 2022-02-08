@@ -50,7 +50,7 @@ namespace DCL
                 int startPort = CommandLineParserUtils.startPort;
                 
                 #if UNITY_EDITOR
-                withSSL = false;
+                withSSL = DebugConfigComponent.i.webSocketSSL;
                 startPort = 5000;
                 #endif
                 
