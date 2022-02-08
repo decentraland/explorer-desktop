@@ -18,7 +18,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "50a67d8f419b6cea0398eff6c19cf0bbe11ed609"
+      "hash": "27604496ca1b27b93d78dd2257a50158fab2bc33"
     },
     "com.decentraland.unity-renderer": {
       "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
@@ -312,11 +312,10 @@
       "url": "https://packages.unity.com"
     },
     "net.tnrd.nsubstitute": {
-      "version": "https://github.com/decentraland/Unity3D-NSubstitute.git",
+      "version": "file:.net.tnrd.nsubstitute@4.2.2",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "cdd11bb74398afae73e71b6fe01114f597a6ce08"
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.modules.androidjni": {
       "version": "1.0.0",

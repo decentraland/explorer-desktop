@@ -53,15 +53,15 @@ if [[ -z "$UNITYPATH" ]]; then
     # Update package-lock.json
     PACKAGES_LOCK_PATH="unity-renderer-desktop/Packages/packages-lock.json"
     JSON_STR=$(cat ${PACKAGES_LOCK_PATH})
-    JSON_STR=$(jq '."dependencies"."com.decentraland.unity-renderer"."hash" = $newVal' --arg newVal ${COMMIT_HASH} <<<"$JSON_STR")
-    JSON_STR=$(jq '."dependencies"."com.decentraland.unity-renderer"."version" = $newVal' --arg newVal ${GIT_URL} <<<"$JSON_STR")
+    JSON_STR=$(jq -r '."dependencies"."com.decentraland.unity-renderer"."hash" = $newVal' --arg newVal ${COMMIT_HASH} <<<"$JSON_STR")
+    JSON_STR=$(jq -r '."dependencies"."com.decentraland.unity-renderer"."version" = $newVal' --arg newVal ${GIT_URL} <<<"$JSON_STR")
     echo ${JSON_STR} > ${PACKAGES_LOCK_PATH}
 
     # Update manifest.json
     MANIFEST_LOCK_PATH="unity-renderer-desktop/Packages/manifest.json"
     JSON_STR=$(cat ${MANIFEST_LOCK_PATH})
-    JSON_STR=$(jq '."dependencies"."com.decentraland.unity-renderer" = $newVal' --arg newVal ${GIT_URL} <<<"$JSON_STR")
-    echo ${JSON_STR} > ${MANIFEST_LOCK_PATH}
+    JSON_STR=$(jq -r '."dependencies"."com.decentraland.unity-renderer" = $newVal' --arg newVal ${GIT_URL} <<<"$JSON_STR")
+    echo "${JSON_STR}" > ${MANIFEST_LOCK_PATH}
 else
     LOCAL_URL="file:${UNITYPATH}"
     echo "Using local unity-renderer path=${LOCAL_URL}"
@@ -69,6 +69,6 @@ else
     # Update manifest.json
     MANIFEST_LOCK_PATH="unity-renderer-desktop/Packages/manifest.json"
     JSON_STR=$(cat ${MANIFEST_LOCK_PATH})
-    JSON_STR=$(jq '."dependencies"."com.decentraland.unity-renderer" = $newVal' --arg newVal ${LOCAL_URL} <<<"$JSON_STR")
-    echo ${JSON_STR} > ${MANIFEST_LOCK_PATH}
+    JSON_STR=$(jq -r '."dependencies"."com.decentraland.unity-renderer" = $newVal' --arg newVal ${LOCAL_URL} <<<"$JSON_STR")
+    echo "${JSON_STR}" > ${MANIFEST_LOCK_PATH}
 fi
