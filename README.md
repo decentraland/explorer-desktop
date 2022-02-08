@@ -51,7 +51,7 @@ Inside it, you need to change the remote path of the package for the absolute pa
 
 Please change "`file:/unity-renderer/unity-renderer/Assets`" to the corresponding location (absolute path).
 
-After these steps, you can open **Unity Renderer** and **Unity Renderer Desktop** project at the same time, and the changes in **Unity Renderer Desktop** project will be reflected in the **Unity Renderer** immediately.
+After these steps, you can open **Unity Renderer** and **Unity Renderer Desktop** project at the same time, and the changes in **Unity Renderer** project will be reflected in the **Unity Renderer Desktop** immediately.
 
 ## Downloading artifacts to test
 
