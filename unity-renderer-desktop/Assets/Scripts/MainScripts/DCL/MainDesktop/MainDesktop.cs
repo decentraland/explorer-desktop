@@ -42,6 +42,7 @@ namespace DCL
             DataStore.i.performance.multithreading.Set(true);
             DataStore.i.performance.maxDownloads.Set(100);
             DataStore.i.performance.throttleMessageProcessing.Set(false);
+            DataStore.i.performance.throttleGLTF.Set(false);
         }
 
         protected override void InitializeCommunication()
