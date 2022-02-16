@@ -71,7 +71,14 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "dc9f2c703a6e51c444fba16e0ca93e700ac6c336"
+      "hash": "7d22053c23bf35fb3607632db57a918ee1181bc2"
+    },
+    "com.mediadecoder.ffmpeg": {
+      "version": "git+https://github.com/decentraland/FFMPEGMediaDecoder.git?path=FFMPEGDecoderPlugin#master",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "b67b01a83b1c358580bf9d11a158113a824f8706"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -312,10 +319,11 @@
       "url": "https://packages.unity.com"
     },
     "net.tnrd.nsubstitute": {
-      "version": "file:.net.tnrd.nsubstitute@4.2.2",
+      "version": "https://github.com/decentraland/Unity3D-NSubstitute.git",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "cdd11bb74398afae73e71b6fe01114f597a6ce08"
     },
     "com.unity.modules.androidjni": {
       "version": "1.0.0",
