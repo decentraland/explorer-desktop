@@ -35,10 +35,10 @@ namespace DCL
 
             base.Awake();
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
-
+            DataStore.i.performance.multithreading.Set(true);
+            DataStore.i.performance.maxDownloads.Set(50);
             CheckForIncorrectScreenSize();
         }
-        
 
         protected override void InitializeCommunication()
         {
@@ -48,23 +48,25 @@ namespace DCL
             {
                 var withSSL = true;
                 int startPort = CommandLineParserUtils.startPort;
-                
-                #if UNITY_EDITOR
+
+#if UNITY_EDITOR
                 withSSL = DebugConfigComponent.i.webSocketSSL;
                 startPort = 5000;
-                #endif
-                
+#endif
+
                 int endPort = startPort + 100;
                 kernelCommunication = new WebSocketCommunication(withSSL, startPort, endPort);
             }
-            
         }
 
         private void CheckForIncorrectScreenSize()
         {
             var width = Screen.currentResolution.width;
             var height = Screen.currentResolution.height;
-            var availableFilteredResolutions = Screen.resolutions.Where(r => r.width >= 1024 && r.refreshRate > 0).ToArray();
+
+            var availableFilteredResolutions =
+                Screen.resolutions.Where(r => r.width >= 1024 && r.refreshRate > 0).ToArray();
+
             var minRes = availableFilteredResolutions[0];
 
             if (width < 800 || height < 600)
@@ -129,6 +131,7 @@ namespace DCL
                 DataStore.i.HUDs.loadingHUD.visible,
                 CommonScriptableObjects.rendererState,
                 DataStore.i.wsCommunication.communicationEstablished);
+
             base.Start();
         }
 
