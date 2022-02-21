@@ -21,6 +21,9 @@ public class HUDDesktopFactory : HUDFactory
             case HUDElementID.PROFILE_HUD:
                 hudElement = new ProfileHUDControllerDesktop(new UserProfileWebInterfaceBridge());
                 break;
+            case HUDElementID.MINIMAP:
+                hudElement = new MinimapHUDControllerDesktop();
+                break;
             default:
                 hudElement = base.CreateHUD(hudElementId);
                 break;
