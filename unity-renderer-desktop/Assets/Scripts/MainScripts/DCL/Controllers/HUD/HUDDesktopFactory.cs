@@ -24,6 +24,9 @@ public class HUDDesktopFactory : HUDFactory
             case HUDElementID.MINIMAP:
                 hudElement = new MinimapHUDControllerDesktop();
                 break;
+            case HUDElementID.LOADING:
+
+                break;
             default:
                 hudElement = base.CreateHUD(hudElementId);
                 break;
