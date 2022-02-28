@@ -1,11 +1,6 @@
 {
     "dependencies": [
         {
-            "name": "com.coffee.ui-particle",
-            "hash": "2e4d80bc1cbbfe5400fb052778c65bcccc505abd",
-            "url": "https://github.com/mob-sakai/ParticleEffectForUGUI.git"
-        },
-        {
             "name": "com.cysharp.unitask",
             "hash": "50a67d8f419b6cea0398eff6c19cf0bbe11ed609",
             "url": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask"
