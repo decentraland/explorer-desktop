@@ -58,6 +58,11 @@ namespace DCL
                 kernelCommunication = new WebSocketCommunication(withSSL, startPort, endPort);
             }
         }
+        
+        protected override void SetupPlugins()
+        {
+            pluginSystem = PluginSystemFactoryDesktop.Create();
+        }
 
         private void CheckForIncorrectScreenSize()
         {
