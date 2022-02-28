@@ -25,12 +25,12 @@ namespace DCL
         {
             CommandLineParserUtils.ParseArguments();
             isConnectionLost = false;
-/*
+
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
             FFMPEGDecoderWrapper.nativeCleanAll();
             DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_FFMPEG();
 #endif
-*/
+
             InitializeSettings();
 
             base.Awake();
@@ -104,10 +104,10 @@ namespace DCL
             loadingFlowController.Dispose();
             preloadingController.Dispose();
             DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
-            /*
+
 #if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
             FFMPEGDecoderWrapper.nativeCleanAll();
-#endif*/
+#endif
         }
 
         void OnCommunicationEstablished(bool current, bool previous)
@@ -123,6 +123,10 @@ namespace DCL
             base.Update();
             loadingFlowController.Update();
 
+#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
+            FFMPEGDecoderWrapper.nativeCleanDestroyedDecoders();
+#endif
+            
             if (isConnectionLost)
             {
                 DesktopUtils.Quit();

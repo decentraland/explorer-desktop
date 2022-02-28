@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.coffee.git-dependency-resolver": {
+      "version": "https://github.com/mob-sakai/GitDependencyResolverForUnity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d4fc38c92fb139b4184912f20556ab27a3b519fa"
+    },
     "com.coffee.ui-particle": {
       "version": "file:.com.coffee.ui-particle@3.3.9",
       "depth": 0,
@@ -65,6 +72,13 @@
         "com.unity.modules.xr": "1.0.0"
       },
       "hash": "de0f3895257fb9932c7e38df1b20c2ef44329c7e"
+    },
+    "com.mediadecoder.ffmpeg": {
+      "version": "git+https://github.com/decentraland/FFMPEGMediaDecoder.git?path=FFMPEGDecoderPlugin#master",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "b67b01a83b1c358580bf9d11a158113a824f8706"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
