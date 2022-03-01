@@ -21,7 +21,7 @@
       "hash": "27604496ca1b27b93d78dd2257a50158fab2bc33"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#chore/visibility-changes-for-desktop",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -71,7 +71,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "e2c4208b5137365d6c545d1908d47be8a65e0aff"
+      "hash": "be900bfa709051c3a9f6c42f74dd3317188b313c"
     },
     "com.mediadecoder.ffmpeg": {
       "version": "git+https://github.com/decentraland/FFMPEGMediaDecoder.git?path=FFMPEGDecoderPlugin#master",
