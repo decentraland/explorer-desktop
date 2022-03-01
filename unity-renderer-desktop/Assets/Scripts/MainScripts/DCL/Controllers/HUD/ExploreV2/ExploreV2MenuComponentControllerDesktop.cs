@@ -13,5 +13,5 @@ using Variables.RealmsInfo;
 /// </summary>
 public class ExploreV2MenuComponentControllerDesktop : ExploreV2MenuComponentController
 {
-    protected internal virtual IExploreV2MenuComponentView CreateView() => ExploreV2MenuComponentViewDesktop.Create();
+    protected override IExploreV2MenuComponentView CreateView() => ExploreV2MenuComponentViewDesktop.Create();
 }
