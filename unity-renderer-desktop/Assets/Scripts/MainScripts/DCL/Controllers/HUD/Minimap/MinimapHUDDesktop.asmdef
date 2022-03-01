@@ -1,0 +1,17 @@
+{
+    "name": "MinimapHUDDesktop",
+    "rootNamespace": "",
+    "references": [
+        "GUID:692b6c9fa5079416bb81826fb3806890",
+        "GUID:b1087c5731ff68448a0a9c625bb7e52d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

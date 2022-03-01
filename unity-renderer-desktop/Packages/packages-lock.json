@@ -71,7 +71,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "41bf9d4bc62b6993ab10a519ffb39bfdbaa9fc21"
+      "hash": "be900bfa709051c3a9f6c42f74dd3317188b313c"
     },
     "com.mediadecoder.ffmpeg": {
       "version": "git+https://github.com/decentraland/FFMPEGMediaDecoder.git?path=FFMPEGDecoderPlugin#master",
@@ -324,6 +324,13 @@
       "source": "git",
       "dependencies": {},
       "hash": "cdd11bb74398afae73e71b6fe01114f597a6ce08"
+    },
+    "ru.threedisevenzeror.unitygifdecoder": {
+      "version": "https://github.com/3DI70R/Unity-GifDecoder.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "90ffa399087521817ab03ce9213ec33b38e4492f"
     },
     "com.unity.modules.androidjni": {
       "version": "1.0.0",
