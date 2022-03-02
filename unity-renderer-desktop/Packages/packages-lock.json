@@ -21,7 +21,7 @@
       "hash": "27604496ca1b27b93d78dd2257a50158fab2bc33"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#fix/localhost-to-ip-number",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -71,7 +71,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "3cb6547ef1790f53a91af3f18211a626230dd121"
+      "hash": "17aaae0e0fa36ee3f9c224e346362eda936b34ea"
     },
     "com.mediadecoder.ffmpeg": {
       "version": "git+https://github.com/decentraland/FFMPEGMediaDecoder.git?path=FFMPEGDecoderPlugin#master",
