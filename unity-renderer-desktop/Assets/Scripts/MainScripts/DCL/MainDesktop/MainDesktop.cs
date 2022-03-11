@@ -66,18 +66,20 @@ namespace DCL
 
         private void CheckForIncorrectScreenSize()
         {
-            var width = Screen.currentResolution.width;
-            var height = Screen.currentResolution.height;
+            var maxRes = Screen.resolutions[Screen.resolutions.Length - 1];
+            int minWidth = maxRes.width / 2;
+            int minHeight = maxRes.height / 2;
+            var currentWidth = Screen.currentResolution.width;
+            var currentHeight = Screen.currentResolution.height;
 
+            if (currentWidth >= minWidth && currentHeight >= minHeight) return;
+            
             var availableFilteredResolutions =
-                Screen.resolutions.Where(r => r.width >= 1024 && r.refreshRate > 0).ToArray();
-
+                Screen.resolutions.Where(r => r.width >= minWidth && r.refreshRate > 0).ToArray();
+            
             var minRes = availableFilteredResolutions[0];
 
-            if (width < 800 || height < 600)
-            {
-                Screen.SetResolution(minRes.width, minRes.height, Screen.fullScreenMode);
-            }
+            Screen.SetResolution(minRes.width, minRes.height, Screen.fullScreenMode);
         }
 
         private void InitializeSettings()
