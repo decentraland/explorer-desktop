@@ -67,12 +67,11 @@ namespace DCL
         private void CheckForIncorrectScreenSize()
         {
             var maxRes = Screen.resolutions[Screen.resolutions.Length - 1];
-            int minWidth = maxRes.width / 2;
-            int minHeight = maxRes.height / 2;
+            bool supports4KResolution = maxRes.width >= 3840;
+            int minWidth = supports4KResolution ? maxRes.width / 2 : 1024;
             var currentWidth = Screen.currentResolution.width;
-            var currentHeight = Screen.currentResolution.height;
 
-            if (currentWidth >= minWidth && currentHeight >= minHeight) return;
+            if (currentWidth >= minWidth) return;
             
             var availableFilteredResolutions =
                 Screen.resolutions.Where(r => r.width >= minWidth && r.refreshRate > 0).ToArray();
