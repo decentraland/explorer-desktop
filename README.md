@@ -19,7 +19,7 @@ When we clone this repo, we're going to use the code inside the [Unity Renderer]
 To update the Unity Renderer version, you can use:
 
 ```
-./update-unity-renderer.sh <branch>
+npx @dcl/opscli@next update-renderer-upm --branch <branch>
 ```
 
 **The repository must always have `master` reference to unity-renderer. Only the commit hash may change.**
@@ -32,7 +32,7 @@ Take this path if you **are going** to change [Unity Renderer](https://github.co
 To update the Unity Renderer version locally, you can use:
 
 ```
-./update-unity-renderer.sh <unity-renderer-path>
+npx @dcl/opscli@next update-renderer-upm --path <unity-renderer-path>
 ```
 ### Manually
 
