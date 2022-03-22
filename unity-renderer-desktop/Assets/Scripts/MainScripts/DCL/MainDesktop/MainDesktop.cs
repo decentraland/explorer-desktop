@@ -98,10 +98,10 @@ namespace DCL
 
         private void DesktopDestroy()
         {
-            DCLVideoPlayer.WaitAllThreads();
             loadingFlowController.Dispose();
             preloadingController.Dispose();
             DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
+            DCLVideoPlayer.StopAllThreads();
         }
 
         void OnCommunicationEstablished(bool current, bool previous)

@@ -74,11 +74,11 @@
       "hash": "fb544c3be48e99fabd8d71540724cd9bf2dc676d"
     },
     "com.decentraland.videoplayer": {
-      "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
+      "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#fix/playing-on-coroutine",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "dc5fdf729437275683826ba18a6b15761d8f10ae"
+      "hash": "05ed7c1f405be983871494c83f9b3e6361c38011"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
