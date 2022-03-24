@@ -1,3 +1,4 @@
+using AvatarSystem;
 using DCL.Emotes;
 using DCL.Tutorial;
 using DCL.Skybox;
