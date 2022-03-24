@@ -1,7 +1,9 @@
 using AvatarSystem;
 using DCL.Emotes;
+using DCL.ExperiencesViewer;
 using DCL.Tutorial;
 using DCL.Skybox;
+using EmotesCustomization;
 
 namespace DCL
 {
