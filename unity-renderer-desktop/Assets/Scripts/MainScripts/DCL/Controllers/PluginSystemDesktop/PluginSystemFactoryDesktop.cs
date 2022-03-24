@@ -17,7 +17,7 @@ namespace DCL
             pluginSystem.Register(() => new TransactionFeature());
             pluginSystem.Register(() => new PreviewMenuPlugin());
             pluginSystem.Register(() => new SkyboxController());
-            pluginSystem.Register(() => new EmoteAnimationsPlugin(DataStore.i.emotes));
+            pluginSystem.Register(() => new EmoteAnimationsPlugin(DataStore.i.emotes, new EmoteAnimationLoaderFactory(), new WearableItemResolver()));
             pluginSystem.RegisterWithFlag(() => new BuilderInWorldPlugin(), "builder_in_world");
             pluginSystem.RegisterWithFlag(() => new TutorialController(), "tutorial");
             pluginSystem.RegisterWithFlag(() => new PlacesAndEventsFeature(), "explorev2");
