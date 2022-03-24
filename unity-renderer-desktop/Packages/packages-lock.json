@@ -71,7 +71,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "e1b5f38d44c46e0cc03b6a6b3ede391f1f6bc98f"
+      "hash": "f470ae6bb158064b39d59896d2d715795fd63046"
     },
     "com.mediadecoder.ffmpeg": {
       "version": "git+https://github.com/decentraland/FFMPEGMediaDecoder.git?path=FFMPEGDecoderPlugin#master",
