@@ -73,12 +73,12 @@
       },
       "hash": "f470ae6bb158064b39d59896d2d715795fd63046"
     },
-    "com.mediadecoder.ffmpeg": {
-      "version": "git+https://github.com/decentraland/FFMPEGMediaDecoder.git?path=FFMPEGDecoderPlugin#master",
+    "com.decentraland.videoplayer": {
+      "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "b67b01a83b1c358580bf9d11a158113a824f8706"
+      "hash": "d2940b4a6d066e5241ab9727e0579aaaf762c2db"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",

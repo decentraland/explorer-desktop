@@ -4,7 +4,6 @@ using DCL.Helpers;
 using DCL.Models;
 using System.Collections;
 using DCL.Controllers;
-using HTC.UnityPlugin.Multimedia;
 using NUnit.Framework;
 using Tests;
 using UnityEngine;
@@ -35,10 +34,7 @@ public class VideoComponenteDesktopShould : IntegrationTestSuite
 
     protected override void InitializeServices(ServiceLocator serviceLocator)
     {
-#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-        FFMPEGDecoderWrapper.nativeCleanAll();
-        DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_FFMPEG();
-#endif
+        DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_Native();
         serviceLocator.Register<ISceneController>(() => new SceneController());
         serviceLocator.Register<IWorldState>(() => new WorldState());
         serviceLocator.Register<IRuntimeComponentFactory>(() => new RuntimeComponentFactory());

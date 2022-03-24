@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using DCL.SettingsCommon;
 using DCL.Components;
-using HTC.UnityPlugin.Multimedia;
 using MainScripts.DCL.Controllers.HUD.Preloading;
 using MainScripts.DCL.Controllers.LoadingFlow;
 using MainScripts.DCL.Utils;
@@ -26,10 +25,7 @@ namespace DCL
             CommandLineParserUtils.ParseArguments();
             isConnectionLost = false;
 
-#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-            FFMPEGDecoderWrapper.nativeCleanAll();
-            DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_FFMPEG();
-#endif
+            DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_Native();
 
             InitializeSettings();
 
@@ -105,10 +101,7 @@ namespace DCL
             loadingFlowController.Dispose();
             preloadingController.Dispose();
             DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
-
-#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-            FFMPEGDecoderWrapper.nativeCleanAll();
-#endif
+            DCLVideoPlayer.StopAllThreads();
         }
 
         void OnCommunicationEstablished(bool current, bool previous)
@@ -124,10 +117,6 @@ namespace DCL
             base.Update();
             loadingFlowController.Update();
 
-#if UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN
-            FFMPEGDecoderWrapper.nativeCleanDestroyedDecoders();
-#endif
-            
             if (isConnectionLost)
             {
                 DesktopUtils.Quit();
