@@ -83,16 +83,18 @@ namespace DCL
                 .WithGraphicsQualitySettingsPresetPath("DesktopGraphicsQualityPresets"));
         }
 
-        protected override void OnDestroy()
+        protected override void Dispose()
         {
             try
             {
-                base.OnDestroy();
+                DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
+
+                base.Dispose();
                 DesktopDestroy();
             }
             catch (Exception e)
             {
-                Debug.LogError(e);
+                Debug.LogException(e);
             }
         }
 
@@ -100,7 +102,6 @@ namespace DCL
         {
             loadingFlowController.Dispose();
             preloadingController.Dispose();
-            DataStore.i.wsCommunication.communicationEstablished.OnChange -= OnCommunicationEstablished;
             DCLVideoPlayer.StopAllThreads();
         }
 
