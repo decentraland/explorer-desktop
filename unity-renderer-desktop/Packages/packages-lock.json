@@ -21,7 +21,7 @@
       "hash": "27604496ca1b27b93d78dd2257a50158fab2bc33"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#rerevert/gltf-multithreading",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -71,14 +71,14 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "f470ae6bb158064b39d59896d2d715795fd63046"
+      "hash": "c61762726c22cd439fe2c33c6426449ded9a9277"
     },
     "com.decentraland.videoplayer": {
       "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "165da3f15955b59228982cdd635c9fd7116de10e"
+      "hash": "00bd6cd62074b53ebf6efb05d51ddde0c8934a72"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
