@@ -33,6 +33,7 @@ namespace DCL
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
             DataStore.i.performance.multithreading.Set(true);
             DataStore.i.performance.maxDownloads.Set(50);
+            Texture.allowThreadedTextureCreation = false;
             CheckForIncorrectScreenSize();
         }
 
