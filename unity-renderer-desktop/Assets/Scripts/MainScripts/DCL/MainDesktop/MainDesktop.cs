@@ -64,8 +64,9 @@ namespace DCL
 
         private void SetupScreenResolution()
         {
-            var windowMode = SettingsDesktop.i.displaySettings.Data.GetFullScreenMode();
-            var resolution = SettingsDesktop.i.displaySettings.Data.GetResolution();
+            var displaySettings = SettingsDesktop.i.displaySettings.Data;
+            var windowMode = displaySettings.GetFullScreenMode();
+            var resolution = displaySettings.GetResolution();
             Screen.SetResolution(resolution.width, resolution.height, windowMode);
         }
 
