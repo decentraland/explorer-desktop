@@ -115,6 +115,16 @@ namespace DCL
             {
                 DesktopUtils.Quit();
             }
+
+            // TODO: Remove this after we refactor InputController to support overrides from desktop or to use the latest Unity Input System
+            // This shortcut will help some users to fix the small resolution bugs that may happen if the player prefs are manipulated
+            if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+                && Input.GetKeyDown(KeyCode.F11))
+            {
+                DisplaySettings newDisplaySettings = new DisplaySettings { windowMode = WindowMode.FullScreen };
+                SettingsDesktop.i.displaySettings.Apply(newDisplaySettings);
+                SettingsDesktop.i.displaySettings.Save();
+            }
         }
 
         protected override void Start()
