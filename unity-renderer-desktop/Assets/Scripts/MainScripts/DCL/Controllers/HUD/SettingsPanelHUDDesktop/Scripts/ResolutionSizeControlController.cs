@@ -18,6 +18,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             SetupLabels();
         }
 
+        // Filter the smallest resolutions as no one will ever use them
         private void SetupAvailableResolutions()
         {
             availableFilteredResolutions = Screen.resolutions.Where(r => r.width >= 1024 && r.refreshRate > 0).ToArray();
@@ -30,6 +31,9 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             for (var i = 0; i < length; i++)
             {
                 Resolution resolution = availableFilteredResolutions[i];
+                
+                // by design we want the list to be inverted so the biggest resolutions stay on top
+                // our resolutionSizeIndex is based on this decision
                 resolutionLabels[length - 1 - i] = GetLabel(resolution);
             }
 

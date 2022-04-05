@@ -4,6 +4,7 @@ using DCL.SettingsCommon;
 using DCL.Components;
 using MainScripts.DCL.Controllers.HUD.Preloading;
 using MainScripts.DCL.Controllers.LoadingFlow;
+using MainScripts.DCL.Controllers.SettingsDesktop;
 using MainScripts.DCL.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,7 +35,7 @@ namespace DCL
             DataStore.i.performance.multithreading.Set(true);
             DataStore.i.performance.maxDownloads.Set(50);
             Texture.allowThreadedTextureCreation = true;
-            CheckForIncorrectScreenSize();
+            SetupScreenResolution();
         }
 
         protected override void InitializeCommunication()
@@ -61,21 +62,11 @@ namespace DCL
             pluginSystem = PluginSystemFactoryDesktop.Create();
         }
 
-        private void CheckForIncorrectScreenSize()
+        private void SetupScreenResolution()
         {
-            var maxRes = Screen.resolutions[Screen.resolutions.Length - 1];
-            bool supports4KResolution = maxRes.width >= 3840;
-            int minWidth = supports4KResolution ? maxRes.width / 2 : 1024;
-            var currentWidth = Screen.currentResolution.width;
-
-            if (currentWidth >= minWidth) return;
-            
-            var availableFilteredResolutions =
-                Screen.resolutions.Where(r => r.width >= minWidth && r.refreshRate > 0).ToArray();
-            
-            var minRes = availableFilteredResolutions[0];
-
-            Screen.SetResolution(minRes.width, minRes.height, Screen.fullScreenMode);
+            var windowMode = SettingsDesktop.i.displaySettings.Data.GetFullScreenMode();
+            var resolution = SettingsDesktop.i.displaySettings.Data.GetResolution();
+            Screen.SetResolution(resolution.width, resolution.height, windowMode);
         }
 
         private void InitializeSettings()
