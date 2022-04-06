@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using MainScripts.DCL.Controllers.SettingsDesktop;
 using MainScripts.DCL.Controllers.SettingsDesktop.SettingsControllers;
 using MainScripts.DCL.ScriptableObjectsDesktop;
@@ -25,10 +26,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
                     Screen.fullScreenMode = FullScreenMode.Windowed;
                     break;
                 case WindowMode.Borderless:
-                    var maxRes = Screen.resolutions[Screen.resolutions.Length - 1];
-                    Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-                    Screen.SetResolution(maxRes.width, maxRes.height, FullScreenMode.FullScreenWindow, maxRes.refreshRate);
-                    currentDisplaySettings.resolutionSizeIndex = 0;
+                    SetupBorderless().Forget();
                     break;
                 case WindowMode.FullScreen:
                     Screen.fullScreen = true;
@@ -40,6 +38,15 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
 
             CommonScriptableObjectsDesktop.disableVSync.Set(currentDisplaySettings.windowMode == WindowMode.Windowed);
             CommonScriptableObjectsDesktop.disableScreenResolution.Set(currentDisplaySettings.windowMode == WindowMode.Borderless);
+        }
+
+        private async UniTaskVoid SetupBorderless()
+        {
+            var maxRes = Screen.resolutions[Screen.resolutions.Length - 1];
+            Screen.SetResolution(maxRes.width, maxRes.height, Screen.fullScreenMode, maxRes.refreshRate);
+            await UniTask.WaitForEndOfFrame();
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+            currentDisplaySettings.resolutionSizeIndex = 0;
         }
     }
 }
