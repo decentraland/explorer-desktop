@@ -18,7 +18,6 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         public override void UpdateSetting(object newValue)
         {
             currentDisplaySettings.windowMode = (WindowMode)(int)newValue;
-
             switch (currentDisplaySettings.windowMode)
             {
                 case WindowMode.Windowed:
@@ -27,7 +26,8 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
                     break;
                 case WindowMode.Borderless:
                     var maxRes = Screen.resolutions[Screen.resolutions.Length - 1];
-                    Screen.SetResolution(maxRes.width, maxRes.height, FullScreenMode.MaximizedWindow, maxRes.refreshRate);
+                    Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+                    Screen.SetResolution(maxRes.width, maxRes.height, FullScreenMode.FullScreenWindow, maxRes.refreshRate);
                     currentDisplaySettings.resolutionSizeIndex = 0;
                     break;
                 case WindowMode.FullScreen:
