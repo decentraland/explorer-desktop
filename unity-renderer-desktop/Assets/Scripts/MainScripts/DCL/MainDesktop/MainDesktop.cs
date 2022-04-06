@@ -121,7 +121,7 @@ namespace DCL
             if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
                 && Input.GetKeyDown(KeyCode.F11))
             {
-                DisplaySettings newDisplaySettings = new DisplaySettings { windowMode = WindowMode.FullScreen };
+                DisplaySettings newDisplaySettings = new DisplaySettings { windowMode = WindowMode.Borderless };
                 SettingsDesktop.i.displaySettings.Apply(newDisplaySettings);
                 SettingsDesktop.i.displaySettings.Save();
             }
