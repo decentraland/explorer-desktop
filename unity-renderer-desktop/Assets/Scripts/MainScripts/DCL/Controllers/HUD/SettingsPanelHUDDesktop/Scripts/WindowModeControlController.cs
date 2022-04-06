@@ -61,6 +61,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             await UniTask.WaitForEndOfFrame();
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
             currentDisplaySettings.resolutionSizeIndex = 0;
+            ApplySettings();
         }
     }
 }
