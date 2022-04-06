@@ -56,12 +56,10 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         
         private async UniTaskVoid SetupBorderless()
         {
-            var maxRes = Screen.resolutions[Screen.resolutions.Length - 1];
-            Screen.SetResolution(maxRes.width, maxRes.height, Screen.fullScreenMode, maxRes.refreshRate);
-            await UniTask.WaitForEndOfFrame();
-            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
             currentDisplaySettings.resolutionSizeIndex = 0;
             ApplySettings();
+            await UniTask.WaitForEndOfFrame();
+            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
         }
     }
 }
