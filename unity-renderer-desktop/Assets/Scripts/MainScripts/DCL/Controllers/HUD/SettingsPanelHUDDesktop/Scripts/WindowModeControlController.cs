@@ -22,15 +22,13 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             switch (currentDisplaySettings.windowMode)
             {
                 case WindowMode.Windowed:
-                    Screen.fullScreen = false;
-                    Screen.fullScreenMode = FullScreenMode.Windowed;
+                    SetupWindowed().Forget();
                     break;
                 case WindowMode.Borderless:
                     SetupBorderless().Forget();
                     break;
                 case WindowMode.FullScreen:
-                    Screen.fullScreen = true;
-                    Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+                    SetupFullScreen().Forget();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -40,6 +38,22 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             CommonScriptableObjectsDesktop.disableScreenResolution.Set(currentDisplaySettings.windowMode == WindowMode.Borderless);
         }
 
+        //NOTE(Kinerius): We have to wait a single frame between changing screen mode and resolution because one of them fails if done at the same frame for some reason
+        
+        private async UniTaskVoid SetupFullScreen()
+        {
+            Screen.fullScreen = true;
+            await UniTask.WaitForEndOfFrame();
+            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+        }
+
+        private async UniTaskVoid SetupWindowed()
+        {
+            Screen.fullScreen = false;
+            await UniTask.WaitForEndOfFrame();
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+        }
+        
         private async UniTaskVoid SetupBorderless()
         {
             var maxRes = Screen.resolutions[Screen.resolutions.Length - 1];
