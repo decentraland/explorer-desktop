@@ -4,6 +4,7 @@ using DCL.SettingsCommon;
 using DCL.Components;
 using MainScripts.DCL.Controllers.HUD.Preloading;
 using MainScripts.DCL.Controllers.LoadingFlow;
+using MainScripts.DCL.Controllers.SettingsDesktop;
 using MainScripts.DCL.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -34,7 +35,7 @@ namespace DCL
             DataStore.i.performance.multithreading.Set(true);
             DataStore.i.performance.maxDownloads.Set(50);
             Texture.allowThreadedTextureCreation = true;
-            CheckForIncorrectScreenSize();
+            SetupScreenResolution();
         }
 
         protected override void InitializeCommunication()
@@ -61,21 +62,12 @@ namespace DCL
             pluginSystem = PluginSystemFactoryDesktop.Create();
         }
 
-        private void CheckForIncorrectScreenSize()
+        private void SetupScreenResolution()
         {
-            var maxRes = Screen.resolutions[Screen.resolutions.Length - 1];
-            bool supports4KResolution = maxRes.width >= 3840;
-            int minWidth = supports4KResolution ? maxRes.width / 2 : 1024;
-            var currentWidth = Screen.currentResolution.width;
-
-            if (currentWidth >= minWidth) return;
-            
-            var availableFilteredResolutions =
-                Screen.resolutions.Where(r => r.width >= minWidth && r.refreshRate > 0).ToArray();
-            
-            var minRes = availableFilteredResolutions[0];
-
-            Screen.SetResolution(minRes.width, minRes.height, Screen.fullScreenMode);
+            var displaySettings = SettingsDesktop.i.displaySettings.Data;
+            var windowMode = displaySettings.GetFullScreenMode();
+            var resolution = displaySettings.GetResolution();
+            Screen.SetResolution(resolution.width, resolution.height, windowMode);
         }
 
         private void InitializeSettings()
@@ -122,6 +114,16 @@ namespace DCL
             if (isConnectionLost)
             {
                 DesktopUtils.Quit();
+            }
+
+            // TODO: Remove this after we refactor InputController to support overrides from desktop or to use the latest Unity Input System
+            // This shortcut will help some users to fix the small resolution bugs that may happen if the player prefs are manipulated
+            if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+                && Input.GetKeyDown(KeyCode.F11))
+            {
+                DisplaySettings newDisplaySettings = new DisplaySettings { windowMode = WindowMode.Borderless };
+                SettingsDesktop.i.displaySettings.Apply(newDisplaySettings);
+                SettingsDesktop.i.displaySettings.Save();
             }
         }
 
