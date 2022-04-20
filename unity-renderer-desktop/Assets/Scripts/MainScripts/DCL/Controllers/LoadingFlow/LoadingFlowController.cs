@@ -28,7 +28,6 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             this.websocketCommunicationEstablished = websocketCommunicationEstablished;
 
             view = CreateView();
-            view.Setup();
             view.Hide();
 
             this.loadingHudVisible.OnChange += OnLoadingHudVisibleChanged;
@@ -63,7 +62,8 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         private void HandleFatalError(Exception current, Exception previous)
         {
             if (current == null) return;
-            view.ShowForError();
+
+            view.Show();
             StopWatching();
         }
 
@@ -80,7 +80,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
 
             if (IsTimeToShowTimeout())
             {
-                view.ShowForTimeout();
+                view.Show();
                 StopWatching();
             }
         }
