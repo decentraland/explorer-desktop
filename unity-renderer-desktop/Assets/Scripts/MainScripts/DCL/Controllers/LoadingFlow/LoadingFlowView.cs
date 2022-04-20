@@ -8,14 +8,6 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
     public class LoadingFlowView : MonoBehaviour, ILoadingFlowView
     {
         [SerializeField] private Button exitButton;
-        [SerializeField] private GameObject timeoutContainer;
-        [SerializeField] private GameObject errorContainer;
-
-        public void Setup()
-        {
-            timeoutContainer.gameObject.SetActive(false);
-            errorContainer.gameObject.SetActive(false);
-        }
 
         private void Awake()
         {
@@ -37,23 +29,15 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
             gameObject.SetActive(false);
         }
 
-        public void ShowForError()
+        public void Show()
         {
             gameObject.SetActive(true);
-            errorContainer.SetActive(true);
-        }
-        public void ShowForTimeout()
-        {
-            gameObject.SetActive(true);
-            timeoutContainer.SetActive(true);
         }
     }
 
     public interface ILoadingFlowView
     {
         void Hide();
-        void ShowForError();
-        void ShowForTimeout();
-        void Setup();
+        void Show();
     }
 }
