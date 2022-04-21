@@ -1,0 +1,17 @@
+{
+    "name": "LogReportPlugin",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4973650d2444c4561a15d50f24d91cd9",
+        "GUID:7fe146b43e76fe745aeaf2020feb54b7"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
