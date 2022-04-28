@@ -39,12 +39,12 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         }
 
         //NOTE(Kinerius): We have to wait a single frame between changing screen mode and resolution because one of them fails if done at the same frame for some reason
-        
         private async UniTaskVoid SetupFullScreen()
         {
             Screen.fullScreen = true;
             await UniTask.WaitForEndOfFrame();
             Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+            await UpdateResolution();
         }
 
         private async UniTaskVoid SetupWindowed()
@@ -52,14 +52,24 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             Screen.fullScreen = false;
             await UniTask.WaitForEndOfFrame();
             Screen.fullScreenMode = FullScreenMode.Windowed;
+            await UpdateResolution();
         }
-        
+
         private async UniTaskVoid SetupBorderless()
         {
             currentDisplaySettings.resolutionSizeIndex = 0;
             ApplySettings();
             await UniTask.WaitForEndOfFrame();
             Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+            await UpdateResolution();
+        }
+
+        //NOTE(Kinerius) this fixes a race condition when starting the application
+        private async UniTask UpdateResolution()
+        {
+            await UniTask.WaitForEndOfFrame();
+            Resolution resolution = currentDisplaySettings.GetResolution();
+            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreenMode);
         }
     }
 }
