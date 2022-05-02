@@ -32,53 +32,53 @@ jobs:
             unity-renderer-windows.zip
             unity-renderer-mac.zip
             unity-renderer-linux.zip
-      - name: set-rollout-zone
-        uses: decentraland/set-rollout-action@main
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # Repo deployment info
-          ref: ${{ github.ref }}
-          sha: ${{ github.sha }}
+      # - name: set-rollout-zone
+      #   uses: decentraland/set-rollout-action@main
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     # Repo deployment info
+      #     ref: ${{ github.ref }}
+      #     sha: ${{ github.sha }}
 
-          # CDN information
-          packageName: '@dcl/explorer-desktop'
-          packageVersion: ${{ steps.set_version.outputs.number }}
+      #     # CDN information
+      #     packageName: '@dcl/explorer-desktop'
+      #     packageVersion: ${{ steps.set_version.outputs.number }}
 
-          # Rollout information
-          deploymentDomain: 'play.decentraland.zone'
-          deploymentName: '@dcl/explorer-desktop'
-          percentage: 100
+      #     # Rollout information
+      #     deploymentDomain: 'play.decentraland.zone'
+      #     deploymentName: '@dcl/explorer-desktop'
+      #     percentage: 100
 
-      - name: set-rollout-today
-        uses: decentraland/set-rollout-action@main
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # Repo deployment info
-          ref: ${{ github.ref }}
-          sha: ${{ github.sha }}
+      # - name: set-rollout-today
+      #   uses: decentraland/set-rollout-action@main
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     # Repo deployment info
+      #     ref: ${{ github.ref }}
+      #     sha: ${{ github.sha }}
 
-          # CDN information
-          packageName: '@dcl/explorer-desktop'
-          packageVersion: ${{ steps.set_version.outputs.number }}
+      #     # CDN information
+      #     packageName: '@dcl/explorer-desktop'
+      #     packageVersion: ${{ steps.set_version.outputs.number }}
 
-          # Rollout information
-          deploymentDomain: 'play.decentraland.today'
-          deploymentName: '@dcl/explorer-desktop'
-          percentage: 100
+      #     # Rollout information
+      #     deploymentDomain: 'play.decentraland.today'
+      #     deploymentName: '@dcl/explorer-desktop'
+      #     percentage: 100
 
-      - name: set-rollout-org
-        uses: decentraland/set-rollout-action@main
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # Repo deployment info
-          ref: ${{ github.ref }}
-          sha: ${{ github.sha }}
+      # - name: set-rollout-org
+      #   uses: decentraland/set-rollout-action@main
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     # Repo deployment info
+      #     ref: ${{ github.ref }}
+      #     sha: ${{ github.sha }}
 
-          # CDN information
-          packageName: '@dcl/explorer-desktop'
-          packageVersion: ${{ steps.set_version.outputs.number }}
+      #     # CDN information
+      #     packageName: '@dcl/explorer-desktop'
+      #     packageVersion: ${{ steps.set_version.outputs.number }}
 
-          # Rollout information
-          deploymentDomain: 'play.decentraland.org'
-          deploymentName: '@dcl/explorer-desktop'
-          percentage: 0
+      #     # Rollout information
+      #     deploymentDomain: 'play.decentraland.org'
+      #     deploymentName: '@dcl/explorer-desktop'
+      #     percentage: 0
