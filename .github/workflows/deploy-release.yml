@@ -3,7 +3,6 @@ name: Deploy release
 on:
   repository_dispatch:
     types: [deploy-release]
-  push: # TEST
 
 jobs:
   deploy:
