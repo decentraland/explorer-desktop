@@ -297,3 +297,4 @@ workflows:
                 - master
           requires:
             - publish-artifacts
+            - playmode-tests
