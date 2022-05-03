@@ -60,7 +60,6 @@ namespace DCL
         protected override void SetupPlugins()
         {
             pluginSystem = PluginSystemFactoryDesktop.Create();
-            pluginSystem.Initialize();
         }
 
         private void SetupScreenResolution()
