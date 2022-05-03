@@ -138,7 +138,7 @@ jobs:
       - persist_to_workspace:
           root: *working_directory
           paths:
-            - '*'
+            - "*"
   build-unity-for-linux:
     <<: *working_directory_root
     resource_class: xlarge
@@ -243,20 +243,6 @@ jobs:
           name: Upload artifacts
           command: |
             ./ci/publish-artifacts.sh
-  deploy-release:
-    docker:
-      - image: cimg/base:2021.04
-    steps:
-      - run:
-          name: Trigger GitHub Release
-          command: |
-            curl \
-              -X POST \
-              -H "Accept: application/vnd.github.v3+json" \
-              -H "Authorization: token ${GH_TOKEN}" \
-              https://api.github.com/repos/decentraland/explorer-desktop/dispatches \
-              -d '{"event_type":"deploy-release"}'
-
 workflows:
   version: 2
   build-deploy:
@@ -290,11 +276,3 @@ workflows:
             - build-unity-for-linux
             - build-unity-for-windows
             - build-unity-for-mac
-      - deploy-release:
-          filters:
-            branches:
-              only:
-                - master
-          requires:
-            - publish-artifacts
-            - playmode-tests

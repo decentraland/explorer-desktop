@@ -2,7 +2,6 @@ using NUnit.Framework;
 using System.Collections;
 using DCL;
 using DCL.Controllers;
-using DCL.Helpers;
 using UnityEngine.TestTools;
 
 namespace Tests
@@ -22,7 +21,15 @@ namespace Tests
         protected override IEnumerator SetUp()
         {
             yield return base.SetUp();
-            scene = TestUtils.CreateTestScene();
+            scene = Environment.i.world.sceneController.CreateTestScene() as ParcelScene;
+        }
+
+        [Ignore("Will fix this later")] // i promise
+        [UnityTest]
+        public IEnumerator BeTrue()
+        {
+            Assert.IsTrue(true);
+            yield return null;
         }
     }
 }
