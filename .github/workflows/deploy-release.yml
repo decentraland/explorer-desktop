@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    if: ${{ github.event.check_run.name == 'CircleCI Checks' && github.event.check_run.conclusion == 'success' && github.event.check_run.app.name == 'build-deploy' }}
+    if: ${{ github.event.check_run.app.name == 'CircleCI Checks' && github.event.check_run.conclusion == 'success' && github.event.check_run.name == 'build-deploy' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
