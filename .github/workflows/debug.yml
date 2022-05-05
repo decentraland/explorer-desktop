@@ -1,8 +1,6 @@
 name: Debug gh actions
 
 on:
-  check_suite: 
-    types: [ completed ]
   check_run: 
     types: [ completed ]
 
@@ -12,5 +10,6 @@ jobs:
     steps:
       - uses: hmarr/debug-action@v2
       - run: |
-          echo "Conclusion: ${{ github.event.check_suite.conclusion }}"
-          echo "Name: ${{ github.event.check_suite.name }}"
+          echo "Name: ${{ github.event.check_run.app.name }}"
+          echo "Conclusion: ${{ github.event.check_run.conclusion }}"
+          echo "Name: ${{ github.event.check_run.name }}"
