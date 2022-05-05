@@ -1,7 +1,8 @@
 name: Debug gh actions
 
 on:
-  check_run: [ completed ]
+  check_run: 
+    types: [ completed ]
   
 jobs:
   debug:
