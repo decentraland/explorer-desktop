@@ -6,7 +6,9 @@ on:
   
 jobs:
   debug:
-    if: ${{ github.event.check_suite.conclusion == 'success' && github.event.check_suite.name == 'build-deploy' }}
     runs-on: ubuntu-18.04
     steps:
       - uses: hmarr/debug-action@v2
+      - run: |
+          echo "Conclusion: ${{ github.event.check_suite.conclusion }}"
+          echo "Name: ${{ github.event.check_suite.name }}"
