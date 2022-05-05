@@ -8,6 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: hmarr/debug-action@v2
       - name: Download artifacts
         run: |
@@ -32,3 +33,17 @@ jobs:
           tag_name: ${{ steps.set_version.outputs.number }}
           files: |
             unity-renderer.zip
+      - name: Trigger pipeline
+        run: |
+          export PACKAGE_NAME="@dcl/explorer-desktop"
+          curl \
+            --request POST \
+            --form token=${{ secrets.GITLAB_CDN_DEPLOYER_TOKEN }} \
+            --form ref=master \
+            --form-string variables[PACKAGE_NAME]="@dcl/explorer-desktop" \
+            --form variables[PACKAGE_VERSION]=${{ steps.set_version.outputs.number }} \
+            --form variables[REPO]=explorer-desktop \
+            --form variables[REPO_OWNER]=decentraland \
+            --form variables[COMMIT]=${{ github.sha }} \
+            --form variables[CUSTOM_URL]=https://github.com/decentraland/explorer-desktop/releases/download/${{ steps.set_version.outputs.number }}/unity-renderer.zip \
+            "${{ secrets.GITLAB_CDN_DEPLOYER_URL }}"
