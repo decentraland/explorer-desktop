@@ -1,0 +1,11 @@
+name: Debug gh actions
+
+on:
+  check_run:
+  check_suite:
+  
+jobs:
+  debug:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: hmarr/debug-action@v2
