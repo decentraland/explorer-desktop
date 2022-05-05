@@ -1,11 +1,11 @@
 name: Debug gh actions
 
 on:
-  check_run:
-  check_suite:
+  check_run: [ completed ]
   
 jobs:
   debug:
+    if: github.event.check_suite.app.name == 'CircleCI Checks' && github.event.check_suite.conclusion == 'success' && github.event.check_suite.name == 'build-deploy'
     runs-on: ubuntu-18.04
     steps:
       - uses: hmarr/debug-action@v2
