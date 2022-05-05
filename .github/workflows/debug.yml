@@ -3,7 +3,9 @@ name: Debug gh actions
 on:
   check_suite: 
     types: [ completed ]
-  
+  check_run: 
+    types: [ completed ]
+
 jobs:
   debug:
     runs-on: ubuntu-18.04
