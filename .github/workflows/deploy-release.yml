@@ -1,11 +1,12 @@
 name: Deploy release
 
 on:
-  repository_dispatch:
-    types: [deploy-release]
+  check_run: 
+    types: [ completed ]
 
 jobs:
   deploy:
+    if: ${{ github.event.check_run.name == 'CircleCI Checks' && github.event.check_run.conclusion == 'success' && github.event.check_run.app.name == 'build-deploy' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -45,5 +46,5 @@ jobs:
             --form variables[REPO]=explorer-desktop \
             --form variables[REPO_OWNER]=decentraland \
             --form variables[COMMIT]=${{ github.sha }} \
-            --form variables[CUSTOM_URL]=https://github.com/decentraland/explorer-desktop/releases/download/${{ steps.set_version.outputs.number }}/unity-renderer.zip \
+            --form variables[GITHUB_RELEASE_ARTIFACT]=unity-renderer.zip \
             "${{ secrets.GITLAB_CDN_DEPLOYER_URL }}"
