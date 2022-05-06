@@ -59,8 +59,6 @@ references:
     filters:
       branches:
         only: /(.*)/
-      tags:
-        only: /^\d+\.\d+\.\d+(.*)/ # npm tag + latest
 
 commands:
   build-unity-generic:
