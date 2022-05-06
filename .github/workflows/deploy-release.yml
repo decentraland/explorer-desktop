@@ -7,7 +7,11 @@ on:
 jobs:
   deploy:
     concurrency: ci
-    if: ${{ github.event.check_run.app.name == 'CircleCI Checks' && github.event.check_run.conclusion == 'success' && github.event.check_run.name == 'build-deploy' }}
+    if: |
+      github.event.check_run.app.name == 'CircleCI Checks'
+      && github.event.check_run.conclusion == 'success'
+      && github.event.check_run.name == 'build-deploy'
+      && github.event.check_run.check_suite.head_branch == 'main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -37,7 +41,7 @@ jobs:
           NEW_COMMIT_HASH=${LARGE_COMMIT_HASH::7}
 
           # Fetch last version
-          LAST_VERSION=$(curl https://api.github.com/repos/decentraland/explorer-desktop/releases/latest --silent | jq '.name' -r)
+          LAST_VERSION=$(curl https://api.github.com/repos/kuruk-mm/circleci-gh/releases/latest --silent | jq '.name' -r)
           echo ${LAST_VERSION}
 
           # Get the commit from the last 7 characters of the version
