@@ -41,7 +41,7 @@ jobs:
           NEW_COMMIT_HASH=${LARGE_COMMIT_HASH::7}
 
           # Fetch last version
-          LAST_VERSION=$(curl https://api.github.com/repos/kuruk-mm/circleci-gh/releases/latest --silent | jq '.name' -r)
+          LAST_VERSION=$(curl https://api.github.com/repos/decentraland/explorer-desktop/releases/latest --silent | jq '.name' -r)
           echo ${LAST_VERSION}
 
           # Get the commit from the last 7 characters of the version
