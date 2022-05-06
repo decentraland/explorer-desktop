@@ -27,7 +27,7 @@ jobs:
       - name: Set version
         shell: bash
         run: |
-          COMMIT_HASH=${{ github.event.check_run.name.head_sha }}
+          COMMIT_HASH=${{ github.event.check_run.head_sha }}
           DATE=$(date '+%Y%m%d%H%M%S')
           VERSION=1.0.${{github.run_number}}-${DATE}.commit-${COMMIT_HASH::7}
           echo ${VERSION}
@@ -37,7 +37,7 @@ jobs:
         shell: bash
         run: |
           # Get current commit hash
-          LARGE_COMMIT_HASH=${{ github.event.check_run.name.head_sha }}
+          LARGE_COMMIT_HASH=${{ github.event.check_run.head_sha }}
           NEW_COMMIT_HASH=${LARGE_COMMIT_HASH::7}
 
           # Fetch last version
@@ -71,6 +71,6 @@ jobs:
             --form variables[PACKAGE_VERSION]=${{ steps.set_version.outputs.number }} \
             --form variables[REPO]=explorer-desktop \
             --form variables[REPO_OWNER]=decentraland \
-            --form variables[COMMIT]=${{ github.event.check_run.name.head_sha }} \
+            --form variables[COMMIT]=${{ github.event.check_run.head_sha }} \
             --form variables[GITHUB_RELEASE_ARTIFACT]=unity-renderer.zip \
             "${{ secrets.GITLAB_CDN_DEPLOYER_URL }}"
