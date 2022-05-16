@@ -42,12 +42,26 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
 
         private static string GetLabel(Resolution resolution)
         {
-            return $"{resolution.width}x{resolution.height} {resolution.refreshRate}Hz";
+            return $"{resolution.width}x{resolution.height} {GetAspectRatio(resolution.width, resolution.height)} {resolution.refreshRate}Hz";
         }
 
         public override object GetStoredValue()
         {
             return currentDisplaySettings.resolutionSizeIndex;
+        }
+
+        private static string GetAspectRatio(int width, int height)
+        {
+            int rest;
+            int tempWidth = width;
+            int tempHeight = height;
+            while (height != 0)
+            {
+                rest = width % height;
+                width = height;
+                height = rest;
+            }
+            return (tempWidth / width).ToString() + ":" + (tempHeight / width).ToString();
         }
 
         public override void UpdateSetting(object newValue)
