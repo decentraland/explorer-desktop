@@ -11,9 +11,8 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         fileName = "ResolutionSizeControlController")]
     public class ResolutionSizeControlController : SpinBoxSettingsControlControllerDesktop
     {
-        //private Resolution[] availableFilteredResolutions;
         private List<ValueTuple<int,int>> possibleResolutions = new List<ValueTuple<int, int>>();
-        private int maxFramerate = 60;
+        private int maxFramerate = 30;
 
         public override void Initialize()
         {
