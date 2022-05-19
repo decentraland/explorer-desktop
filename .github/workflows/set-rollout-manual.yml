@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       packageVersion:
-        description: 'NPM Version of the release (@dcl/unity-renderer)'
+        description: 'NPM Version of the release (@dcl/explorer-desktop)'
         required: true
         default: ''
       percentage:
