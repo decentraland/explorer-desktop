@@ -12,9 +12,6 @@ public class HUDDesktopFactory : HUDFactory
         {
             case HUDElementID.NONE:
                 break;
-            case HUDElementID.TASKBAR:
-                hudElement = new TaskbarHUDControllerDesktop();
-                break;
             case HUDElementID.SETTINGS_PANEL:
                 hudElement = new SettingsPanelHUDControllerDesktop();
                 break;
