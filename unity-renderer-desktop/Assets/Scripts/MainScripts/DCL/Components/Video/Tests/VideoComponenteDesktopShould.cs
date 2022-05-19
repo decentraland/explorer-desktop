@@ -46,7 +46,6 @@ public class VideoComponenteDesktopShould : IntegrationTestSuite
         yield return base.SetUp();
         scene = TestUtils.CreateTestScene();
         CommonScriptableObjects.rendererState.Set(true);
-        MainSceneFactory.CreateSettingsController();
     }
     
     [UnityTest]
