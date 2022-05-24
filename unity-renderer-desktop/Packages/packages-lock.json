@@ -18,7 +18,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "27604496ca1b27b93d78dd2257a50158fab2bc33"
+      "hash": "9e2163616b9c527fa9461544e2bcc5f93fd12d83"
     },
     "com.decentraland.unity-renderer": {
       "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#fix/invisible-mac-texts",
@@ -78,7 +78,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "3b97915742b2ad29eaa0318c61d2e440fea22502"
+      "hash": "d2a6c5707d3150bcf6891f145c37889d137fbac8"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -140,7 +140,7 @@
     },
     "com.unity.mathematics": {
       "version": "1.1.0",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -172,7 +172,7 @@
     },
     "com.unity.render-pipelines.core": {
       "version": "10.9.0",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.ugui": "1.0.0",
@@ -182,13 +182,13 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.universal": {
-      "version": "10.9.0",
-      "depth": 1,
+      "version": "10.6.0",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.1.0",
-        "com.unity.render-pipelines.core": "10.9.0",
-        "com.unity.shadergraph": "10.9.0"
+        "com.unity.render-pipelines.core": "10.6.0",
+        "com.unity.shadergraph": "10.6.0"
       },
       "url": "https://packages.unity.com"
     },
