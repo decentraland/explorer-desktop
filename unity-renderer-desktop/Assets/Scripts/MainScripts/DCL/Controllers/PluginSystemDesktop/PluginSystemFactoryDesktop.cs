@@ -14,6 +14,7 @@ namespace DCL
         {
             var pluginSystem = PluginSystemFactory.Create();
 
+            pluginSystem.Unregister<TextureCompressionTogglePlugin>();
             pluginSystem.Register<ExploreV2Feature>(() => new ExploreV2FeatureDesktop());
             pluginSystem.Register<LogReportPlugin>(() => new LogReportPlugin());
 
