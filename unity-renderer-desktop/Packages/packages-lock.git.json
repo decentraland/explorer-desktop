@@ -9,16 +9,6 @@
             "name": "com.coffee.ui-particle",
             "hash": "5a8f1263ef85f7aa035b51e0dd8b1c52f1b22ced",
             "url": "https://github.com/mob-sakai/ParticleEffectForUGUI.git"
-        },
-        {
-            "name": "com.atteneder.draco",
-            "hash": "4041c676d1dfdc93f85bd58d047001076fedaf78",
-            "url": "https://github.com/atteneder/DracoUnity.git"
-        },
-        {
-            "name": "com.atteneder.gltfast",
-            "hash": "6c9b3773e5f9fa72ab9540f761216f5f08efed28",
-            "url": "https://github.com/atteneder/glTFast.git"
         }
     ]
 }
