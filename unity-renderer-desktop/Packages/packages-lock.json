@@ -1,5 +1,26 @@
 {
   "dependencies": {
+    "com.atteneder.draco": {
+      "version": "https://github.com/atteneder/DracoUnity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.burst": "1.4.11"
+      },
+      "hash": "4041c676d1dfdc93f85bd58d047001076fedaf78"
+    },
+    "com.atteneder.gltfast": {
+      "version": "https://github.com/atteneder/glTFast.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.mathematics": "1.2.6",
+        "com.unity.burst": "1.6.6"
+      },
+      "hash": "6c9b3773e5f9fa72ab9540f761216f5f08efed28"
+    },
     "com.coffee.git-dependency-resolver": {
       "version": "https://github.com/mob-sakai/GitDependencyResolverForUnity.git",
       "depth": 0,
@@ -21,7 +42,7 @@
       "hash": "9e2163616b9c527fa9461544e2bcc5f93fd12d83"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#feat/gltfast",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -38,7 +59,7 @@
         "com.unity.scriptablebuildpipeline": "1.17.0",
         "com.unity.shadergraph": "10.3.2",
         "com.unity.test-framework": "1.1.22",
-        "com.unity.test-framework.performance": "2.8.1-preview",
+        "com.unity.test-framework.performance": "1.3.3-preview",
         "com.unity.textmeshpro": "3.0.4",
         "com.unity.timeline": "1.4.6",
         "com.unity.ugui": "1.0.0",
@@ -71,7 +92,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "f6ecf109ad6665a83aef959084e736587318515b"
+      "hash": "651e4c9b81dc458b19402bad72d4349f58239ffb"
     },
     "com.decentraland.videoplayer": {
       "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
@@ -91,6 +112,15 @@
       "depth": 1,
       "source": "builtin",
       "dependencies": {}
+    },
+    "com.unity.burst": {
+      "version": "1.6.6",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.mathematics": "1.2.1"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.cinemachine": {
       "version": "2.7.4",
@@ -139,7 +169,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.mathematics": {
-      "version": "1.1.0",
+      "version": "1.2.6",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
