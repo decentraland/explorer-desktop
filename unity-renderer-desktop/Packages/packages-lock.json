@@ -8,7 +8,7 @@
       "hash": "d4fc38c92fb139b4184912f20556ab27a3b519fa"
     },
     "com.coffee.ui-particle": {
-      "version": "file:.com.coffee.ui-particle@3.3.9",
+      "version": "file:.com.coffee.ui-particle@3.3.10",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}
@@ -21,7 +21,7 @@
       "hash": "9e2163616b9c527fa9461544e2bcc5f93fd12d83"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#fix/hologram-glb-fix",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -38,7 +38,7 @@
         "com.unity.scriptablebuildpipeline": "1.17.0",
         "com.unity.shadergraph": "10.3.2",
         "com.unity.test-framework": "1.1.22",
-        "com.unity.test-framework.performance": "2.8.1-preview",
+        "com.unity.test-framework.performance": "1.3.3-preview",
         "com.unity.textmeshpro": "3.0.4",
         "com.unity.timeline": "1.4.6",
         "com.unity.ugui": "1.0.0",
@@ -71,7 +71,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "f6ecf109ad6665a83aef959084e736587318515b"
+      "hash": "c5e8d416e4a31af61cf249b7bb6e6c6a9944b680"
     },
     "com.decentraland.videoplayer": {
       "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
