@@ -31,11 +31,18 @@ namespace DCL
             InitializeSettings();
 
             base.Awake();
+            
+            Texture.allowThreadedTextureCreation = true;
+            InitializeDataStore();
+            SetupScreenResolution();
+        }
+
+        private void InitializeDataStore()
+        {
             DataStore.i.wsCommunication.communicationEstablished.OnChange += OnCommunicationEstablished;
             DataStore.i.performance.multithreading.Set(true);
             DataStore.i.performance.maxDownloads.Set(50);
-            Texture.allowThreadedTextureCreation = true;
-            SetupScreenResolution();
+            DataStore.i.avatarConfig.useHologramAvatar.Set(false);
         }
 
         protected override void InitializeCommunication()
