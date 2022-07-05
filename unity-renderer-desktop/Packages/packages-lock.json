@@ -21,7 +21,7 @@
       "hash": "9e2163616b9c527fa9461544e2bcc5f93fd12d83"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#master",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#fix/ws-error-binary-message",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -71,7 +71,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "757cb7451f301eaa2d528a4f58c5c08c0a2892ad"
+      "hash": "e6f1965f7f076fc7c68b32b63fb282fbc0b738bc"
     },
     "com.decentraland.videoplayer": {
       "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
