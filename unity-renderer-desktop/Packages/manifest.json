@@ -3,6 +3,7 @@
     "com.coffee.git-dependency-resolver": "https://github.com/mob-sakai/GitDependencyResolverForUnity.git",
     "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+    "com.decentraland.rpc-csharp": "https://github.com/decentraland/rpc-csharp.git?path=rpc-csharp/src",
     "com.unity.render-pipelines.universal": "10.6.0",
     "com.unity.textmeshpro": "3.2.0-pre.3",
     "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#feat/add-rpc-crdt",
