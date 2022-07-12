@@ -576,6 +576,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -585,8 +586,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 1
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -4528,6 +4529,191 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      dcl-logo-sheet-8_179: -7640168058789509738
+      dcl-logo-sheet-8_41: -3892031587369339511
+      dcl-logo-sheet-8_3: 6236779839642256020
+      dcl-logo-sheet-8_19: 513408843663828377
+      dcl-logo-sheet-8_24: 30655125140989759
+      dcl-logo-sheet-8_5: 2075320740844558936
+      dcl-logo-sheet-8_6: -3281239992404277481
+      dcl-logo-sheet-8_134: -160233173700937014
+      dcl-logo-sheet-8_119: 7054310628199680943
+      dcl-logo-sheet-8_158: -7851281671919354597
+      dcl-logo-sheet-8_181: -145525320708404196
+      dcl-logo-sheet-8_25: -739778135582260594
+      dcl-logo-sheet-8_182: 1947981625387767932
+      dcl-logo-sheet-8_45: -5070829439501578848
+      dcl-logo-sheet-8_180: -3322226891719096161
+      dcl-logo-sheet-8_82: 960102089162062830
+      dcl-logo-sheet-8_1: -599311166747458298
+      dcl-logo-sheet-8_64: -8250682690627960789
+      dcl-logo-sheet-8_155: -3068371999166326161
+      dcl-logo-sheet-8_9: 9171080029735732808
+      dcl-logo-sheet-8_160: -469484460480607747
+      dcl-logo-sheet-8_91: -1934942164537373830
+      dcl-logo-sheet-8_48: 2594800177419925280
+      dcl-logo-sheet-8_70: -6150013885480518409
+      dcl-logo-sheet-8_114: 5966627577109247507
+      dcl-logo-sheet-8_69: 827163460724820975
+      dcl-logo-sheet-8_129: 5251155534611901361
+      dcl-logo-sheet-8_137: -1476666785222741885
+      dcl-logo-sheet-8_138: -7392312580399673261
+      dcl-logo-sheet-8_153: -99108364740012471
+      dcl-logo-sheet-8_159: -4250656021986852475
+      dcl-logo-sheet-8_36: 6047591263731790696
+      dcl-logo-sheet-8_135: 7630162894922125656
+      dcl-logo-sheet-8_50: 2290073345888213160
+      dcl-logo-sheet-8_152: 8792338106584749951
+      dcl-logo-sheet-8_28: -3679329821057122254
+      dcl-logo-sheet-8_58: 9112703696150278901
+      dcl-logo-sheet-8_87: -5816939164872560361
+      dcl-logo-sheet-8_85: 2150173114668619888
+      dcl-logo-sheet-8_81: -5913350207092506665
+      dcl-logo-sheet-8_100: 1436424337079450198
+      dcl-logo-sheet-8_104: 5465792034687391633
+      dcl-logo-sheet-8_112: 866560960041419146
+      dcl-logo-sheet-8_52: 4269214577061122312
+      dcl-logo-sheet-8_47: 3944799867974415420
+      dcl-logo-sheet-8_140: -4737624261800227643
+      dcl-logo-sheet-8_71: -849778287786138969
+      dcl-logo-sheet-8_54: 8010659907498118111
+      dcl-logo-sheet-8_95: 4521172196772346731
+      dcl-logo-sheet-8_107: 4130334385838179526
+      dcl-logo-sheet-8_89: 864652694740785454
+      dcl-logo-sheet-8_178: 9197724526425450772
+      dcl-logo-sheet-8_146: 7876310792235458495
+      dcl-logo-sheet-8_108: -5009626357589417943
+      dcl-logo-sheet-8_96: 4053941630659847453
+      dcl-logo-sheet-8_63: 3213454091435705556
+      dcl-logo-sheet-8_127: 8440344205025237099
+      dcl-logo-sheet-8_142: 5202523912555564778
+      dcl-logo-sheet-8_163: 6461311428044776773
+      dcl-logo-sheet-8_83: -8244992414090884572
+      dcl-logo-sheet-8_105: -4620978122480386195
+      dcl-logo-sheet-8_23: 6543633674534146910
+      dcl-logo-sheet-8_46: 3845950923005957416
+      dcl-logo-sheet-8_113: -4351541533370688688
+      dcl-logo-sheet-8_133: -5880377931005346060
+      dcl-logo-sheet-8_136: -7721778768327699243
+      dcl-logo-sheet-8_37: -5662486047365957622
+      dcl-logo-sheet-8_21: 6804968024216762294
+      dcl-logo-sheet-8_60: -2959675717460164672
+      dcl-logo-sheet-8_42: -4641510677235557847
+      dcl-logo-sheet-8_111: 1575363378761429971
+      dcl-logo-sheet-8_162: 30775259177642093
+      dcl-logo-sheet-8_154: 7019367862962769187
+      dcl-logo-sheet-8_88: 3581500005145934798
+      dcl-logo-sheet-8_18: -8455422452764359865
+      dcl-logo-sheet-8_79: 6866582787417948546
+      dcl-logo-sheet-8_150: 9121703068685808569
+      dcl-logo-sheet-8_170: 2482191468289697619
+      dcl-logo-sheet-8_141: -7713067954868079500
+      dcl-logo-sheet-8_93: -2491974183252431988
+      dcl-logo-sheet-8_10: 6322138436626222090
+      dcl-logo-sheet-8_156: 2957265759428999439
+      dcl-logo-sheet-8_80: 2962230587608220456
+      dcl-logo-sheet-8_53: -7128446295946346782
+      dcl-logo-sheet-8_73: 7792552696646426314
+      dcl-logo-sheet-8_109: -3524652436710275574
+      dcl-logo-sheet-8_115: 9163800239764307169
+      dcl-logo-sheet-8_15: 7842938216295815274
+      dcl-logo-sheet-8_128: -2350481088415708575
+      dcl-logo-sheet-8_139: 1422481112917159684
+      dcl-logo-sheet-8_59: -5979121160692039714
+      dcl-logo-sheet-8_171: -7253756642369625857
+      dcl-logo-sheet-8_55: 5528456257090146681
+      dcl-logo-sheet-8_118: 479770096863365579
+      dcl-logo-sheet-8_167: 3743415624895263729
+      dcl-logo-sheet-8_102: 524902953856884694
+      dcl-logo-sheet-8_173: -1447213308832963789
+      dcl-logo-sheet-8_90: -3921515019202725125
+      dcl-logo-sheet-8_29: -1339079699423872386
+      dcl-logo-sheet-8_30: 5699750388770320737
+      dcl-logo-sheet-8_84: -1389387422568660110
+      dcl-logo-sheet-8_94: -5440703294902300149
+      dcl-logo-sheet-8_151: -6003249400308289158
+      dcl-logo-sheet-8_16: -9196550056353838114
+      dcl-logo-sheet-8_20: -1507237447633899366
+      dcl-logo-sheet-8_13: -582970132661264009
+      dcl-logo-sheet-8_57: 637168490124730338
+      dcl-logo-sheet-8_72: 9018553255356905041
+      dcl-logo-sheet-8_165: 6624084374585165122
+      dcl-logo-sheet-8_126: 2498401344525179741
+      dcl-logo-sheet-8_17: -2812475195188686264
+      dcl-logo-sheet-8_7: -6366540677377407495
+      dcl-logo-sheet-8_2: 7310306212558117134
+      dcl-logo-sheet-8_11: -3876469241221732795
+      dcl-logo-sheet-8_101: -2530696656047036487
+      dcl-logo-sheet-8_106: -135630964287964549
+      dcl-logo-sheet-8_77: 2434810008200109179
+      dcl-logo-sheet-8_92: -2728085904910798788
+      dcl-logo-sheet-8_38: 3254956606946488122
+      dcl-logo-sheet-8_75: -8788872022932124001
+      dcl-logo-sheet-8_157: 8789879923553196363
+      dcl-logo-sheet-8_12: -4570698362677196533
+      dcl-logo-sheet-8_67: 5046061242414085085
+      dcl-logo-sheet-8_0: 6564196114392002561
+      dcl-logo-sheet-8_99: 7336412892401544783
+      dcl-logo-sheet-8_74: 7331766943477849501
+      dcl-logo-sheet-8_22: 2962700630183233659
+      dcl-logo-sheet-8_131: 4871999620593590388
+      dcl-logo-sheet-8_65: 6378448583828118107
+      dcl-logo-sheet-8_40: -8468503498299648680
+      dcl-logo-sheet-8_161: 8101206958307880769
+      dcl-logo-sheet-8_43: -3638556296690758564
+      dcl-logo-sheet-8_121: -5339180412571635986
+      dcl-logo-sheet-8_166: -58636307032249808
+      dcl-logo-sheet-8_175: -7806552943983098275
+      dcl-logo-sheet-8_66: -6863584063565455819
+      dcl-logo-sheet-8_86: -3553351285112640552
+      dcl-logo-sheet-8_76: -6312429260580084797
+      dcl-logo-sheet-8_169: -1782460231084776814
+      dcl-logo-sheet-8_145: 3932011516135469461
+      dcl-logo-sheet-8_8: 6831562475961525310
+      dcl-logo-sheet-8_61: -7858529428014514557
+      dcl-logo-sheet-8_14: -3576958095862952218
+      dcl-logo-sheet-8_51: -3528978270154281674
+      dcl-logo-sheet-8_164: 2491092921746454277
+      dcl-logo-sheet-8_148: 4864179666029479232
+      dcl-logo-sheet-8_27: -5306620065340079128
+      dcl-logo-sheet-8_172: -5124167147118178137
+      dcl-logo-sheet-8_98: -1454492317176462056
+      dcl-logo-sheet-8_56: -4628246598063846510
+      dcl-logo-sheet-8_49: -922041065967540893
+      dcl-logo-sheet-8_62: 4858625185115857992
+      dcl-logo-sheet-8_34: -4546976831098336097
+      dcl-logo-sheet-8_168: -7638457911799989355
+      dcl-logo-sheet-8_32: -8443645627465799347
+      dcl-logo-sheet-8_130: -2936063380074971828
+      dcl-logo-sheet-8_116: -6047751816047455868
+      dcl-logo-sheet-8_33: -3322778136531006693
+      dcl-logo-sheet-8_124: -6894364648091246116
+      dcl-logo-sheet-8_78: 1045644465811868312
+      dcl-logo-sheet-8_35: -7143438524404359011
+      dcl-logo-sheet-8_149: -1955442472781240893
+      dcl-logo-sheet-8_117: -4949961095164131401
+      dcl-logo-sheet-8_120: -1354149016206076279
+      dcl-logo-sheet-8_183: -1656234146764431145
+      dcl-logo-sheet-8_68: 5255378374304204942
+      dcl-logo-sheet-8_122: -4118204175642226172
+      dcl-logo-sheet-8_123: -6688697311820048824
+      dcl-logo-sheet-8_4: 8120601120413960067
+      dcl-logo-sheet-8_143: 7156811538003306861
+      dcl-logo-sheet-8_31: 5509797872876695970
+      dcl-logo-sheet-8_103: -858440811099808111
+      dcl-logo-sheet-8_174: -1863813034535355795
+      dcl-logo-sheet-8_125: 8847074267983870361
+      dcl-logo-sheet-8_176: 7244061211946165039
+      dcl-logo-sheet-8_26: -4872438122318171324
+      dcl-logo-sheet-8_97: -2466684227963581540
+      dcl-logo-sheet-8_39: -2991606802372532849
+      dcl-logo-sheet-8_110: -1957229539670244993
+      dcl-logo-sheet-8_144: -7312616366097664207
+      dcl-logo-sheet-8_132: 4347253385352803812
+      dcl-logo-sheet-8_147: 5387403010506632064
+      dcl-logo-sheet-8_177: 8085927144961666037
+      dcl-logo-sheet-8_44: 2631064143410692936
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
