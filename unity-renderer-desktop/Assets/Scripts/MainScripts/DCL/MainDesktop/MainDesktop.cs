@@ -59,7 +59,7 @@ namespace DCL
             //              IntegrationTestSuite_Legacy base class.
             if (!Configuration.EnvironmentSettings.RUNNING_TESTS)
             {
-                var withSSL = true;
+                var withSSL = false;
                 int startPort = CommandLineParserUtils.startPort;
 
 #if UNITY_EDITOR
