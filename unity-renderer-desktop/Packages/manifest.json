@@ -6,7 +6,7 @@
     "com.decentraland.rpc-csharp": "https://github.com/decentraland/rpc-csharp.git?path=rpc-csharp/src",
     "com.unity.render-pipelines.universal": "10.6.0",
     "com.unity.textmeshpro": "3.2.0-pre.3",
-    "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#release/release-20220727",
+    "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#main",
     "com.decentraland.videoplayer": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
     "com.unity.cinemachine": "2.7.4",
     "com.unity.testtools.codecoverage": "1.1.0",
