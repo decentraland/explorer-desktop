@@ -67,7 +67,7 @@ commands:
           name: Prepare image
           command: |
             apt-get update
-            apt-get install -y zip jq
+            apt-get install -y zip jq gpg
       - run:
           name: Local unity-renderer
           command: |
@@ -183,7 +183,7 @@ jobs:
           name: Prepare image
           command: |
             apt-get update
-            apt-get install -y zip jq
+            apt-get install -y zip jq gpg
       - run:
           name: Local unity-renderer
           command: |

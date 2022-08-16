@@ -1,14 +1,11 @@
 using System;
-using System.Linq;
 using DCL.SettingsCommon;
-using DCL.Configuration;
 using DCL.Components;
 using MainScripts.DCL.Controllers.HUD.Preloading;
 using MainScripts.DCL.Controllers.LoadingFlow;
 using MainScripts.DCL.Controllers.SettingsDesktop;
 using MainScripts.DCL.Utils;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace DCL
 {
@@ -21,13 +18,16 @@ namespace DCL
         private LoadingFlowController loadingFlowController;
         private PreloadingController preloadingController;
         private bool isConnectionLost;
+        private BaseVariable<FeatureFlag> featureFlags => DataStore.i.featureFlags.flags;
 
         protected override void Awake()
         {
             CommandLineParserUtils.ParseArguments();
             isConnectionLost = false;
+            
+            DCLVideoTexture.videoPluginWrapperBuilder = VideoProviderFactory.CreateVideoProvider;
 
-            DCLVideoTexture.videoPluginWrapperBuilder = () => new VideoPluginWrapper_Native();
+            featureFlags.OnChange += FeatureFlagsReady;
 
             InitializeSettings();
 
@@ -44,6 +44,12 @@ namespace DCL
             DataStore.i.textureConfig.gltfMaxSize.Set(TextureCompressionSettingsDesktop.GLTF_TEX_MAX_SIZE_DESKTOP);
             DataStore.i.textureConfig.generalMaxSize.Set(TextureCompressionSettingsDesktop.GENERAL_TEX_MAX_SIZE_DESKTOP);
             DataStore.i.avatarConfig.useHologramAvatar.Set(true);
+        }
+
+        private void FeatureFlagsReady(FeatureFlag current, FeatureFlag previous)
+        {
+            DCLVideoTexture.videoPluginWrapperBuilder = VideoProviderFactory.CreateVideoProvider;
+            DataStore.i.featureFlags.flags.OnChange -= FeatureFlagsReady;
         }
 
         protected override void InitializeCommunication()
