@@ -13,7 +13,8 @@
     "com.unity.test-framework.performance": "2.8.1-preview",
     "com.unity.toolchain.linux-x86_64": "0.1.18-preview",
     "net.tnrd.nsubstitute": "https://github.com/decentraland/Unity3D-NSubstitute.git",
-    "ru.threedisevenzeror.unitygifdecoder": "https://github.com/3DI70R/Unity-GifDecoder.git"
+    "ru.threedisevenzeror.unitygifdecoder": "https://github.com/3DI70R/Unity-GifDecoder.git",
+    "com.unity.ui": "1.0.0-preview.18"
   },
   "testables": [
     "com.decentraland.unity-renderer"

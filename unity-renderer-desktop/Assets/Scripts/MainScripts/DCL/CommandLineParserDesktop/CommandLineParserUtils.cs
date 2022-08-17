@@ -25,11 +25,11 @@ namespace DCL
                     {
                         case "--url-params":
                             i++; // shift
-                            debugConfig.baseUrlCustom += arguments[i] + "&";
+                            debugConfig.customURL += arguments[i] + "&";
                             break;
                         case "--browser":
                             i++; // shift
-                            debugConfig.openBrowserWhenStart = arguments[i] == "true";
+                            debugConfig.OpenBrowserOnStart = arguments[i] == "true";
                             break;
                         case "--port":
                             i++; // shift
