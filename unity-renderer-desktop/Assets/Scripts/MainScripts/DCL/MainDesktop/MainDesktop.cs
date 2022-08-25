@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using DCL.SettingsCommon;
+using DCL.Configuration;
 using DCL.Components;
 using MainScripts.DCL.Controllers.HUD.Preloading;
 using MainScripts.DCL.Controllers.LoadingFlow;
@@ -36,6 +37,13 @@ namespace DCL
             DataStore.i.performance.maxDownloads.Set(50);
             Texture.allowThreadedTextureCreation = true;
             SetupScreenResolution();
+        }
+        
+        protected override void InitializeDataStore()
+        {
+            DataStore.i.textureConfig.gltfMaxSize.Set(TextureCompressionSettings.GLTF_TEX_MAX_SIZE_DESKTOP);
+            DataStore.i.textureConfig.generalMaxSize.Set(TextureCompressionSettings.GENERAL_TEX_MAX_SIZE_DESKTOP);
+            DataStore.i.avatarConfig.useHologramAvatar.Set(true);
         }
 
         protected override void InitializeCommunication()
