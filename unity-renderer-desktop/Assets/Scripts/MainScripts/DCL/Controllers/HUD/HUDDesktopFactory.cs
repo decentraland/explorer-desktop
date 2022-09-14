@@ -19,7 +19,7 @@ public class HUDDesktopFactory : HUDFactory
                 hudElement = new ProfileHUDControllerDesktop(new UserProfileWebInterfaceBridge());
                 break;
             case HUDElementID.MINIMAP:
-                hudElement = new MinimapHUDControllerDesktop();
+                hudElement = new MinimapHUDControllerDesktop(MinimapMetadataController.i, new WebInterfaceHomeLocationController());
                 break;
             case HUDElementID.LOADING:
                 hudElement = new LoadingHUDControllerDesktop();
