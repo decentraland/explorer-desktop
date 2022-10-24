@@ -10,7 +10,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using Assert = UnityEngine.Assertions.Assert;
 
-public class VideoComponenteDesktopShould : IntegrationTestSuite
+public class VideoComponentDesktopShould : IntegrationTestSuite
 {
     private ParcelScene scene;
     
