@@ -29,7 +29,7 @@
       "hash": "31340a3706dda78916910dc2b925756fd3ee0ece"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#main",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#fix/multitheaded-anims",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -79,7 +79,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "7e546580432698535310f103fce25c894ac9d52e"
+      "hash": "244d89147f83f952d5c4bd7beffb65ecc3589888"
     },
     "com.decentraland.videoplayer": {
       "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
