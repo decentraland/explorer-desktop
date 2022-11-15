@@ -23,7 +23,8 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
             {
                 windowMode = WindowMode.Borderless,
                 resolutionSizeIndex = 0,
-                vSync = false
+                vSync = false,
+                fpsCapIndex = 0
             };
         }
 
