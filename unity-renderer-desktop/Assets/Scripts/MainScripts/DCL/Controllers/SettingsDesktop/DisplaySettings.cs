@@ -12,11 +12,23 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
     }
 
     [Serializable]
+    public enum FpsCapMode
+    {
+        Max = 0,
+        FPS30 = 30,
+        FPS60 = 60,
+        FPS90 = 90,
+        FPS120 = 120,
+        FPS144 = 144,
+    }
+
+    [Serializable]
     public struct DisplaySettings
     {
         public WindowMode windowMode;
         public int resolutionSizeIndex;
         public bool vSync;
+        public int fpsCapIndex;
 
         public FullScreenMode GetFullScreenMode()
         {
