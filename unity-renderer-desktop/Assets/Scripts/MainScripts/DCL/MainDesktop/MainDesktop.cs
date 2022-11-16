@@ -6,6 +6,7 @@ using MainScripts.DCL.Controllers.LoadingFlow;
 using MainScripts.DCL.Controllers.SettingsDesktop;
 using MainScripts.DCL.Utils;
 using UnityEngine;
+using RPC;
 
 namespace DCL
 {
