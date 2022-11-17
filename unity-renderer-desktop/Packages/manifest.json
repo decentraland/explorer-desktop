@@ -2,19 +2,19 @@
   "dependencies": {
     "com.coffee.git-dependency-resolver": "https://github.com/mob-sakai/GitDependencyResolverForUnity.git",
     "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git#3.3.0",
-    "com.decentraland.rpc-csharp": "https://github.com/decentraland/rpc-csharp.git?path=rpc-csharp/src",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
+    "com.decentraland.rpc-csharp": "https://github.com/decentraland/rpc-csharp.git?path=rpc-csharp/src",
     "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#test/unity-2021-materials",
     "com.decentraland.videoplayer": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
-    "com.unity.cinemachine": "2.8.6",
+    "com.unity.cinemachine": "2.8.9",
     "com.unity.render-pipelines.universal": "12.1.7",
     "com.unity.test-framework.performance": "2.8.1-preview",
     "com.unity.testtools.codecoverage": "1.1.0",
     "com.unity.textmeshpro": "3.2.0-pre.3",
     "com.unity.toolchain.linux-x86_64": "0.1.18-preview",
+    "com.unity.ui": "2.0.0",
     "net.tnrd.nsubstitute": "https://github.com/decentraland/Unity3D-NSubstitute.git",
-    "ru.threedisevenzeror.unitygifdecoder": "https://github.com/3DI70R/Unity-GifDecoder.git",
-    "com.unity.ui": "1.0.0-preview.18"
+    "ru.threedisevenzeror.unitygifdecoder": "https://github.com/3DI70R/Unity-GifDecoder.git"
   },
   "testables": [
     "com.decentraland.unity-renderer"
