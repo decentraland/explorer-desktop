@@ -7,7 +7,7 @@
     "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#test/unity-2021-materials",
     "com.decentraland.videoplayer": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
     "com.unity.cinemachine": "2.8.9",
-    "com.unity.render-pipelines.universal": "12.1.7",
+    "com.unity.render-pipelines.universal": "12.1.8",
     "com.unity.test-framework.performance": "2.8.1-preview",
     "com.unity.testtools.codecoverage": "1.1.0",
     "com.unity.textmeshpro": "3.2.0-pre.3",
