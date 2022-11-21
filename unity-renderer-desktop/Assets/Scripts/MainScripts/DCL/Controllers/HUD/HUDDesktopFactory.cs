@@ -1,5 +1,4 @@
 using DCL;
-using DCL.Controllers.HUD;
 using MainScripts.DCL.Controllers.HUD.Profile;
 using MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts;
 
@@ -20,7 +19,7 @@ public class HUDDesktopFactory : HUDFactory
                 hudElement = new ProfileHUDControllerDesktop(new UserProfileWebInterfaceBridge());
                 break;
             case HUDElementID.MINIMAP:
-                hudElement = new MinimapHUDControllerDesktop(MinimapMetadataController.i, new WebInterfaceHomeLocationController(), DCL.Environment.i);
+                hudElement = new MinimapHUDControllerDesktop(MinimapMetadataController.i, new WebInterfaceHomeLocationController(), Environment.i);
                 break;
             case HUDElementID.LOADING:
                 hudElement = new LoadingHUDControllerDesktop();
