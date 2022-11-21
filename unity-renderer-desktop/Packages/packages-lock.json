@@ -79,7 +79,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "a8413fa0575af2115242260deaf3d3a151b62b20"
+      "hash": "f7adcbf93b0b6d4e64a0134352817ec7171dc2d1"
     },
     "com.decentraland.videoplayer": {
       "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
