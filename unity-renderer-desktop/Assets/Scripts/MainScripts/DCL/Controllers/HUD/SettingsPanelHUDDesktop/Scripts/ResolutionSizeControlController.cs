@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using MainScripts.DCL.Controllers.SettingsDesktop;
 using MainScripts.DCL.Controllers.SettingsDesktop.SettingsControllers;
 using MainScripts.DCL.ScriptableObjectsDesktop;
 using UnityEngine;
@@ -11,8 +12,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         fileName = "ResolutionSizeControlController")]
     public class ResolutionSizeControlController : SpinBoxSettingsControlControllerDesktop
     {
-        private List<ValueTuple<int,int>> possibleResolutions = new List<ValueTuple<int, int>>();
-        private int maxFramerate = 30;
+        private List<Resolution> possibleResolutions = new List<Resolution>();
 
         public override void Initialize()
         {
@@ -24,18 +24,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         // Filter the smallest resolutions as no one will ever use them
         private void SetupAvailableResolutions()
         {
-            for (int i = 0; i < Screen.resolutions.Count(); i++)
-            {
-                if (Screen.resolutions[i].width > 1024)
-                {
-                    if (Screen.resolutions[i].refreshRate > maxFramerate)
-                        maxFramerate = Screen.resolutions[i].refreshRate;
-
-                    if (!possibleResolutions.Contains((Screen.resolutions[i].width, Screen.resolutions[i].height)))
-                        possibleResolutions.Add(new ValueTuple<int, int>(Screen.resolutions[i].width, Screen.resolutions[i].height));
-                }
-
-            }
+            possibleResolutions.AddRange(ScreenResolutionUtility.Resolutions.SkipWhile(r => r.width <= 1024));
         }
 
         private void SetupLabels()
@@ -44,7 +33,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             var resolutionLabels = new string[length];
             for (var i = 0; i < length; i++)
             {
-                (int, int) resolution = possibleResolutions[i];
+                var resolution = possibleResolutions[i];
                 
                 // by design we want the list to be inverted so the biggest resolutions stay on top
                 // our resolutionSizeIndex is based on this decision
@@ -54,9 +43,9 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             RaiseOnOverrideIndicatorLabel(resolutionLabels);
         }
 
-        private static string GetLabel(ValueTuple<int,int> resolution)
+        private static string GetLabel(Resolution resolution)
         {
-            return $"{resolution.Item1}x{resolution.Item2} {GetAspectRatio(resolution.Item1, resolution.Item2)}";
+            return $"{resolution.width}x{resolution.height} {GetAspectRatio(resolution.width, resolution.height)} {resolution.refreshRate} Hz";
         }
 
         public override object GetStoredValue()
@@ -75,15 +64,14 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
                 width = height;
                 height = rest;
             }
-            return (tempWidth / width).ToString() + ":" + (tempHeight / width).ToString();
+            return (tempWidth / width) + ":" + (tempHeight / width);
         }
 
         public override void UpdateSetting(object newValue)
         {
             var value = (int)newValue;
             currentDisplaySettings.resolutionSizeIndex = value;
-            var currentResolution = possibleResolutions[possibleResolutions.Count - 1 - value];
-            Screen.SetResolution(currentResolution.Item1, currentResolution.Item2, Screen.fullScreenMode, maxFramerate);
+            ScreenResolutionUtility.Apply(currentDisplaySettings);
         }
     }
 }

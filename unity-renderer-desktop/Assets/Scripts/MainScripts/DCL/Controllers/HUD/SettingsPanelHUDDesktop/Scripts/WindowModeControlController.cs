@@ -1,5 +1,4 @@
 using System;
-using Cysharp.Threading.Tasks;
 using MainScripts.DCL.Controllers.SettingsDesktop;
 using MainScripts.DCL.Controllers.SettingsDesktop.SettingsControllers;
 using MainScripts.DCL.ScriptableObjectsDesktop;
@@ -22,13 +21,11 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             switch (currentDisplaySettings.windowMode)
             {
                 case WindowMode.Windowed:
-                    SetupWindowed().Forget();
+                case WindowMode.FullScreen:
+                    UpdateResolution();
                     break;
                 case WindowMode.Borderless:
-                    SetupBorderless().Forget();
-                    break;
-                case WindowMode.FullScreen:
-                    SetupFullScreen().Forget();
+                    SetupBorderless();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -38,38 +35,16 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
             CommonScriptableObjectsDesktop.disableScreenResolution.Set(currentDisplaySettings.windowMode == WindowMode.Borderless);
         }
 
-        //NOTE(Kinerius): We have to wait a single frame between changing screen mode and resolution because one of them fails if done at the same frame for some reason
-        private async UniTaskVoid SetupFullScreen()
-        {
-            Screen.fullScreen = true;
-            await UniTask.WaitForEndOfFrame();
-            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
-            await UpdateResolution();
-        }
-
-        private async UniTaskVoid SetupWindowed()
-        {
-            Screen.fullScreen = false;
-            await UniTask.WaitForEndOfFrame();
-            Screen.fullScreenMode = FullScreenMode.Windowed;
-            await UpdateResolution();
-        }
-
-        private async UniTaskVoid SetupBorderless()
+        private void SetupBorderless()
         {
             currentDisplaySettings.resolutionSizeIndex = 0;
             ApplySettings();
-            await UniTask.WaitForEndOfFrame();
-            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
-            await UpdateResolution();
+            UpdateResolution();
         }
-
-        //NOTE(Kinerius) this fixes a race condition when starting the application
-        private async UniTask UpdateResolution()
+        
+        private void UpdateResolution()
         {
-            await UniTask.WaitForEndOfFrame();
-            Resolution resolution = currentDisplaySettings.GetResolution();
-            Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreenMode);
+            ScreenResolutionUtility.Apply(currentDisplaySettings);
         }
     }
 }
