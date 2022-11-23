@@ -1,16 +1,20 @@
-using UnityEngine;
 
-public class MinimapHUDControllerDesktop : MinimapHUDController
+namespace DCL.Controllers.HUD
 {
-    protected override MinimapHUDView CreateView()
+    public class MinimapHUDControllerDesktop : MinimapHUDController
     {
-        return MinimapHUDViewDesktop.Create(this);
-    }
+        protected override MinimapHUDView CreateView()
+        {
+            return MinimapHUDViewDesktop.Create(this);
+        }
 
-    public MinimapHUDControllerDesktop(MinimapMetadataController minimapMetadataController, IHomeLocationController locationController) : base(minimapMetadataController, locationController)
-    {
-    }
-    public MinimapHUDControllerDesktop(MinimapHUDModel model, MinimapMetadataController minimapMetadataController, IHomeLocationController locationController) : base(model, minimapMetadataController, locationController)
-    {
+        public MinimapHUDControllerDesktop(MinimapMetadataController minimapMetadataController, IHomeLocationController locationController,  global::DCL.Environment.Model environment) 
+            : base(minimapMetadataController, locationController, environment)
+        {
+        }
+        public MinimapHUDControllerDesktop(MinimapHUDModel model, MinimapMetadataController minimapMetadataController, IHomeLocationController locationController,  global::DCL.Environment.Model environment) 
+            : base(model, minimapMetadataController, locationController, environment)
+        {
+        }
     }
 }

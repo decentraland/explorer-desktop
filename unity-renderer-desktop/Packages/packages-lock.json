@@ -19,14 +19,14 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "9e2163616b9c527fa9461544e2bcc5f93fd12d83"
+      "hash": "e999268305432098f1eece2df35bf28043e47243"
     },
     "com.decentraland.rpc-csharp": {
       "version": "https://github.com/decentraland/rpc-csharp.git?path=rpc-csharp/src",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "31340a3706dda78916910dc2b925756fd3ee0ece"
+      "hash": "1037ec392e68a966591e1710a8687a9a8602afd5"
     },
     "com.decentraland.unity-renderer": {
       "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#release/release-20221124",
