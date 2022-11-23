@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
 {
-    public static class ScreenResolutionUtility
+    public static class ScreenResolutionUtils
     {
         private static Resolution[] resolutions;
         public static IReadOnlyList<Resolution> Resolutions => resolutions ??= Screen.resolutions;

@@ -24,7 +24,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         // Filter the smallest resolutions as no one will ever use them
         private void SetupAvailableResolutions()
         {
-            possibleResolutions.AddRange(ScreenResolutionUtility.Resolutions.SkipWhile(r => r.width <= 1024));
+            possibleResolutions.AddRange(ScreenResolutionUtils.Resolutions.SkipWhile(r => r.width <= 1024));
         }
 
         private void SetupLabels()
@@ -71,7 +71,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         {
             var value = (int)newValue;
             currentDisplaySettings.resolutionSizeIndex = value;
-            ScreenResolutionUtility.Apply(currentDisplaySettings);
+            ScreenResolutionUtils.Apply(currentDisplaySettings);
         }
     }
 }

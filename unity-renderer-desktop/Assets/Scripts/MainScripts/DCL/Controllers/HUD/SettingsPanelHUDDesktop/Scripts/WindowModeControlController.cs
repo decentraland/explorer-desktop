@@ -44,7 +44,7 @@ namespace MainScripts.DCL.Controllers.HUD.SettingsPanelHUDDesktop.Scripts
         
         private void UpdateResolution()
         {
-            ScreenResolutionUtility.Apply(currentDisplaySettings);
+            ScreenResolutionUtils.Apply(currentDisplaySettings);
         }
     }
 }
