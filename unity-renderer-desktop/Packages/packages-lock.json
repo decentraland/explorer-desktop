@@ -29,7 +29,7 @@
       "hash": "1037ec392e68a966591e1710a8687a9a8602afd5"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#dev",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#spike/base-main-camera",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -79,7 +79,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "cd3cef45de40475ef3553acfb14a1c31fd11dffb"
+      "hash": "3d97771913e5c7d9e8473c2c1c5b0f67eff067e2"
     },
     "com.decentraland.videoplayer": {
       "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
