@@ -16,6 +16,7 @@ namespace DCL
     /// </summary>
     public class MainDesktop : Main
     {
+        [SerializeField] private bool logWs = false;
         private LoadingFlowController loadingFlowController;
         private PreloadingController preloadingController;
         private bool isConnectionLost;
@@ -55,6 +56,7 @@ namespace DCL
 
         protected override void InitializeCommunication()
         {
+            DataStore.i.debugConfig.logWs = logWs;
             // TODO(Brian): Remove this branching once we finish migrating all tests out of the
             //              IntegrationTestSuite_Legacy base class.
             if (!Configuration.EnvironmentSettings.RUNNING_TESTS)
