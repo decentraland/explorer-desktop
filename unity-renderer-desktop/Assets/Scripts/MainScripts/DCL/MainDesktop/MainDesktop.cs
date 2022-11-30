@@ -38,7 +38,6 @@ namespace DCL
             DataStore.i.performance.multithreading.Set(true);
             DataStore.i.performance.maxDownloads.Set(50);
             Texture.allowThreadedTextureCreation = true;
-            SetupScreenResolution();
         }
         
         protected override void InitializeDataStore()
@@ -80,15 +79,7 @@ namespace DCL
             pluginSystem = PluginSystemFactoryDesktop.Create();
             pluginSystem.Initialize();
         }
-
-        private void SetupScreenResolution()
-        {
-            var displaySettings = SettingsDesktop.i.displaySettings.Data;
-            var windowMode = displaySettings.GetFullScreenMode();
-            var resolution = displaySettings.GetResolution();
-            Screen.SetResolution(resolution.width, resolution.height, windowMode);
-        }
-
+        
         private void InitializeSettings()
         {
             Settings.CreateSharedInstance(new DefaultSettingsFactory()

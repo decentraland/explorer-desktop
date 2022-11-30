@@ -40,11 +40,5 @@ namespace MainScripts.DCL.Controllers.SettingsDesktop
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
-
-        // Resolution list goes from the smallest to the biggest, our index is inverted for usage reasons so 0 is the biggest resolution available
-        public Resolution GetResolution()
-        {
-            return Screen.resolutions[Screen.resolutions.Length - 1 - resolutionSizeIndex];
-        }
     }
 }
