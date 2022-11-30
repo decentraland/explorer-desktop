@@ -8,6 +8,7 @@ public class MinimapHUDViewDesktop : MonoBehaviour
     {
         var view = Object.Instantiate(Resources.Load<GameObject>("MinimapHUDDesktop")).GetComponent<MinimapHUDView>();
         view.Initialize(controller);
+		
         return view;
     }
 }
