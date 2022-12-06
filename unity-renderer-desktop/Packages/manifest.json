@@ -4,7 +4,7 @@
     "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git#3.3.0",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.decentraland.rpc-csharp": "https://github.com/decentraland/rpc-csharp.git?path=rpc-csharp/src",
-    "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#main",
+    "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#release/release-20221207",
     "com.decentraland.videoplayer": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
     "com.unity.cinemachine": "2.8.9",
     "com.unity.render-pipelines.universal": "12.1.8",
