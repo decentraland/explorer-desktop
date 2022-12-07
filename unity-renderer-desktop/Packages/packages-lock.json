@@ -1,5 +1,24 @@
 {
   "dependencies": {
+    "com.atteneder.draco": {
+      "version": "file:.com.atteneder.draco@4.0.2",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.burst": "1.4.11"
+      }
+    },
+    "com.atteneder.gltfast": {
+      "version": "file:.com.atteneder.gltfast@5.0.0-exp.1",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.mathematics": "1.2.6",
+        "com.unity.burst": "1.6.6"
+      }
+    },
     "com.coffee.git-dependency-resolver": {
       "version": "https://github.com/mob-sakai/GitDependencyResolverForUnity.git",
       "depth": 0,
@@ -29,7 +48,7 @@
       "hash": "1037ec392e68a966591e1710a8687a9a8602afd5"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#main",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#fix/package-json",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -79,7 +98,15 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "a13cda49c2a2bfcdc2178ea5cca806b0652d621c"
+      "hash": "9810ea219980b5b3d2ec2a11aade07649e54f80d"
+    },
+    "com.decentraland.unity-shared-dependencies": {
+      "version": "file:.com.decentraland.unity-shared-dependencies@1.1.4",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.atteneder.gltfast": "5.0.0-exp.1"
+      }
     },
     "com.decentraland.videoplayer": {
       "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
