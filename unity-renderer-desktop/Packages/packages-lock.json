@@ -98,7 +98,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "1a83854e174d9519e88fd9181fa061999676a6d1"
+      "hash": "268da2211939a06a505e2b49c6df530475671c9c"
     },
     "com.decentraland.unity-shared-dependencies": {
       "version": "file:.com.decentraland.unity-shared-dependencies@1.1.4",
