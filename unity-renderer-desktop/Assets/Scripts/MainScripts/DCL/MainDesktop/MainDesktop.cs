@@ -104,6 +104,9 @@ namespace DCL
         {
             loadingFlowController.Dispose();
             preloadingController.Dispose();
+#if !AV_PRO_PRESENT
+            DCLVideoPlayer.StopAllThreads();
+#endif
         }
 
         void OnCommunicationEstablished(bool current, bool previous)
