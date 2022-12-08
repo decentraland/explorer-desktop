@@ -70,7 +70,6 @@ namespace DCL
 
                 int endPort = startPort + 100;
                 kernelCommunication = new WebSocketCommunication(withSSL, startPort, endPort);
-                RPCServerBuilder.BuildDefaultServer();
             }
         }
         

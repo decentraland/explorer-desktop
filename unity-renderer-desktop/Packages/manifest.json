@@ -1,9 +1,12 @@
 {
   "dependencies": {
+    "com.atteneder.draco": "4.0.2",
+    "com.atteneder.gltfast": "https://github.com/decentraland/glTFast.git",
     "com.coffee.git-dependency-resolver": "https://github.com/mob-sakai/GitDependencyResolverForUnity.git",
     "com.coffee.ui-particle": "https://github.com/mob-sakai/ParticleEffectForUGUI.git#3.3.0",
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.decentraland.rpc-csharp": "https://github.com/decentraland/rpc-csharp.git?path=rpc-csharp/src#fix/gracefully-dispose-rpcserver",
+    "com.decentraland.unity-shared-dependencies": "https://github.com/decentraland/unity-shared-dependencies.git",
     "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#fix/gracefully-dispose-rpc-server",
     "com.decentraland.videoplayer": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
     "com.unity.cinemachine": "2.8.9",
@@ -18,5 +21,18 @@
   },
   "testables": [
     "com.decentraland.unity-renderer"
+  ],
+  "scopedRegistries": [
+    {
+      "name": "OpenUPM",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.brunomikoski",
+        "com.demigiant",
+        "com.coffee.ui-particle",
+        "com.atteneder.draco",
+        "com.madsbangh.easybuttons"
+      ]
+    }
   ]
 }
