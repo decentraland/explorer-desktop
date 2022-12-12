@@ -5,7 +5,7 @@ source ci-setup.sh
 echo Downloading AVProVideo
 
 echo "${GPG_PRIVATE_KEY_BASE64_CANDIDATE}" | base64 -d > private.gpg
-gpg --import private.gpg
+gpg  --batch --import private.gpg
 curl -L 'https://renderer-artifacts.decentraland.org/artifacts/Custom_AVProVideo_2.6.7_ULTRA.unitypackage.gpg' -o Custom_AVProVideo_2.6.7_ULTRA.unitypackage.gpg
 
 gpg --output Custom_AVProVideo_2.6.7_ULTRA.unitypackage --decrypt Custom_AVProVideo_2.6.7_ULTRA.unitypackage.gpg
