@@ -138,6 +138,7 @@ namespace DCL
 
         protected override void Start()
         {
+            Debug.Log("Triggering CI");
             loadingFlowController = new LoadingFlowController(
                 DataStore.i.HUDs.loadingHUD.fatalError,
                 DataStore.i.HUDs.loadingHUD.visible,
