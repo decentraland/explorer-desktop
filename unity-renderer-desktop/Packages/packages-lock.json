@@ -98,7 +98,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "553b19726b28732b51efbb49c734a0fff9cee884"
+      "hash": "05cbb85a16f68a2d9862edef92c01a7ca10f57cf"
     },
     "com.decentraland.unity-shared-dependencies": {
       "version": "file:.com.decentraland.unity-shared-dependencies@1.1.4",
@@ -114,6 +114,12 @@
       "source": "git",
       "dependencies": {},
       "hash": "d2a6c5707d3150bcf6891f145c37889d137fbac8"
+    },
+    "com.decentraland.webgl-ime-input": {
+      "version": "file:.com.decentraland.webgl-ime-input@1.0.0",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
