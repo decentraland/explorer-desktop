@@ -109,11 +109,11 @@
       }
     },
     "com.decentraland.videoplayer": {
-      "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#release/release-20221214",
+      "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "e579fee8afc7ee9ad59bb865695e41460c6c586a"
+      "hash": "d2a6c5707d3150bcf6891f145c37889d137fbac8"
     },
     "com.decentraland.webgl-ime-input": {
       "version": "file:.com.decentraland.webgl-ime-input@1.0.0",
