@@ -14,6 +14,11 @@
             "name": "com.atteneder.draco",
             "hash": "4041c676d1dfdc93f85bd58d047001076fedaf78",
             "url": "https://github.com/atteneder/DracoUnity.git"
+        },
+        {
+            "name": "com.decentraland.webgl-ime-input",
+            "hash": "df8e5a76a9b7ad1d3b266a5bd359257b0d60e09c",
+            "url": "https://github.com/decentraland/webgl-ime-input.git"
         }
     ]
 }
