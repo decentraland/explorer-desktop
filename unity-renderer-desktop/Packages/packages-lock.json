@@ -115,6 +115,12 @@
       "dependencies": {},
       "hash": "d2a6c5707d3150bcf6891f145c37889d137fbac8"
     },
+    "com.decentraland.webgl-ime-input": {
+      "version": "file:.com.decentraland.webgl-ime-input@1.0.0",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 1,
