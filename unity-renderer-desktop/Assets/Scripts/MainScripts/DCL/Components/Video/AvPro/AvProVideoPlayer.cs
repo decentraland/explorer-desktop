@@ -148,7 +148,7 @@ public class AvProVideoPlayer : IVideoPlayer, IDisposable
             avProTexture = avProMediaPlayer.TextureProducer.GetTexture(0);
             await UniTask.Yield(ct).AttachExternalCancellation(ct);
         }
-        videoTexture.Resize(avProTexture.width, avProTexture.height);
+        videoTexture.Reinitialize(avProTexture.width, avProTexture.height);
         videoTexture.Apply();
     }
 
