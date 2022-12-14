@@ -48,7 +48,7 @@
       "hash": "1037ec392e68a966591e1710a8687a9a8602afd5"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#main",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#dev",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -98,7 +98,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "268da2211939a06a505e2b49c6df530475671c9c"
+      "hash": "50129111f39ea1d42c33e75af6dbc744a4e178f6"
     },
     "com.decentraland.unity-shared-dependencies": {
       "version": "file:.com.decentraland.unity-shared-dependencies@1.1.4",
