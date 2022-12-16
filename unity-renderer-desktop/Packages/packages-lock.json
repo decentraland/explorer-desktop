@@ -50,7 +50,7 @@
       "hash": "0edfd2eb04da488b3ea3b1bc744efb4df033b508"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#main",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#chore/rpc-scene-controller-service",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -100,7 +100,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "918c61ce23a5d70e9d379a2666c6fe7802bdb1c9"
+      "hash": "39db11acdaa4be40be0125ce7187a506958683c7"
     },
     "com.decentraland.unity-shared-dependencies": {
       "version": "https://github.com/decentraland/unity-shared-dependencies.git",
