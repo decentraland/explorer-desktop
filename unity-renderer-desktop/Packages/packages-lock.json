@@ -50,7 +50,7 @@
       "hash": "0edfd2eb04da488b3ea3b1bc744efb4df033b508"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#main",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#fix/launcher_crash_on_exit",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -100,7 +100,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "2de39c1ac430e2c691c643c4b89e98363d1ca274"
+      "hash": "3a7687c02eecd33960856b01d942443b01a1a930"
     },
     "com.decentraland.unity-shared-dependencies": {
       "version": "https://github.com/decentraland/unity-shared-dependencies.git",
@@ -119,10 +119,11 @@
       "hash": "d2a6c5707d3150bcf6891f145c37889d137fbac8"
     },
     "com.decentraland.webgl-ime-input": {
-      "version": "file:.com.decentraland.webgl-ime-input@1.0.0",
+      "version": "https://github.com/decentraland/webgl-ime-input.git",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "df8e5a76a9b7ad1d3b266a5bd359257b0d60e09c"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
