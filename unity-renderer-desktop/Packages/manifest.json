@@ -7,7 +7,7 @@
     "com.cysharp.unitask": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
     "com.decentraland.rpc-csharp": "https://github.com/decentraland/rpc-csharp.git?path=rpc-csharp/src",
     "com.decentraland.unity-shared-dependencies": "https://github.com/decentraland/unity-shared-dependencies.git",
-    "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#release/release-20221220",
+    "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#main",
     "com.decentraland.webgl-ime-input": "https://github.com/decentraland/webgl-ime-input.git",
     "com.decentraland.videoplayer": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
     "com.unity.cinemachine": "2.8.9",
