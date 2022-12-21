@@ -12,7 +12,7 @@ references:
       at: *working_directory
 
   .unity_linux_image: &unity_linux_image
-    - image: unityci/editor:ubuntu-2021.3.14f1-linux-il2cpp-1.0.1
+    - image: unityci/editor:ubuntu-2021.3.16f1-linux-il2cpp-1.0.1
       environment:
         DCL_OUTPUT_NAME: linux
         PROJECT_PATH: /tmp/workspace/explorer-desktop/unity-renderer-desktop
