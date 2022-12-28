@@ -119,10 +119,11 @@
       "hash": "d2a6c5707d3150bcf6891f145c37889d137fbac8"
     },
     "com.decentraland.webgl-ime-input": {
-      "version": "file:.com.decentraland.webgl-ime-input@1.0.0",
+      "version": "https://github.com/decentraland/webgl-ime-input.git",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "df8e5a76a9b7ad1d3b266a5bd359257b0d60e09c"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
