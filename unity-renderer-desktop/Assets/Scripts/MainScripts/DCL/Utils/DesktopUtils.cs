@@ -8,35 +8,37 @@ namespace MainScripts.DCL.Utils
     {
         public static void Quit()
         {
+            var disposed = false;
+            
             Debug.Log("Disposing");
-            bool disposed = false;
             foreach (var mb in Object.FindObjectsOfType<MonoBehaviour>())
             {
                 Debug.Log(mb.name);
 
-                if (mb is IDisposable disposable)
-                {
-                    disposable.Dispose();
-                    disposed = true;
-                }
+                if (mb is not IDisposable disposable) continue;
+                
+                disposable.Dispose();
+                disposed = true;
             }
-
-            if(disposed)
-                return;
+            if(disposed) return;
             
             Debug.Log("Destroying");
             foreach (var mb in Object.FindObjectsOfType<MonoBehaviour>())
             {
                 Debug.Log(mb.name);
                 Object.Destroy(mb);
+                
+                disposed = true;
             }
-// #if UNITY_EDITOR
-//             // Application.Quit() does not work in the editor so
-//             // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
-//             UnityEditor.EditorApplication.isPlaying = false;
-// #else
-//             Application.Quit();
-// #endif
+            if(disposed) return;
+            
+#if UNITY_EDITOR
+            // Application.Quit() does not work in the editor so
+            // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
     }
 }
