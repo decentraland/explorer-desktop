@@ -3,7 +3,7 @@
 /// </summary>
 public class ExploreV2FeatureDesktop : IPlugin
 {
-    public IExploreV2MenuComponentController exploreV2MenuComponentController;
+    private IExploreV2MenuComponentController exploreV2MenuComponentController;
 
     public ExploreV2FeatureDesktop ()
     {
