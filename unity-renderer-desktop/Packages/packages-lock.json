@@ -1,13 +1,12 @@
 {
   "dependencies": {
     "com.atteneder.draco": {
-      "version": "4.0.2",
+      "version": "file:.com.atteneder.draco@4.0.2",
       "depth": 0,
-      "source": "registry",
+      "source": "embedded",
       "dependencies": {
         "com.unity.burst": "1.4.11"
-      },
-      "url": "https://package.openupm.com"
+      }
     },
     "com.atteneder.gltfast": {
       "version": "https://github.com/decentraland/glTFast.git",
@@ -19,7 +18,7 @@
         "com.unity.mathematics": "1.2.6",
         "com.unity.burst": "1.6.6"
       },
-      "hash": "ecca7e7af9668edf414782ee36059c6a6c2001d9"
+      "hash": "fdbba5350fda2da9708aafbcb9336c59cb2b6a32"
     },
     "com.coffee.git-dependency-resolver": {
       "version": "https://github.com/mob-sakai/GitDependencyResolverForUnity.git",
@@ -50,7 +49,7 @@
       "hash": "0edfd2eb04da488b3ea3b1bc744efb4df033b508"
     },
     "com.decentraland.unity-renderer": {
-      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#main",
+      "version": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#dev",
       "depth": 0,
       "source": "git",
       "dependencies": {
@@ -100,16 +99,14 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "f743b85565d40fc4dc3140f7a9c6e91c29471d6e"
+      "hash": "108bfa2874317ea72e93488240cca74bd1ef14fc"
     },
     "com.decentraland.unity-shared-dependencies": {
       "version": "https://github.com/decentraland/unity-shared-dependencies.git",
       "depth": 0,
       "source": "git",
-      "dependencies": {
-        "com.atteneder.gltfast": "5.0.0-exp.1"
-      },
-      "hash": "6a549b969fd6d87577b6a8c18a1d776d28194ed2"
+      "dependencies": {},
+      "hash": "5577bd123883e2fa96f51b8d534abd75bad0535f"
     },
     "com.decentraland.videoplayer": {
       "version": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
@@ -119,10 +116,11 @@
       "hash": "d2a6c5707d3150bcf6891f145c37889d137fbac8"
     },
     "com.decentraland.webgl-ime-input": {
-      "version": "file:.com.decentraland.webgl-ime-input@1.0.0",
+      "version": "https://github.com/decentraland/webgl-ime-input.git",
       "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "df8e5a76a9b7ad1d3b266a5bd359257b0d60e09c"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
