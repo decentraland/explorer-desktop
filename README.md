@@ -4,6 +4,7 @@ This repository contains the project to compile [Unity Renderer](https://github.
 
 ## Before you start
 
+
 1. [Contribution Guidelines](https://github.com/decentraland/unity-renderer/.github/CONTRIBUTING.md)
 2. [Coding Guidelines](https://github.com/decentraland/unity-renderer/docs/style-guidelines.md)
 3. [Code Review Standards](https://github.com/decentraland/unity-renderer/docs/code-review-standards.md)
