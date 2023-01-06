@@ -1,3 +1,4 @@
+.
 # Decentraland Explorer Desktop
 
 This repository contains the project to compile [Unity Renderer](https://github.com/decentraland/unity-renderer) to Windows/Mac/Linux and distribute it with the [kernel](https://github.com/decentraland/kernel).
