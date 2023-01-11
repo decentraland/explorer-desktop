@@ -18,6 +18,7 @@
     "com.unity.textmeshpro": "3.2.0-pre.3",
     "com.unity.toolchain.linux-x86_64": "0.1.18-preview",
     "com.unity.ui": "2.0.0",
+    "io.sentry.unity": "https://github.com/getsentry/unity.git#0.27.0",
     "net.tnrd.nsubstitute": "https://github.com/decentraland/Unity3D-NSubstitute.git",
     "ru.threedisevenzeror.unitygifdecoder": "https://github.com/3DI70R/Unity-GifDecoder.git"
   },
