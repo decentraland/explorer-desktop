@@ -13,6 +13,7 @@
     "com.unity.cinemachine": "2.8.9",
     "com.unity.render-pipelines.universal": "12.1.8",
     "com.unity.test-framework.performance": "2.8.1-preview",
+    "io.sentry.unity": "https://github.com/getsentry/unity.git#0.28.0",
     "com.unity.test-framework": "2.0.1-pre.18",
     "com.unity.testtools.codecoverage": "1.1.0",
     "com.unity.textmeshpro": "3.2.0-pre.3",
