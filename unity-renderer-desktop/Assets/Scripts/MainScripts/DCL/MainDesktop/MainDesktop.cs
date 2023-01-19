@@ -6,7 +6,6 @@ using MainScripts.DCL.Controllers.LoadingFlow;
 using MainScripts.DCL.Controllers.SettingsDesktop;
 using MainScripts.DCL.Utils;
 using UnityEngine;
-using RPC;
 
 namespace DCL
 {
@@ -20,6 +19,8 @@ namespace DCL
         private LoadingFlowController loadingFlowController;
         private PreloadingController preloadingController;
         private bool isConnectionLost;
+        private readonly DataStoreRef<DataStore_LoadingScreen> loadingScreenRef;
+
         private BaseVariable<FeatureFlag> featureFlags => DataStore.i.featureFlags.flags;
 
         protected override void Awake()
@@ -50,7 +51,22 @@ namespace DCL
         private void FeatureFlagsReady(FeatureFlag current, FeatureFlag previous)
         {
             DCLVideoTexture.videoPluginWrapperBuilder = VideoProviderFactory.CreateVideoProvider;
+            if (current.IsFeatureEnabled(DataStore.i.featureFlags.DECOUPLED_LOADING_SCREEN_FF))
+            {
+                loadingFlowController = new LoadingFlowController(
+                    loadingScreenRef.Ref.decoupledLoadingHUD.visible,
+                    CommonScriptableObjects.rendererState,
+                    DataStore.i.wsCommunication.communicationEstablished);
+            }
+            else
+            {
+                loadingFlowController = new LoadingFlowController(
+                    loadingScreenRef.Ref.loadingHUD.visible,
+                    CommonScriptableObjects.rendererState,
+                    DataStore.i.wsCommunication.communicationEstablished);
+            }
             DataStore.i.featureFlags.flags.OnChange -= FeatureFlagsReady;
+
         }
 
         protected override void InitializeCommunication()
@@ -120,8 +136,7 @@ namespace DCL
         protected override void Update()
         {
             base.Update();
-            loadingFlowController.Update();
-
+            
             if (isConnectionLost)
             {
                 DesktopUtils.Quit();
@@ -137,18 +152,7 @@ namespace DCL
                 SettingsDesktop.i.displaySettings.Save();
             }
         }
-
-        protected override void Start()
-        {
-            loadingFlowController = new LoadingFlowController(
-                DataStore.i.HUDs.loadingHUD.fatalError,
-                DataStore.i.HUDs.loadingHUD.visible,
-                CommonScriptableObjects.rendererState,
-                DataStore.i.wsCommunication.communicationEstablished);
-
-            base.Start();
-        }
-
+        
         protected override void InitializeSceneDependencies()
         {
             base.InitializeSceneDependencies();
