@@ -64,7 +64,6 @@ namespace DCL
                     loadingScreenRef.Ref.loadingHUD.visible,
                     CommonScriptableObjects.rendererState,
                     DataStore.i.wsCommunication.communicationEstablished);
-                preloadingController = new PreloadingController();
             }
             DataStore.i.featureFlags.flags.OnChange -= FeatureFlagsReady;
 
@@ -120,7 +119,7 @@ namespace DCL
         private void DesktopDestroy()
         {
             loadingFlowController.Dispose();
-            preloadingController?.Dispose();
+            preloadingController.Dispose();
 #if !AV_PRO_PRESENT
             DCLVideoPlayer.StopAllThreads();
 #endif
@@ -152,6 +151,12 @@ namespace DCL
                 SettingsDesktop.i.displaySettings.Apply(newDisplaySettings);
                 SettingsDesktop.i.displaySettings.Save();
             }
+        }
+        
+        protected override void InitializeSceneDependencies()
+        {
+            base.InitializeSceneDependencies();
+            preloadingController = new PreloadingController();
         }
 
         protected override void SetupServices()

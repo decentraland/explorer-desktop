@@ -17,7 +17,14 @@ namespace MainScripts.DCL.Controllers.HUD.Preloading
         {
             view = Object.Instantiate(GetView());
             loadingScreenRef.Ref.loadingHUD.message.OnChange += OnMessageChange;
+            loadingScreenRef.Ref.decoupledLoadingHUD.visible.OnChange += OnDecoupledLoadingScreenVisibilityChange;
             isSignUpFlow.OnChange += SignUpFlowChanged;
+        }
+
+        private void OnDecoupledLoadingScreenVisibilityChange(bool current, bool _)
+        {
+            if(current)
+                Dispose();
         }
 
         private GameObject GetView()
@@ -30,6 +37,7 @@ namespace MainScripts.DCL.Controllers.HUD.Preloading
             if (isDisposed) return;
             isDisposed = true;
             loadingScreenRef.Ref.loadingHUD.message.OnChange -= OnMessageChange;
+            loadingScreenRef.Ref.decoupledLoadingHUD.visible.OnChange -= OnDecoupledLoadingScreenVisibilityChange;
             isSignUpFlow.OnChange -= SignUpFlowChanged;
             Object.Destroy(view.gameObject);
         }
