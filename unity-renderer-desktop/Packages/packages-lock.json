@@ -98,7 +98,7 @@
         "com.unity.modules.vr": "1.0.0",
         "com.unity.modules.xr": "1.0.0"
       },
-      "hash": "61e4653530a0032e64030473f243903f8a738843"
+      "hash": "18f2c0f36ceb1cd8db2a623f9ff1d03fc55aa6c6"
     },
     "com.decentraland.unity-shared-dependencies": {
       "version": "https://github.com/decentraland/unity-shared-dependencies.git",
