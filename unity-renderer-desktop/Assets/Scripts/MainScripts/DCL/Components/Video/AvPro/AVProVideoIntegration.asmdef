@@ -15,7 +15,11 @@
         "GUID:3ca842002c51d0a43b73e45298809a13",
         "GUID:a6e669d94a1a1b7409d9572b0a26e236"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
