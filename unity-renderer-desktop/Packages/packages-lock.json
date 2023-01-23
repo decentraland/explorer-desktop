@@ -1,12 +1,13 @@
 {
   "dependencies": {
     "com.atteneder.draco": {
-      "version": "file:.com.atteneder.draco@4.0.2",
+      "version": "4.0.2",
       "depth": 0,
-      "source": "embedded",
+      "source": "registry",
       "dependencies": {
         "com.unity.burst": "1.4.11"
-      }
+      },
+      "url": "https://package.openupm.com"
     },
     "com.atteneder.gltfast": {
       "version": "https://github.com/decentraland/glTFast.git",
@@ -116,11 +117,10 @@
       "hash": "d2a6c5707d3150bcf6891f145c37889d137fbac8"
     },
     "com.decentraland.webgl-ime-input": {
-      "version": "https://github.com/decentraland/webgl-ime-input.git",
+      "version": "file:.com.decentraland.webgl-ime-input@1.0.0",
       "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "df8e5a76a9b7ad1d3b266a5bd359257b0d60e09c"
+      "source": "embedded",
+      "dependencies": {}
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
@@ -160,8 +160,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ext.nunit": {
-      "version": "1.0.6",
-      "depth": 2,
+      "version": "2.0.2",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -291,11 +291,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework": {
-      "version": "1.1.31",
-      "depth": 1,
+      "version": "2.0.1-pre.18",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.ext.nunit": "1.0.6",
+        "com.unity.ext.nunit": "2.0.2",
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
       },

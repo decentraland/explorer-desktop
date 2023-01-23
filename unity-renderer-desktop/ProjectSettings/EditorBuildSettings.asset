@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
+    path: Assets/Desktop/Scenes/MainScene.unity
     guid: a01c7a64d14e9e13e836fb318e71441b
   - enabled: 1
     path: Packages/com.decentraland.unity-renderer/Scenes/BuilderScene.unity
