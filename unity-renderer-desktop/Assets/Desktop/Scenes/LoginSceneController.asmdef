@@ -1,0 +1,22 @@
+{
+    "name": "LoginSceneController",
+    "rootNamespace": "",
+    "references": [
+        "GUID:54073faf5da34a4eaa9febfb3aa5a0e1"
+    ],
+    "includePlatforms": [
+        "Editor",
+        "LinuxStandalone64",
+        "macOSStandalone",
+        "WindowsStandalone32",
+        "WindowsStandalone64"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
