@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using Cysharp.Threading.Tasks;
 using DCL;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -36,6 +38,13 @@ namespace MainScripts.DCL.Controllers.HUD.Preloading
         {
             if (isDisposed) return;
             isDisposed = true;
+            WaitForViewsToFadeOut();
+        }
+
+        async UniTask WaitForViewsToFadeOut()
+        {
+            //This wait will be removed when we merge both loading screen into a single decoupled loading screen
+            await UniTask.Delay(TimeSpan.FromSeconds(2), ignoreTimeScale: false);
             loadingScreenRef.Ref.loadingHUD.message.OnChange -= OnMessageChange;
             loadingScreenRef.Ref.decoupledLoadingHUD.visible.OnChange -= OnDecoupledLoadingScreenVisibilityChange;
             isSignUpFlow.OnChange -= SignUpFlowChanged;
