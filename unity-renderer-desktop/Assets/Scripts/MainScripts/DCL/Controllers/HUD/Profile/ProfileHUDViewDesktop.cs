@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace MainScripts.DCL.Controllers.HUD.Profile
 {
-    public class ProfileHUDViewDesktop : ProfileHUDViewV2
+    public class ProfileHUDViewDesktop : ProfileHUDView
     {
         [SerializeField]
         protected internal List<Button> exitButtons;
