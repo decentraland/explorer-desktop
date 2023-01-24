@@ -1,4 +1,6 @@
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -9,20 +11,19 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         private const float GENERAL_TIMEOUT_IN_SECONDS = 100;
         private const int WEB_SOCKET_TIMEOUT = 15;
 
-        private readonly BaseVariable<Exception> fatalErrorMessage;
         private readonly ILoadingFlowView view;
         private readonly BaseVariable<bool> loadingHudVisible;
         private readonly RendererState rendererState;
         private readonly BaseVariable<bool> websocketCommunicationEstablished;
         private float timerStart;
-        private bool isWatching;
 
-        public LoadingFlowController(BaseVariable<Exception> fatalErrorMessage,
+        private CancellationTokenSource disposeToken;
+
+        public LoadingFlowController(
             BaseVariable<bool> loadingHudVisible, 
             RendererState rendererState,
             BaseVariable<bool> websocketCommunicationEstablished)
         {
-            this.fatalErrorMessage = fatalErrorMessage;
             this.loadingHudVisible = loadingHudVisible;
             this.rendererState = rendererState;
             this.websocketCommunicationEstablished = websocketCommunicationEstablished;
@@ -42,9 +43,7 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
         private void OnLoadingHudVisibleChanged(bool current, bool previous)
         {
             if (current)
-            {
                 StartWatching();
-            }
             else
             {
                 view.Hide();
@@ -54,36 +53,13 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
 
         private void StartWatching()
         {
-            isWatching = false;
             timerStart = Time.unscaledTime;
-            fatalErrorMessage.OnChange += HandleFatalError;
+            disposeToken = new CancellationTokenSource();
+            ListenForTimeout();
         }
 
-        private void HandleFatalError(Exception current, Exception previous)
-        {
-            if (current == null) return;
-
-            view.Show();
-            StopWatching();
-        }
-
-        private void StopWatching()
-        {
-            if (isWatching) return;
-            isWatching = true;
-            fatalErrorMessage.OnChange -= HandleFatalError;
-        }
-
-        public void Update()
-        {
-            if (isWatching) return;
-
-            if (IsTimeToShowTimeout())
-            {
-                view.Show();
-                StopWatching();
-            }
-        }
+        private void StopWatching() =>
+            DisposeCancellationToken();
 
         private bool IsTimeToShowTimeout()
         {
@@ -103,9 +79,35 @@ namespace MainScripts.DCL.Controllers.LoadingFlow
 
         public void Dispose()
         {
-            fatalErrorMessage.OnChange -= HandleFatalError;
             loadingHudVisible.OnChange -= OnLoadingHudVisibleChanged;
             rendererState.OnChange -= OnRendererStateChange;
+            DisposeCancellationToken();
         }
+
+        private async UniTask ListenForTimeout()
+        {
+            while (true)
+            {
+                if (IsTimeToShowTimeout())
+                    ShowTimeout();
+                await UniTask.Yield(cancellationToken: disposeToken.Token);
+            }
+        }
+
+        private void ShowTimeout()
+        {
+            view.Show();
+            StopWatching();
+        }
+
+        private void DisposeCancellationToken()
+        {
+            if (disposeToken == null) return;
+            
+            disposeToken.Cancel();
+            disposeToken.Dispose();
+            disposeToken = null;
+        }
+        
     }
 }
