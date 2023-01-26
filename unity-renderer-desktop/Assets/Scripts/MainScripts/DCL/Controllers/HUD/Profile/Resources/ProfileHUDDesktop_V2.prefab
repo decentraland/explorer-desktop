@@ -1621,10 +1621,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2611028964087816398, guid: 0f02993942607204bb37508b41ec4d98,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4525154057530514719, guid: 0f02993942607204bb37508b41ec4d98,
         type: 3}
       propertyPath: m_Name
-      value: ProfileHUD_V2 Variant
+      value: ProfileHUDDesktop_V2
       objectReference: {fileID: 0}
     - target: {fileID: 6238993295414465396, guid: 0f02993942607204bb37508b41ec4d98,
         type: 3}
