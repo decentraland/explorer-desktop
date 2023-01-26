@@ -30,7 +30,7 @@ namespace MainScripts.DCL.Controllers.HUD.Profile
 
         protected override GameObject GetViewPrefab()
         {
-            return Resources.Load<GameObject>("ProfileHUDDesktop");
+            return Resources.Load<GameObject>("ProfileHUDDesktop_V2");
         }
     }
 }
