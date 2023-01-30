@@ -10,6 +10,7 @@
     "com.decentraland.unity-renderer": "git+https://github.com/decentraland/unity-renderer.git?path=unity-renderer/Assets#release/release-20230130",
     "com.decentraland.webgl-ime-input": "https://github.com/decentraland/webgl-ime-input.git",
     "com.decentraland.videoplayer": "git+https://github.com/decentraland/DCLVideoPlayerUnity.git?path=Assets#main",
+    "com.unity.addressables": "1.19.19",
     "com.unity.cinemachine": "2.8.9",
     "com.unity.render-pipelines.universal": "12.1.8",
     "com.unity.test-framework.performance": "2.8.1-preview",
